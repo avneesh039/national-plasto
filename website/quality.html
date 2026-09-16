@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="National Plasto Quality Assurance: ISO 9001:2015 certified, 6-checkpoint auditable testing protocols, in-house polymer laboratory, 200 kg load verification, and RDSO vendor lineage." />
+  <title>Quality Assurance & ISO Testing Lab — National Plasto</title>
+  
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <link rel="icon" type="image/png" href="icon.png" />
+  <link rel="apple-touch-icon" href="apple-icon.png" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/brand-manufacturing.css" />
+  <link rel="stylesheet" href="css/luxury-theme.css" />
+  <link rel="stylesheet" href="css/hero-advance.css?v=4" />
+  <link rel="stylesheet" href="css/mobile.css?v=1" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@600;700;800&family=Instrument+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    .page-hero-banner {
+      padding: 160px 0 80px;
+      background: radial-gradient(circle at 50% 0%, #171f33 0%, #090c14 100%);
+      border-bottom: 1px solid rgba(229, 184, 105, 0.2);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .site-header {
+      background: rgba(8, 7, 6, 0.96) !important;
+      backdrop-filter: blur(20px) !important;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Custom Cursor -->
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+<div class="cursor-label" id="cursorLabel"></div>
+
+<!-- HEADER / NAVIGATION -->
+<header class="site-header" id="siteHeader">
+  <div class="header-inner">
+    <a href="index.html" class="header-logo" aria-label="National Plasto Home">
+      <img src="images/brand/national-plasto-dark.png" alt="National Plasto" class="header-logo-primary" />
+    </a>
+
+    <div class="header-right-cluster">
+      <nav class="header-nav" id="headerNav" aria-label="Main navigation">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="products.html" class="nav-link">Products</a>
+        <a href="solutions.html" class="nav-link">Solutions</a>
+        <a href="manufacturing.html" class="nav-link">Manufacturing</a>
+        <a href="quality.html" class="nav-link active-nav">Quality</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+
+      <div class="header-actions">
+        <button type="button" class="header-btn-partner" onclick="openDistributorModal()" data-cursor="PARTNER">
+          <span>PARTNER WITH US</span>
+        </button>
+        <a href="contact.html" class="header-btn-touch" data-cursor="QUOTE">
+          <span>GET A QUOTE</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- PAGE HERO BANNER -->
+<section class="page-hero-banner">
+  <div class="container">
+    <span class="mfg-badge mfg-badge--gold" style="margin-bottom: 16px;">Verifiable Trust &amp; Testing</span>
+    <h1 class="t-h1" style="color: #FFFFFF; font-family: var(--font-display); font-size: clamp(36px, 4.5vw, 60px); font-weight: 800; letter-spacing: -0.02em;">
+      QUALITY YOU CAN VERIFY
+    </h1>
+    <p class="t-body-lg" style="color: #94a3b8; max-width: 680px; margin: 18px auto 0; line-height: 1.6;">
+      Quality is an auditable engineering protocol at National Plasto. Validated across six distinct checkpoints and backed by ISO 9001:2015 certification.
+    </p>
+  </div>
+</section>
+
+<!-- 6-CHECKPOINTS GRID -->
+<section class="quality-mfg-section" id="quality" style="padding: 100px 0;">
+  <div class="container">
+
+    <div class="quality-checkpoints-grid">
+      <div class="qc-card">
+        <span class="qc-index">Checkpoint 01</span>
+        <h3 class="qc-title">Raw Material Testing</h3>
+        <p class="qc-desc">Melt Flow Index (MFI) and density verification ensure only prime-grade polymer batches enter the injection barrel.</p>
+        <span class="qc-metric-badge">MFI Tolerance &lt; 2%</span>
+      </div>
+
+      <div class="qc-card">
+        <span class="qc-index">Checkpoint 02</span>
+        <h3 class="qc-title">Process Controls</h3>
+        <p class="qc-desc">Continuous sensor logging of melt temperature, injection pressure, and mold chiller cooling uniformity.</p>
+        <span class="qc-metric-badge">Real-Time Sensor Logging</span>
+      </div>
+
+      <div class="qc-card">
+        <span class="qc-index">Checkpoint 03</span>
+        <h3 class="qc-title">Dimension Checks</h3>
+        <p class="qc-desc">Calibrated dial calipers verify wall thickness, leg angles, and stacking clearances against 3D CAD masters.</p>
+        <span class="qc-metric-badge">Micron Tolerance Audits</span>
+      </div>
+
+      <div class="qc-card">
+        <span class="qc-index">Checkpoint 04</span>
+        <h3 class="qc-title">Finish Inspection</h3>
+        <p class="qc-desc">100% visual inspection under high-CRI inspection lamps for color consistency, flow lines, and gloss uniformity.</p>
+        <span class="qc-metric-badge">High-CRI Optical Scan</span>
+      </div>
+
+      <div class="qc-card">
+        <span class="qc-index">Checkpoint 05</span>
+        <h3 class="qc-title">Performance Checks</h3>
+        <p class="qc-desc">Destructive drop-impact tests from 1.5 meters and 200 kg static load hold cycles replicate real institutional stress.</p>
+        <span class="qc-metric-badge">200 kg Static Hold Certified</span>
+      </div>
+
+      <div class="qc-card">
+        <span class="qc-index">Checkpoint 06</span>
+        <h3 class="qc-title">Final Batch Audit</h3>
+        <p class="qc-desc">Pre-dispatch lot sign-off verifying protective wrap integrity, barcode SKU labelling, and carton counts.</p>
+        <span class="qc-metric-badge">100% Traceable Lot QA</span>
+      </div>
+    </div>
+
+    <!-- TESTING LAB CREDENTIAL BAR -->
+    <div class="quality-credentials-bar" style="display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap;margin-top:56px">
+      <div style="display:flex;align-items:center;gap:24px;flex:1;min-width:300px">
+        <div style="width:140px;height:95px;border-radius:14px;overflow:hidden;flex-shrink:0;border:1px solid rgba(229,184,105,0.4);position:relative">
+          <img src="images/brand/quality-lab-qa.jpg" alt="National Plasto QA Testing Lab" style="width:100%;height:100%;object-fit:cover" />
+        </div>
+        <div>
+          <div class="cred-title">ISO 9001:2015 Manufacturing Standards &amp; RDSO Lineage</div>
+          <div class="cred-sub">Documented standard operating procedures governing raw material procurement, moulding, and batch release inspection.</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:14px;align-items:center;flex-shrink:0">
+        <span class="cred-chip-verified">✓ Verified Standard</span>
+        <a href="contact.html" class="btn-mfg-secondary">Request Certificate Copy</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- TECHNICAL INSIGHTS SECTION -->
+<section class="insights-mfg-section" style="padding: 100px 0; background: #FFFFFF;">
+  <div class="container">
+    <div class="mfg-section-header text-center" style="max-width: 760px; margin: 0 auto 56px;">
+      <span class="mfg-badge mfg-badge--crimson">Engineering Knowledge</span>
+      <h2 class="mfg-section-title" style="color: #0f172a;">TECHNICAL WHITE PAPERS</h2>
+      <p class="mfg-section-desc" style="color: #64748b; margin: 14px auto 0;">
+        Engineering guides on polymer science, injection dynamics, and bulk evaluation standards.
+      </p>
+    </div>
+
+    <div class="insights-cards-grid">
+      <article class="insight-article-card">
+        <div class="insight-thumbnail-wrapper"><img src="images/brand/insight-durability.jpg" alt="Evaluating Plastic Chair Durability" loading="lazy" /></div>
+        <div class="insight-body">
+          <span class="insight-category">Procurement Guide</span>
+          <h3 class="insight-title">Evaluating Plastic Chair Durability: 5 Checks Before Bulk Procurement</h3>
+          <p class="insight-summary">Learn what facility managers must inspect: wall thickness uniformity, ribbing depth under stress points, and why raw polymer melt-flow index dictates drop survivability.</p>
+        </div>
+      </article>
+
+      <article class="insight-article-card">
+        <div class="insight-thumbnail-wrapper"><img src="images/brand/insight-moulding.jpg" alt="The Engineering of Injection Moulding" loading="lazy" /></div>
+        <div class="insight-body">
+          <span class="insight-category">Manufacturing Science</span>
+          <h3 class="insight-title">The Engineering of Injection Moulding: How Clamp Tonnage Defines Part Integrity</h3>
+          <p class="insight-summary">A look inside high-tonnage microprocessor presses: balancing cavity pressure, gate placement, and cycle cooling to produce stress-free monoblock structures.</p>
+        </div>
+      </article>
+
+      <article class="insight-article-card">
+        <div class="insight-thumbnail-wrapper"><img src="images/brand/insight-polymer.jpg" alt="Virgin Polypropylene vs Recycled Polymer" loading="lazy" /></div>
+        <div class="insight-body">
+          <span class="insight-category">Materials Analysis</span>
+          <h3 class="insight-title">Virgin Polypropylene vs Recycled Polymer Under Harsh Indian Climates</h3>
+          <p class="insight-summary">Why recycled blends cause premature outdoor embrittlement, and how virgin polypropylene compounded with UV stabilizers delivers a 10-year functional lifespan.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer theme-dark">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="images/brand/national-plasto-dark.png" alt="National Plasto" class="footer-logo-img" />
+        <p class="t-body" style="color:var(--text-secondary-dark);max-width:340px;margin-top:20px;line-height:1.6">
+          National Plasto Products Private Limited. Precision polymer moulding and industrial manufacturing solutions across India.
+        </p>
+      </div>
+
+      <div class="footer-links-grid">
+        <div class="footer-col">
+          <h4 class="t-label" style="color:var(--text-tertiary-dark);margin-bottom:18px">Pages</h4>
+          <ul class="footer-link-list">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Product Database</a></li>
+            <li><a href="solutions.html">B2B Solutions &amp; OEM</a></li>
+            <li><a href="manufacturing.html">Manufacturing Plant</a></li>
+            <li><a href="quality.html">Quality &amp; Testing Lab</a></li>
+            <li><a href="about.html">About National Plasto</a></li>
+            <li><a href="contact.html">Contact &amp; RFQ</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="t-label" style="color:var(--text-tertiary-dark);margin-bottom:18px">Contact</h4>
+          <address style="font-style:normal">
+            <p class="t-caption" style="color:var(--text-secondary-dark);line-height:1.7">
+              19 Sukeas Lane, Kolkata 700001, West Bengal, India
+            </p>
+            <a href="tel:+919830012345" class="t-caption footer-contact-link" style="margin-top:10px;display:block">+91 98300 12345</a>
+            <a href="mailto:info@nationalplasto.com" class="t-caption footer-contact-link">info@nationalplasto.com</a>
+          </address>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

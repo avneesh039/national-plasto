@@ -1,0 +1,2249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="National Plasto — Precision Plastic Manufacturing. Built for India. Engineered polymer products, furniture, and custom moulding solutions for homes, businesses, and industries." />
+  <meta name="keywords" content="National Plasto, plastic manufacturing India, injection moulding Kolkata, plastic furniture manufacturer, B2B plastic crates, monoblock chairs, OEM plastic moulding, ISO 9001:2015, RDSO approved vendor" />
+  <title>National Plasto — Precision Plastic Manufacturing. Built for India.</title>
+  
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/components.css?v=2" />
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <link rel="icon" type="image/png" href="icon.png" />
+  <link rel="apple-touch-icon" href="apple-icon.png" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/brand-enhancements.css" />
+  <link rel="stylesheet" href="css/brand-manufacturing.css" />
+  <link rel="stylesheet" href="css/loader.css" />
+  <link rel="stylesheet" href="css/luxury-theme.css" />
+  <link rel="stylesheet" href="css/vibrant-theme.css" />
+  <link rel="stylesheet" href="css/light-mode.css?v=2" />
+  <link rel="stylesheet" href="css/hero-advance.css?v=5" />
+  <link rel="stylesheet" href="css/mobile.css?v=1" />
+
+  <!-- Fonts: Alex Brush (Touch of Elegance), Cinzel, Space Grotesk, DM Serif Display, Playfair Display -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@500;600;700;800;900&family=DM+Serif+Display:ital@0;1&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Three.js for 3D & GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+
+  <style>
+    #canvas-hero { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; opacity: 0.35; }
+    .nav-btn-distributor {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font-display);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 8px 16px;
+      border-radius: 999px;
+      background: rgba(200, 16, 46, 0.08);
+      color: var(--brand-crimson) !important;
+      border: 1px solid rgba(200, 16, 46, 0.25);
+      transition: all 0.2s ease;
+    }
+    .nav-btn-distributor:hover {
+      background: var(--brand-crimson);
+      color: #FFFFFF !important;
+    }
+    .cred-chip-verified {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 700;
+      color: #10B981;
+      background: rgba(16, 185, 129, 0.1);
+      padding: 3px 8px;
+      border-radius: 4px;
+      border: 1px solid rgba(16, 185, 129, 0.2);
+    }
+  </style>
+</head>
+<body class="arch-loader-active">
+
+<!-- ════════════════════════════════════════════════
+     YODEZEEN-INSPIRED ARCHITECTURAL PRELOADER
+     ════════════════════════════════════════════════ -->
+<div id="arch-loader" class="yodezeen-loader" aria-label="Loading National Plasto website" role="progressbar">
+  <div class="yodezeen-loader__media">
+    <img src="images/brand/company-photo.jpg" alt="National Plasto Industrial Production" class="yodezeen-loader__bg-img" />
+    <div class="yodezeen-loader__overlay"></div>
+  </div>
+
+  <div class="yodezeen-loader__content">
+    <div class="yodezeen-logo-wrap">
+      <img src="images/brand/national-plasto-dark.png" alt="National Plasto" />
+      <span class="yodezeen-divider"></span>
+      <img src="images/brand/next-nppl-dark.png" alt="NEXT NPPL" />
+    </div>
+    <p class="yodezeen-tagline">PRECISION POLYMER MOULDING · EST. 1997 · KOLKATA</p>
+    <p class="yodezeen-slogan">"Precision Plastic Manufacturing. Built for India."</p>
+  </div>
+
+  <div class="yodezeen-loader__footer">
+    <div class="yodezeen-counter">
+      <div>
+        <span id="yodezeenCountNum">00</span><span class="percent-symbol">%</span>
+        <div class="yodezeen-counter-label">System Initializing</div>
+      </div>
+    </div>
+
+    <button type="button" id="yodezeenSkipBtn" class="yodezeen-skip-btn" aria-label="Skip Intro Animation">
+      <span>SKIP INTRO</span>
+      <span class="skip-icon">↗</span>
+    </button>
+  </div>
+</div>
+
+<!-- Custom Cursor -->
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+<div class="cursor-label" id="cursorLabel"></div>
+
+<!-- ════════════════════════════════════════════════
+     PREMIUM TOPBAR TICKER (SEAMLESS MARQUEE)
+     ════════════════════════════════════════════════ -->
+<div class="topbar-ticker" id="topbarTicker">
+  <div class="topbar-ticker__wrapper">
+    <div class="topbar-ticker__item">
+      30+ Years of Precision Moulding <span class="topbar-ticker__dot">✦</span>
+      1,000+ Products Delivered <span class="topbar-ticker__dot">✦</span>
+      500+ Institutional &amp; B2B Clients <span class="topbar-ticker__dot">✦</span>
+      ISO 9001:2015 Certified Operations <span class="topbar-ticker__dot">✦</span>
+      High-Tonnage Microprocessor Presses <span class="topbar-ticker__dot">✦</span>
+      RDSO Approved Vendor Lineage <span class="topbar-ticker__dot">✦</span>
+      Direct Plant Logistics &amp; Pan-India Depots <span class="topbar-ticker__dot">✦</span>
+      100% Prime Virgin Polymer Guarantee <span class="topbar-ticker__dot">✦</span>
+    </div>
+    <!-- Duplicate sequence for seamless loop -->
+    <div class="topbar-ticker__item">
+      30+ Years of Precision Moulding <span class="topbar-ticker__dot">✦</span>
+      1,000+ Products Delivered <span class="topbar-ticker__dot">✦</span>
+      500+ Institutional &amp; B2B Clients <span class="topbar-ticker__dot">✦</span>
+      ISO 9001:2015 Certified Operations <span class="topbar-ticker__dot">✦</span>
+      High-Tonnage Microprocessor Presses <span class="topbar-ticker__dot">✦</span>
+      RDSO Approved Vendor Lineage <span class="topbar-ticker__dot">✦</span>
+      Direct Plant Logistics &amp; Pan-India Depots <span class="topbar-ticker__dot">✦</span>
+      100% Prime Virgin Polymer Guarantee <span class="topbar-ticker__dot">✦</span>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     HEADER / NAVIGATION (PREMIUM LUXURY ARCHITECTURE)
+     ════════════════════════════════════════════════ -->
+<header class="site-header" id="siteHeader">
+  <div class="header-inner">
+
+    <!-- Brand Logo: High-Contrast Light Brandmark -->
+    <a href="#" class="header-logo" aria-label="National Plasto Home">
+      <img src="images/brand/national-plasto-dark.png" alt="National Plasto - Touch of Elegance" class="header-logo-primary" />
+    </a>
+
+    <!-- Navigation & Action Cluster -->
+    <div class="header-right-cluster">
+      <nav class="header-nav" id="headerNav" aria-label="Main navigation">
+        <a href="index.html" class="nav-link active-nav">Home</a>
+        <a href="products.html" class="nav-link">Products</a>
+        <a href="solutions.html" class="nav-link">Solutions</a>
+        <a href="manufacturing.html" class="nav-link">Manufacturing</a>
+        <a href="quality.html" class="nav-link">Quality</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="icon-btn" id="searchTrigger" aria-label="Search Products" data-cursor="SEARCH" title="Search Catalog">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"/>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          </svg>
+        </button>
+
+        <button type="button" class="header-btn-partner" onclick="openDistributorModal()" data-cursor="PARTNER">
+          <span>PARTNER WITH US</span>
+        </button>
+
+        <a href="contact.html" class="header-btn-touch" data-cursor="QUOTE">
+          <span>GET A QUOTE</span>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
+
+        <button class="hamburger" id="menuToggle" aria-label="Menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile Menu Overlay -->
+<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <div class="mobile-menu-inner">
+    <nav class="mobile-nav">
+      <a href="index.html" class="mobile-nav-link" data-index="01">Home</a>
+      <a href="products.html" class="mobile-nav-link" data-index="02">Product Collections</a>
+      <a href="solutions.html" class="mobile-nav-link" data-index="03">Custom Moulding Solutions</a>
+      <a href="manufacturing.html" class="mobile-nav-link" data-index="04">Manufacturing &amp; Technology</a>
+      <a href="quality.html" class="mobile-nav-link" data-index="05">Quality &amp; ISO Certification</a>
+      <a href="about.html" class="mobile-nav-link" data-index="06">About National Plasto</a>
+      <a href="contact.html" class="mobile-nav-link" data-index="07">Contact &amp; RFQ</a>
+    </nav>
+    <div class="mobile-menu-footer">
+      <p class="t-label text-dim">National Plasto Products Private Limited</p>
+      <p class="t-label text-dim">Excellence in Plastic Moulded Products · Touch of Elegance</p>
+      <div style="margin-top:16px;display:flex;gap:12px">
+        <button type="button" class="btn-primary" style="flex:1;justify-content:center" onclick="openDistributorModal();document.getElementById('mobileMenu').classList.remove('active')">Become a Partner</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     01. HERO — CINEMATIC SCROLL ANIMATION (~300vh)
+     "MEET INDIA. MEET ELEGANCE." — 100-Frame Gateway of India Render
+     ════════════════════════════════════════════════ -->
+<section class="hero-scroll-track" id="heroScrollTrack">
+  <div class="hero-sticky-stage" id="heroStickyStage">
+
+    <!-- Ultra High-Performance HTML5 Canvas Rendering 100-Frames Gateway Sequence -->
+    <canvas id="heroCanvas" class="hero-frame-canvas" aria-label="Cinematic Gateway of India National Plasto Furniture Sequence"></canvas>
+
+    <!-- Warm Sunset Ambient, Atmospheric Gradient & Edge Vignette -->
+    <div class="hero-stage-overlay"></div>
+    <div class="hero-light-sweep" id="heroLightSweep"></div>
+    <div class="hero-sparkle-field" aria-hidden="true">
+      <span class="sparkle-glint sparkle-1">✦</span>
+      <span class="sparkle-glint sparkle-2">✦</span>
+      <span class="sparkle-glint sparkle-3">✦</span>
+      <span class="sparkle-glint sparkle-4">✦</span>
+      <span class="sparkle-glint sparkle-5">✦</span>
+      <span class="sparkle-glint sparkle-6">✦</span>
+    </div>
+
+    <!-- ─── SCENE 01 — INTRO (0–25% Scroll): MEET ELEGANCE ─── -->
+    <div class="hero-stage-layer hero-scene-1 active" id="heroScene1">
+      <div class="hero-scene-content">
+        <div class="hero-badge-eyebrow">
+          <span class="badge-dot-red"></span>
+          <span class="badge-text">TOUCH OF ELEGANCE · EST. 1997</span>
+        </div>
+        <h1 class="hero-title-meet-india">
+          <span class="hero-kicker-small">MEET</span>
+          <span class="hero-heading-main"><span class="gold-shine">MODERN</span> ELEGANCE.</span>
+        </h1>
+        <p class="hero-subtitle-lead">
+          Where timeless Indian heritage meets precision polymer craftsmanship.
+        </p>
+        <div class="hero-scene-hint">
+          <span class="scene-scroll-pill">Scroll to discover</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ─── SCENE 02 — BRAND STATEMENT (25–50% Scroll): MEET DESIGN ─── -->
+    <div class="hero-stage-layer hero-scene-2" id="heroScene2">
+      <div class="hero-scene-content hero-scene-content--wide">
+        <div class="hero-badge-eyebrow">
+          <span class="badge-dot-cyan"></span>
+          <span class="badge-text">PRECISION MOULDING · CHAPTER II</span>
+        </div>
+        <h2 class="hero-heading-statement">
+          CRAFTED FOR THE WAY <span class="gold-shine">INDIA LIVES.</span>
+        </h2>
+        <p class="hero-statement-desc">
+          100% prime virgin polymer. Engineered for resilience, ergonomics, and effortless comfort.
+        </p>
+      </div>
+    </div>
+
+    <!-- ─── SCENE 03 — PRODUCT PHILOSOPHY (50–75% Scroll): FORM. FUNCTION. PERFECTION. ─── -->
+    <div class="hero-stage-layer hero-scene-3" id="heroScene3">
+      <div class="hero-scene-content hero-scene-content--wide">
+        <div class="hero-badge-eyebrow">
+          <span class="badge-dot-red"></span>
+          <span class="badge-text">ICONIC LATTICE DESIGN · MONOBLOCK</span>
+        </div>
+        <h2 class="hero-heading-philosophy">
+          <span>FORM.</span>
+          <span class="dot-gold">·</span>
+          <span>FUNCTION.</span>
+          <span class="dot-gold">·</span>
+          <span class="gold-shine">PERFECTION.</span>
+        </h2>
+        <p class="hero-philosophy-desc">
+          Breathable geometric lattice structure with all-weather polymer durability.
+        </p>
+      </div>
+    </div>
+
+    <!-- ─── SCENE 04 — BRAND REVEAL (75–100% Scroll): TOUCH OF ELEGANCE · NATIONAL PLASTO ─── -->
+    <div class="hero-stage-layer hero-scene-4" id="heroScene4">
+      <div class="hero-scene-content hero-reveal-container">
+        
+        <div class="hero-reveal-text-group" id="heroRevealTextGroup">
+          <!-- Touch of Elegance Script Statement -->
+          <div class="hero-reveal-script-wrap">
+            <span class="hero-reveal-script">Touch of Elegance.</span>
+          </div>
+
+          <!-- National Plasto Monumental Reveal -->
+          <h2 class="hero-reveal-brand">
+            <span class="hero-reveal-brand-name">NATIONAL PLASTO</span>
+          </h2>
+
+          <!-- Excellence Subtitle -->
+          <p class="hero-reveal-tagline">
+            Excellence in Plastic Moulded Products · Built for India
+          </p>
+
+          <!-- Final Harmonious Hero Copy -->
+          <p class="hero-reveal-copy">
+            Transforming living spaces with design-first, durable polymer furniture.
+          </p>
+        </div>
+
+        <!-- Action CTAs -->
+        <div class="hero-reveal-actions">
+          <a href="#products" class="hero-cta-explore" id="heroCtaExplore" data-cursor="EXPLORE">
+            <span>EXPLORE COLLECTIONS →</span>
+          </a>
+          <a href="#enquiry" class="hero-btn-contact" data-cursor="CONNECT">
+            <span>GET IN TOUCH</span>
+          </a>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Delicate Gold Scroll Progress Bar -->
+    <div class="hero-scroll-progress-line" id="heroScrollProgressLine"></div>
+
+    <!-- ─── BOTTOM EDITORIAL MAGAZINE BAR & PROGRESS TICKER ─── -->
+    <div class="hero-bottom-bar" id="heroBottomBar">
+      
+      <!-- Left Indicator Dots (Scenes 1-4) -->
+      <div class="hero-dots-group" role="tablist" aria-label="Hero Scenes Navigation">
+        <button type="button" class="hero-dot-item active" data-scene="0" aria-label="Scene 1: Meet India" onclick="jumpToHeroScene(0)"></button>
+        <button type="button" class="hero-dot-item" data-scene="1" aria-label="Scene 2: Meet Design" onclick="jumpToHeroScene(1)"></button>
+        <button type="button" class="hero-dot-item" data-scene="2" aria-label="Scene 3: Meet Innovation" onclick="jumpToHeroScene(2)"></button>
+        <button type="button" class="hero-dot-item" data-scene="3" aria-label="Scene 4: National Plasto" onclick="jumpToHeroScene(3)"></button>
+      </div>
+
+      <!-- Center Frame Indicator -->
+      <div class="hero-frame-counter" id="heroFrameCounter">FRAME 001 / 250</div>
+
+      <!-- Right Digital Luxury Magazine Sequence Navigation -->
+      <div class="hero-magazine-sequence" id="heroMagazineSequence" aria-label="Magazine Storyline">
+        <span class="magazine-step active" onclick="jumpToHeroScene(0)" data-step="0">
+          <span class="step-num">01</span> MEET INDIA.
+        </span>
+        <span class="step-arrow">→</span>
+        <span class="magazine-step" onclick="jumpToHeroScene(1)" data-step="1">
+          <span class="step-num">02</span> MEET DESIGN.
+        </span>
+        <span class="step-arrow">→</span>
+        <span class="magazine-step" onclick="jumpToHeroScene(2)" data-step="2">
+          <span class="step-num">03</span> MEET INNOVATION.
+        </span>
+        <span class="step-arrow">→</span>
+        <span class="magazine-step" onclick="jumpToHeroScene(3)" data-step="3">
+          <span class="step-num">04</span> MEET ELEGANCE.
+        </span>
+      </div>
+
+    </div>
+
+    <!-- Downward Scroll Mouse Cue -->
+    <a href="#trust-strip" class="hero-scroll-indicator" aria-label="Scroll down">
+      <span class="scroll-mouse"><span class="scroll-wheel"></span></span>
+      <span class="scroll-text">SCROLL</span>
+    </a>
+
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     02. TRUST STRIP (VERIFIED CORPORATE CREDENTIALS)
+     ════════════════════════════════════════════════ -->
+<section class="trust-strip-section" id="trust-strip">
+  <div class="container">
+    <div class="trust-strip-grid">
+
+      <div class="trust-metric-item">
+        <div class="trust-metric-num"><span class="counter" data-target="30" data-suffix="+">30</span><span class="num-accent">+</span></div>
+        <div class="trust-metric-label">Years Experience</div>
+        <div class="trust-metric-proof">Incorporated manufacturing pedigree in West Bengal</div>
+      </div>
+
+      <div class="trust-metric-item">
+        <div class="trust-metric-num"><span class="counter" data-target="500" data-suffix="+">500</span><span class="num-accent">+</span></div>
+        <div class="trust-metric-label">B2B &amp; Trade Clients</div>
+        <div class="trust-metric-proof">Institutions, retail chains &amp; industrial enterprises</div>
+      </div>
+
+      <div class="trust-metric-item">
+        <div class="trust-metric-num"><span class="counter" data-target="1000" data-suffix="+">1000</span><span class="num-accent">+</span></div>
+        <div class="trust-metric-label">Products Delivered</div>
+        <div class="trust-metric-proof">High-volume monoblock chairs, tables &amp; articles</div>
+      </div>
+
+      <div class="trust-metric-item">
+        <div class="trust-metric-num">Pan-India</div>
+        <div class="trust-metric-label">Depots &amp; Supply Network</div>
+        <div class="trust-metric-proof">Direct factory logistics serving East, North, West &amp; South</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     03. ABOUT — WHO WE ARE
+     ════════════════════════════════════════════════ -->
+<!-- ════════════════════════════════════════════════
+     03. ABOUT — WHO WE ARE (ARCHITECTURAL LUXURY SHOWCASE)
+     ════════════════════════════════════════════════ -->
+<section class="about-mfg-section" id="about">
+  <div class="container">
+    
+    <!-- Top Header Badge & Section Headline -->
+    <div class="about-section-header" data-reveal="up">
+      <div class="about-luxury-badge">
+        <span class="badge-sparkle">✦</span>
+        <span>WHO WE ARE · SINCE 1997</span>
+      </div>
+      <h2 class="about-luxury-title">
+        BUILT ON EXPERIENCE. <span class="about-gold-title">ENGINEERED FOR INDIA.</span>
+      </h2>
+      <p class="about-luxury-subtitle">
+        National Plasto is an Indian polymer engineering powerhouse, designing and moulding high-durability polymer furniture, commercial crates, and custom precision components.
+      </p>
+    </div>
+
+    <!-- Main Architectural Grid: Left Narrative & Feature Cards | Right Interactive Media Stage -->
+    <div class="about-luxury-grid">
+
+      <!-- Left Column: Key Narrative, Metric Stats & Modern Feature Cards -->
+      <div class="about-left-col" data-reveal="left">
+        
+        <div class="about-narrative-card">
+          <p class="about-lead-editorial">
+            From precision tool &amp; die making to high-tonnage micro-robotic injection presses, we operate an integrated <strong>100,000+ sq. ft.</strong> manufacturing complex in Kolkata. 
+          </p>
+          <p class="about-body-editorial">
+            Every product is molded from 100% prime virgin polymers with UV inhibitors and impact modifiers—engineered to withstand extreme Indian temperatures, heavy institutional loads, and daily multi-generational use.
+          </p>
+        </div>
+
+        <!-- Metric Counter Strip -->
+        <div class="about-metric-strip">
+          <div class="about-metric-item">
+            <div class="about-metric-num"><span class="counter" data-target="28">28</span><span class="metric-plus">+</span></div>
+            <div class="about-metric-lbl">Years Lineage</div>
+          </div>
+          <div class="about-metric-divider"></div>
+          <div class="about-metric-item">
+            <div class="about-metric-num"><span class="counter" data-target="1200">1200</span><span class="metric-plus">T</span></div>
+            <div class="about-metric-lbl">Press Capacity</div>
+          </div>
+          <div class="about-metric-divider"></div>
+          <div class="about-metric-item">
+            <div class="about-metric-num"><span class="counter" data-target="1000">1000</span><span class="metric-plus">+</span></div>
+            <div class="about-metric-lbl">Active Moulds</div>
+          </div>
+          <div class="about-metric-divider"></div>
+          <div class="about-metric-item">
+            <div class="about-metric-num"><span class="counter" data-target="200">200</span><span class="metric-plus">kg</span></div>
+            <div class="about-metric-lbl">Load Tested</div>
+          </div>
+        </div>
+
+        <!-- 4 Modern Glass Feature Cards with Gradient Glowing Icons -->
+        <div class="about-features-modern-grid">
+          
+          <!-- Card 1: 100% Virgin Polymer -->
+          <div class="about-card-modern">
+            <div class="about-card-icon-wrap icon-cyan-glow">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2l8 4.5v9L12 20l-8-4.5v-9L12 2z"/>
+                <path d="M12 12l8-4.5"/>
+                <path d="M12 12v8"/>
+                <path d="M12 12L4 7.5"/>
+              </svg>
+            </div>
+            <div class="about-card-content">
+              <div class="about-card-header-row">
+                <h4>100% Virgin Polymer</h4>
+                <span class="about-card-pill">UV STABILIZED</span>
+              </div>
+              <p>Prime resin formulations with UV inhibitors prevent embrittlement and discoloration in extreme outdoor Indian weather.</p>
+            </div>
+          </div>
+
+          <!-- Card 2: High-Tonnage Robotic Automation -->
+          <div class="about-card-modern">
+            <div class="about-card-icon-wrap icon-crimson-glow">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                <line x1="8" y1="21" x2="16" y2="21"/>
+                <line x1="12" y1="17" x2="12" y2="21"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+            </div>
+            <div class="about-card-content">
+              <div class="about-card-header-row">
+                <h4>High-Tonnage Presses</h4>
+                <span class="about-card-pill">MICROPROCESSOR</span>
+              </div>
+              <p>Microprocessor-controlled injection presses ensure consistent cycle times, balanced flow, and zero sink-marks.</p>
+            </div>
+          </div>
+
+          <!-- Card 3: 200 kg Certified Durability -->
+          <div class="about-card-modern">
+            <div class="about-card-icon-wrap icon-gold-glow">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                <path d="m9 12 2 2 4-4"/>
+              </svg>
+            </div>
+            <div class="about-card-content">
+              <div class="about-card-header-row">
+                <h4>Tested to 200 kg</h4>
+                <span class="about-card-pill">BIFMA &amp; IS SPEC</span>
+              </div>
+              <p>Monoblock frames undergo static load and dynamic drop testing for uncompromising institutional durability.</p>
+            </div>
+          </div>
+
+          <!-- Card 4: Integrated Kolkata Hub -->
+          <div class="about-card-modern">
+            <div class="about-card-icon-wrap icon-emerald-glow">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                <polyline points="9 22 9 12 15 12 15 22"/>
+              </svg>
+            </div>
+            <div class="about-card-content">
+              <div class="about-card-header-row">
+                <h4>Kolkata Mega Hub</h4>
+                <span class="about-card-pill">IN-HOUSE TOOLING</span>
+              </div>
+              <p>Integrated manufacturing plant with in-house tooling maintenance, compounding, warehousing, and nationwide dispatch.</p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Action CTAs -->
+        <div class="about-cta-row">
+          <a href="#manufacturing" class="btn-about-primary" data-cursor="PLANT">
+            <span>Inspect Factory &amp; Process →</span>
+          </a>
+          <button type="button" class="btn-about-secondary" onclick="openCatalogueModal('all')" data-cursor="CATALOGUE">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+            <span>Browse 230+ Product Master</span>
+          </button>
+        </div>
+
+      </div>
+
+      <!-- Right Column: Interactive Multi-Tab Visual Stage -->
+      <div class="about-right-col" data-reveal="right">
+        
+        <div class="about-visual-stage">
+          
+          <!-- Visual Tabs Controller -->
+          <div class="about-stage-nav" role="tablist" aria-label="About Us Visual Perspectives">
+            <button type="button" class="about-stage-tab active" onclick="switchAboutTab(0)" id="aboutTab0" role="tab" aria-selected="true">
+              <span>Plant Headquarters</span>
+            </button>
+            <button type="button" class="about-stage-tab" onclick="switchAboutTab(1)" id="aboutTab1" role="tab" aria-selected="false">
+              <span>Robotic Automation</span>
+            </button>
+            <button type="button" class="about-stage-tab" onclick="switchAboutTab(2)" id="aboutTab2" role="tab" aria-selected="false">
+              <span>Polymer Craft</span>
+            </button>
+          </div>
+
+          <!-- Main Stage Media Frames -->
+          <div class="about-media-viewport">
+            
+            <!-- Frame 0: Headquarters -->
+            <div class="about-media-frame active" id="aboutFrame0">
+              <img src="images/brand/company-photo.jpg" alt="National Plasto Kolkata Production Hub" class="about-stage-img" />
+              <div class="about-frame-gradient"></div>
+              <div class="about-frame-caption">
+                <span class="caption-tag">HQ &amp; CENTRAL HUB</span>
+                <h5>Kolkata Manufacturing Plant · Est. 1997</h5>
+              </div>
+            </div>
+
+            <!-- Frame 1: High-Tech Automation -->
+            <div class="about-media-frame" id="aboutFrame1">
+              <img src="images/brand/factory-automation.jpg" alt="Robotic Injection Moulding Automation" class="about-stage-img" />
+              <div class="about-frame-gradient"></div>
+              <div class="about-frame-caption">
+                <span class="caption-tag">AUTOMATED PRESSES</span>
+                <h5>Microprocessor Injection Moulding &amp; Robotics</h5>
+              </div>
+            </div>
+
+            <!-- Frame 2: Polymer Craftsmanship -->
+            <div class="about-media-frame" id="aboutFrame2">
+              <img src="images/brand/polymer-craftsmanship.jpg" alt="Precision Polymer Lattice Detail" class="about-stage-img" />
+              <div class="about-frame-gradient"></div>
+              <div class="about-frame-caption">
+                <span class="caption-tag">MATERIAL CRAFTSMANSHIP</span>
+                <h5>Precision Monoblock Ergonomics &amp; Finishes</h5>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Floating Architectural Glass Credential Badges -->
+          <div class="about-floating-badge badge-top-right">
+            <div class="badge-icon-verified">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00A86B" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            </div>
+            <div>
+              <div class="badge-title">ISO 9001:2015</div>
+              <div class="badge-sub">Quality Certified Hub</div>
+            </div>
+          </div>
+
+          <div class="about-floating-badge badge-bottom-left">
+            <div class="badge-live-pulse"></div>
+            <div>
+              <div class="badge-title">RDSO Approved Vendor</div>
+              <div class="badge-sub">Industrial &amp; Institutional Lineage</div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     04. OUR BUSINESS — CATEGORY SHOWCASE
+     (National · Next · Sapphire · Captain)
+     ════════════════════════════════════════════════ -->
+<section class="business-categories-section" id="business-verticals">
+  
+  <!-- Section Header with Title & Brand Pills (Inspired by Nilkamal + Screenshot 2) -->
+  <div class="business-section-header-bar" data-reveal>
+    <span class="business-eyebrow">Portfolio Architecture</span>
+    <h2 class="business-main-heading">OUR BUSINESS</h2>
+    <p class="business-main-desc" style="margin-bottom: 0;">
+      National Plasto has ventured into a multiplicity of specialised businesses spread across 4 distinct brand verticals. Click on any vertical to explore.
+    </p>
+  </div>
+
+  <!-- 4 Category Cards Grid with IntersectionObserver Animation -->
+  <div class="categories-grid" id="businessCategoriesGrid">
+
+    <!-- Card 1: National (103 Products) -->
+    <div class="category-card group" id="brand-card-national" style="transition-delay: 0ms;" onclick="openCatalogueModal('national')">
+      <!-- Background Video -->
+      <video class="category-video" autoplay loop muted playsinline src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260518_203023_87a26602-2898-4acc-a396-c7a2b5ad84fd.mp4"></video>
+      <!-- Dark Overlay -->
+      <div class="category-overlay"></div>
+
+      <!-- Top Brand Badge Header -->
+      <div class="category-card-top">
+        <div class="category-brand-pill">
+          <img src="images/brand/company-national-logo.png" alt="National Plasto Logo" class="category-logo-img" />
+          <span class="category-brand-title-badge">National</span>
+        </div>
+        <div class="category-count-chip">
+          <span class="badge-dot-red"></span>
+          <span>103 Products · Flagship Living</span>
+        </div>
+      </div>
+
+      <!-- Vertical Category Name -->
+      <h2 class="category-name-vertical" style="writing-mode: vertical-lr; transform: rotate(180deg);">national</h2>
+
+      <!-- Shop Button -->
+      <button type="button" class="btn-primary category-shop-btn" aria-label="Shop National Products">
+        <span>shop national</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
+    </div>
+
+    <!-- Card 2: Next (72 Products) -->
+    <div class="category-card group" id="brand-card-next" style="transition-delay: 150ms;" onclick="openCatalogueModal('next')">
+      <!-- Background Video -->
+      <video class="category-video" autoplay loop muted playsinline src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260518_203415_b86e3f19-2aec-46cd-9a86-b64c40118e38.mp4"></video>
+      <!-- Dark Overlay -->
+      <div class="category-overlay"></div>
+
+      <!-- Top Brand Badge Header -->
+      <div class="category-card-top">
+        <div class="category-brand-pill">
+          <img src="images/brand/company-next-logo.png" alt="Next Brand Logo" class="category-logo-img" />
+          <span class="category-brand-title-badge">Next NPPL</span>
+        </div>
+        <div class="category-count-chip">
+          <span class="badge-dot-cyan"></span>
+          <span>72 Products · Contemporary</span>
+        </div>
+      </div>
+
+      <!-- Vertical Category Name -->
+      <h2 class="category-name-vertical" style="writing-mode: vertical-lr; transform: rotate(180deg);">next</h2>
+
+      <!-- Shop Button -->
+      <button type="button" class="btn-primary category-shop-btn" aria-label="Shop Next Products">
+        <span>shop next</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
+    </div>
+
+    <!-- Card 3: Sapphire / National Sapphire (37 Products) -->
+    <div class="category-card group" id="brand-card-sapphire" style="transition-delay: 300ms;" onclick="openCatalogueModal('national-sapphire')">
+      <!-- Background Video -->
+      <video class="category-video" autoplay loop muted playsinline src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260518_203051_85fee398-ea01-4aa0-972b-137a74213be5.mp4"></video>
+      <!-- Dark Overlay -->
+      <div class="category-overlay"></div>
+
+      <!-- Top Brand Badge Header -->
+      <div class="category-card-top">
+        <div class="category-brand-pill">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+            <polygon points="6,3 18,3 22,9 12,21 2,9" fill="#1565c0" stroke="#0d47a1" stroke-width="1.5" stroke-linejoin="round"/>
+            <polygon points="12,21 6,3 18,3" fill="#1e88e5" opacity="0.6"/>
+            <polyline points="2,9 12,9 22,9" stroke="#ffffff" stroke-width="1.2" opacity="0.8"/>
+          </svg>
+          <span class="category-brand-title-badge" style="color:#0d47a1">National Sapphire</span>
+        </div>
+        <div class="category-count-chip">
+          <span style="width:7px;height:7px;border-radius:50%;background:#38bdf8;box-shadow:0 0 8px #38bdf8;"></span>
+          <span>37 Products · Premium Tier</span>
+        </div>
+      </div>
+
+      <!-- Vertical Category Name -->
+      <h2 class="category-name-vertical" style="writing-mode: vertical-lr; transform: rotate(180deg);">sapphire</h2>
+
+      <!-- Shop Button -->
+      <button type="button" class="btn-primary category-shop-btn" aria-label="Shop Sapphire Products">
+        <span>shop sapphire</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
+    </div>
+
+    <!-- Card 4: Captain (18 Products) -->
+    <div class="category-card group" id="brand-card-captain" style="transition-delay: 450ms;" onclick="openCatalogueModal('captain')">
+      <!-- Background Video -->
+      <video class="category-video" autoplay loop muted playsinline src="videos/hero-factory.mp4"></video>
+      <!-- Dark Overlay -->
+      <div class="category-overlay"></div>
+
+      <!-- Top Brand Badge Header -->
+      <div class="category-card-top">
+        <div class="category-brand-pill">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+            <path d="M12 2L3 7v6c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V7l-9-5z" fill="#0f172a" stroke="#c8102e" stroke-width="1.5"/>
+            <circle cx="12" cy="11" r="3.5" fill="#c8102e"/>
+            <path d="M12 7.5v7M8.5 11h7" stroke="#ffffff" stroke-width="1.2" stroke-linecap="round"/>
+          </svg>
+          <span class="category-brand-title-badge" style="color:#0f172a">Captain</span>
+        </div>
+        <div class="category-count-chip">
+          <span style="width:7px;height:7px;border-radius:50%;background:#f59e0b;box-shadow:0 0 8px #f59e0b;"></span>
+          <span>18 Products · Heavy Duty</span>
+        </div>
+      </div>
+
+      <!-- Vertical Category Name -->
+      <h2 class="category-name-vertical" style="writing-mode: vertical-lr; transform: rotate(180deg);">captain</h2>
+
+      <!-- Shop Button -->
+      <button type="button" class="btn-primary category-shop-btn" aria-label="Shop Captain Products">
+        <span>shop captain</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     05. PRODUCTS — OUR PRODUCT RANGE
+     ════════════════════════════════════════════════ -->
+<section class="products-mfg-section" id="products">
+  <div class="container">
+
+    <div class="mfg-section-header" style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:24px" data-reveal>
+      <div>
+        <span class="mfg-badge mfg-badge--crimson">Product Database</span>
+        <h2 class="mfg-section-title" style="color:#0F1320">PRODUCT DATABASE &amp; CATALOGUE</h2>
+        <p class="mfg-section-desc" style="color:#555B6E">
+          Engineered plastic products arranged by brand collection, category, and structural load specifications.
+        </p>
+      </div>
+      <div>
+        <button type="button" class="btn-mfg-primary" onclick="openCatalogueModal('all')" data-cursor="ALL">
+          <span>Open 230+ Product Master</span>
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 2h10v10H2z"/><path d="M2 5h10M5 2v10"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- PRIMARY BRAND NAVIGATION TABS (NEXT · NATIONAL · SAPPHIRE · CAPTAIN · ALL) -->
+    <div class="product-brand-tabs-nav" role="tablist" aria-label="Filter by Brand Collection">
+      <button type="button" class="prod-brand-tab-btn active" data-brand="all" onclick="selectDatabaseBrand('all', this)" role="tab" aria-selected="true">
+        <span>ALL BRANDS</span>
+        <span class="brand-badge-count">160</span>
+      </button>
+      <button type="button" class="prod-brand-tab-btn tab-brand-next" data-brand="next" onclick="selectDatabaseBrand('next', this)" role="tab" aria-selected="false">
+        <span>NEXT</span>
+        <span class="brand-badge-count">46</span>
+      </button>
+      <button type="button" class="prod-brand-tab-btn tab-brand-national" data-brand="national" onclick="selectDatabaseBrand('national', this)" role="tab" aria-selected="false">
+        <span>NATIONAL</span>
+        <span class="brand-badge-count">66</span>
+      </button>
+      <button type="button" class="prod-brand-tab-btn tab-brand-sapphire" data-brand="national-sapphire" onclick="selectDatabaseBrand('national-sapphire', this)" role="tab" aria-selected="false">
+        <span>SAPPHIRE</span>
+        <span class="brand-badge-count">30</span>
+      </button>
+      <button type="button" class="prod-brand-tab-btn tab-brand-captain" data-brand="captain" onclick="selectDatabaseBrand('captain', this)" role="tab" aria-selected="false">
+        <span>CAPTAIN</span>
+        <span class="brand-badge-count">18</span>
+      </button>
+    </div>
+
+    <!-- SEARCH & SECONDARY CATEGORY FILTER BAR -->
+    <div class="product-database-controls-bar">
+      <!-- Live Search Input -->
+      <div class="product-search-input-wrap">
+        <svg class="search-input-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" id="dbProductSearch" class="product-db-search-input" placeholder="Search by product name, SKU (e.g. NP-NTL-058), category, or spec..." oninput="onDatabaseSearchInput(this.value)" />
+        <button type="button" id="dbSearchClearBtn" class="search-clear-btn" onclick="clearDatabaseSearch()" style="display:none;" aria-label="Clear search">✕</button>
+      </div>
+
+      <!-- Secondary Category Filter Chips -->
+      <div class="product-db-category-chips" id="dbCategoryChips">
+        <button type="button" class="db-cat-chip active" data-cat="all" onclick="selectDatabaseCategory('all', this)">All Types</button>
+        <button type="button" class="db-cat-chip" data-cat="chairs" onclick="selectDatabaseCategory('chairs', this)">Chairs</button>
+        <button type="button" class="db-cat-chip" data-cat="tables" onclick="selectDatabaseCategory('tables', this)">Tables</button>
+        <button type="button" class="db-cat-chip" data-cat="stools" onclick="selectDatabaseCategory('stools', this)">Stools &amp; Patla</button>
+        <button type="button" class="db-cat-chip" data-cat="kids" onclick="selectDatabaseCategory('kids', this)">Baby &amp; Kids</button>
+        <button type="button" class="db-cat-chip" data-cat="storage" onclick="selectDatabaseCategory('storage', this)">Storage &amp; Crates</button>
+      </div>
+
+      <!-- Live Count Status -->
+      <div class="product-db-status-row">
+        <span id="productDbCountStatus" class="product-db-counter-badge">Showing 160 products across all brands</span>
+      </div>
+    </div>
+
+    <!-- DYNAMIC PRODUCT DATABASE GRID -->
+    <div class="products-visual-grid" id="featuredGridContainer">
+      <!-- Rendered dynamically via renderDatabaseGrid() with 100% transparent images -->
+    </div>
+
+    <!-- Load More Actions Container -->
+    <div class="product-db-load-more-wrap" id="dbLoadMoreWrap" style="text-align: center; margin-top: 48px;">
+      <button type="button" class="btn-db-load-more" id="btnDbLoadMore" onclick="loadMoreDbProducts()">
+        <span>Load More Products</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+      </button>
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     06. SOLUTIONS — SOLUTIONS, NOT JUST PRODUCTS
+     ════════════════════════════════════════════════ -->
+<section class="solutions-mfg-section" id="solutions">
+  <div class="container">
+
+    <div class="mfg-section-header text-center" data-reveal>
+      <span class="mfg-badge mfg-badge--crimson">B2B Manufacturing Capabilities</span>
+      <h2 class="mfg-section-title" style="color:#FAFAF9">SOLUTIONS, NOT JUST PRODUCTS</h2>
+      <p class="mfg-section-desc" style="color:var(--mfg-mist);margin-left:auto;margin-right:auto">
+        We partner with procurement heads, facility managers, enterprise brands, and institutions to engineer plastic products built around stringent cost and performance parameters.
+      </p>
+    </div>
+
+    <!-- 4 Solution Pillars -->
+    <div class="solutions-cards-grid">
+      
+      <div class="solution-box" data-reveal data-delay="1">
+        <div class="solution-box-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+        </div>
+        <h3 class="solution-box-title">Custom Moulding</h3>
+        <p class="solution-box-desc">Dedicated tooling and moulding from component drawings to multi-cavity production runs with customized resin blends.</p>
+        <button type="button" class="t-label text-crimson" style="margin-top:16px;background:none;border:none;cursor:pointer;font-weight:700" onclick="openRfqModal('Custom Moulding')">Submit CAD Spec →</button>
+      </div>
+
+      <div class="solution-box" data-reveal data-delay="2">
+        <div class="solution-box-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+        </div>
+        <h3 class="solution-box-title">OEM Manufacturing</h3>
+        <p class="solution-box-desc">Private-label contract manufacturing for leading retail, institutional, and consumer brand portfolios across India.</p>
+        <button type="button" class="t-label text-crimson" style="margin-top:16px;background:none;border:none;cursor:pointer;font-weight:700" onclick="openRfqModal('OEM Manufacturing')">OEM Onboarding →</button>
+      </div>
+
+      <div class="solution-box" data-reveal data-delay="3">
+        <div class="solution-box-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+        </div>
+        <h3 class="solution-box-title">Bulk Manufacturing</h3>
+        <p class="solution-box-desc">High-speed volume production lines ensuring batch-to-batch repeatability and predictable dispatch timelines for large tenders.</p>
+        <button type="button" class="t-label text-crimson" style="margin-top:16px;background:none;border:none;cursor:pointer;font-weight:700" onclick="openRfqModal('Bulk Orders')">Volume Pricing →</button>
+      </div>
+
+      <div class="solution-box" data-reveal data-delay="4">
+        <div class="solution-box-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+        </div>
+        <h3 class="solution-box-title">Institutional Seating</h3>
+        <p class="solution-box-desc">Ergonomic seating and table packages designed for schools, universities, hospitals, banquet chains, and government facilities.</p>
+        <button type="button" class="t-label text-crimson" style="margin-top:16px;background:none;border:none;cursor:pointer;font-weight:700" onclick="openRfqModal('Institutional Procurement')">Institutional RFQ →</button>
+      </div>
+
+    </div>
+
+    <!-- 6-Step Interactive Workflow -->
+    <div class="mfg-workflow-wrap" data-reveal>
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px">
+        <div>
+          <span class="mfg-badge mfg-badge--gold">Turnkey Production Lifecycle</span>
+          <h3 class="t-h3" style="color:#0F172A;margin-top:8px;font-weight:700">From Requirement to Production</h3>
+        </div>
+        <button type="button" class="btn-mfg-primary" onclick="openRfqModal('Custom Manufacturing')">Discuss Your Requirement</button>
+      </div>
+
+      <div class="workflow-steps-grid">
+        <div class="workflow-step-card">
+          <span class="workflow-step-num">01</span>
+          <h4 class="workflow-step-title">Requirement</h4>
+          <p class="workflow-step-desc">Application analysis, resin selection, load criteria, and cost targets.</p>
+        </div>
+
+        <div class="workflow-step-card">
+          <span class="workflow-step-num">02</span>
+          <h4 class="workflow-step-title">Development</h4>
+          <p class="workflow-step-desc">CAD modelling, mold-flow simulation, and stress FEA analysis.</p>
+        </div>
+
+        <div class="workflow-step-card">
+          <span class="workflow-step-num">03</span>
+          <h4 class="workflow-step-title">Tooling</h4>
+          <p class="workflow-step-desc">Hardened P20/H13 steel tooling fabricated with precision CNC EDM.</p>
+        </div>
+
+        <div class="workflow-step-card">
+          <span class="workflow-step-num">04</span>
+          <h4 class="workflow-step-title">Moulding</h4>
+          <p class="workflow-step-desc">Microprocessor high-tonnage injection with closed-loop process controls.</p>
+        </div>
+
+        <div class="workflow-step-card">
+          <span class="workflow-step-num">05</span>
+          <h4 class="workflow-step-title">Quality Audit</h4>
+          <p class="workflow-step-desc">Dimensional verification, drop impact testing, and surface finish sign-off.</p>
+        </div>
+
+        <div class="workflow-step-card">
+          <span class="workflow-step-num">06</span>
+          <h4 class="workflow-step-title">Delivery</h4>
+          <p class="workflow-step-desc">Palletised protective shrink wrapping with direct pan-India shipping.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     07 & 08. MANUFACTURING & PROCESS
+     ════════════════════════════════════════════════ -->
+<section class="mfg-deep-section" id="manufacturing">
+  <div class="container">
+
+    <div class="mfg-section-header" data-reveal>
+      <span class="mfg-badge mfg-badge--crimson">Inside National Plasto</span>
+      <h2 class="mfg-section-title" style="color:#FAFAF9">MANUFACTURING EXCELLENCE</h2>
+      <p class="mfg-section-desc" style="color:var(--mfg-mist)">
+        State-of-the-art polymer processing infrastructure in Kolkata engineered for high throughput, micro-tolerances, and zero-defect output.
+      </p>
+    </div>
+
+    <!-- Factory Capabilities -->
+    <div class="mfg-capabilities-grid" data-reveal>
+      <div class="mfg-cap-card">
+        <h4>High-Tonnage Presses</h4>
+        <p>Advanced microprocessor injection moulding machines ranging up to 1,200+ tonnes clamp capacity for monoblock articles.</p>
+      </div>
+
+      <div class="mfg-cap-card">
+        <h4>Multi-Cavity Hardened Tooling</h4>
+        <p>Precision CNC-machined steel moulds with conformal cooling circuits for uniform wall thickness and fast cycle stability.</p>
+      </div>
+
+      <div class="mfg-cap-card">
+        <h4>Automated Material Feed</h4>
+        <p>Dehumidifying hopper dryers and gravimetric dosers prevent polymer degradation and guarantee consistent batch color.</p>
+      </div>
+
+      <div class="mfg-cap-card">
+        <h4>Robotic Demoulding &amp; Finish</h4>
+        <p>Assisted part extraction and ergonomic deburring stations safeguard flawless edge finishes and operator safety.</p>
+      </div>
+    </div>
+
+    <!-- 08. Process: From Mould to Market -->
+    <div style="margin-top:80px" data-reveal id="process">
+      <span class="mfg-badge mfg-badge--gold">Step-by-Step Production Process</span>
+      <h3 class="t-h2" style="color:#FAFAF9;margin-top:12px">FROM MOULD TO MARKET</h3>
+      <p class="t-body" style="color:var(--mfg-mist);max-width:650px;margin-top:8px">
+        A disciplined 7-stage industrial quality sequence from raw polymer resin to final customer dispatch.
+      </p>
+
+      <div class="process-steps-scroll">
+        <div class="process-pill-card">
+          <span class="process-pill-idx">STAGE 01</span>
+          <h4 class="process-pill-title">Raw Material</h4>
+          <p class="process-pill-text">100% prime virgin polypropylene granules with UV masterbatch compounding.</p>
+        </div>
+
+        <div class="process-pill-card">
+          <span class="process-pill-idx">STAGE 02</span>
+          <h4 class="process-pill-title">Tooling Setup</h4>
+          <p class="process-pill-text">Hydraulic clamping and core alignment calibrated to micron tolerances.</p>
+        </div>
+
+        <div class="process-pill-card">
+          <span class="process-pill-idx">STAGE 03</span>
+          <h4 class="process-pill-title">Moulding</h4>
+          <p class="process-pill-text">High-pressure melt injection with proportional valve control to eliminate voids.</p>
+        </div>
+
+        <div class="process-pill-card">
+          <span class="process-pill-idx">STAGE 04</span>
+          <h4 class="process-pill-title">Inspection</h4>
+          <p class="process-pill-text">Optical dimensional auditing and surface sink-mark checks on cooling.</p>
+        </div>
+
+        <div class="process-pill-card">
+          <span class="process-pill-idx">STAGE 05</span>
+          <h4 class="process-pill-title">Finishing</h4>
+          <p class="process-pill-text">Precision gate cutting and smooth edge polishing for ergonomic comfort.</p>
+        </div>
+
+        <div class="process-pill-card">
+          <span class="process-pill-idx">STAGE 06</span>
+          <h4 class="process-pill-title">Packaging</h4>
+          <p class="process-pill-text">Heavy-gauge protective poly-wrap and nested stacking preventing transit scratches.</p>
+        </div>
+
+        <div class="process-pill-card">
+          <span class="process-pill-idx">STAGE 07</span>
+          <h4 class="process-pill-title">Dispatch</h4>
+          <p class="process-pill-text">Palletized warehouse loading and scheduled logistics across pan-India corridors.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     09. QUALITY — QUALITY YOU CAN VERIFY
+     ════════════════════════════════════════════════ -->
+<section class="quality-mfg-section" id="quality">
+  <div class="container">
+
+    <div class="mfg-section-header" data-reveal>
+      <span class="mfg-badge mfg-badge--crimson">Verifiable Trust Assets</span>
+      <h2 class="mfg-section-title" style="color:#0F1320">QUALITY YOU CAN VERIFY</h2>
+      <p class="mfg-section-desc" style="color:#555B6E">
+        Quality is not a slogan at National Plasto — it is an auditable engineering protocol validated at six distinct manufacturing checkpoints.
+      </p>
+    </div>
+
+    <div class="quality-checkpoints-grid" data-reveal>
+
+      <div class="qc-card">
+        <span class="qc-index">Checkpoint 01</span>
+        <h3 class="qc-title">Raw Material Testing</h3>
+        <p class="qc-desc">Melt Flow Index (MFI) and density verification ensure only prime-grade polymer batches enter the injection barrel.</p>
+        <span class="qc-metric-badge">MFI Tolerance &lt; 2%</span>
+      </div>
+
+      <div class="qc-card">
+        <span class="qc-index">Checkpoint 02</span>
+        <h3 class="qc-title">Process Controls</h3>
+        <p class="qc-desc">Continuous sensor logging of melt temperature, injection pressure, and mold chiller cooling uniformity.</p>
+        <span class="qc-metric-badge">Real-Time Sensor Logging</span>
+      </div>
+
+      <div class="qc-card">
+        <span class="qc-index">Checkpoint 03</span>
+        <h3 class="qc-title">Dimension Checks</h3>
+        <p class="qc-desc">Calibrated dial calipers verify wall thickness, leg angles, and stacking clearances against 3D CAD masters.</p>
+        <span class="qc-metric-badge">Micron Tolerance Audits</span>
+      </div>
+
+      <div class="qc-card">
+        <span class="qc-index">Checkpoint 04</span>
+        <h3 class="qc-title">Finish Inspection</h3>
+        <p class="qc-desc">100% visual inspection under high-CRI inspection lamps for color consistency, flow lines, and gloss uniformity.</p>
+        <span class="qc-metric-badge">High-CRI Optical Scan</span>
+      </div>
+
+      <div class="qc-card">
+        <span class="qc-index">Checkpoint 05</span>
+        <h3 class="qc-title">Performance Checks</h3>
+        <p class="qc-desc">Destructive drop-impact tests from 1.5 meters and 200 kg static load hold cycles replicate real institutional stress.</p>
+        <span class="qc-metric-badge">200 kg Static Hold Certified</span>
+      </div>
+
+      <div class="qc-card">
+        <span class="qc-index">Checkpoint 06</span>
+        <h3 class="qc-title">Final Batch Audit</h3>
+        <p class="qc-desc">Pre-dispatch lot sign-off verifying protective wrap integrity, barcode SKU labelling, and carton counts.</p>
+        <span class="qc-metric-badge">100% Traceable Lot QA</span>
+      </div>
+
+    </div>
+
+    <!-- Verified Credentials Banner -->
+    <div class="quality-credentials-bar" data-reveal style="display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap">
+      <div style="display:flex;align-items:center;gap:24px;flex:1;min-width:300px">
+        <div style="width:110px;height:75px;border-radius:12px;overflow:hidden;flex-shrink:0;border:1px solid rgba(229,184,105,0.4);position:relative">
+          <img src="images/brand/quality-lab-qa.jpg" alt="National Plasto QA Testing Lab" style="width:100%;height:100%;object-fit:cover" loading="lazy" />
+        </div>
+        <div>
+          <div class="cred-title">ISO 9001:2015 Manufacturing Quality Standards &amp; RDSO Lineage</div>
+          <div class="cred-sub">Documented standard operating procedures governing raw material procurement, moulding, and dispatch inspection.</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:14px;align-items:center;flex-shrink:0">
+        <span class="cred-chip-verified">✓ Verified Standard</span>
+        <a href="#enquiry" class="btn-mfg-secondary" style="padding:12px 20px;font-size:12px">Request Certificate Copy</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     10. INDUSTRIES — INDUSTRIES WE SERVE
+     ════════════════════════════════════════════════ -->
+<section class="section theme-ivory" id="industries">
+  <div class="container">
+
+    <div class="mfg-section-header" data-reveal>
+      <span class="mfg-badge mfg-badge--crimson">Multi-Sector Application</span>
+      <h2 class="mfg-section-title" style="color:#0F1320">INDUSTRIES WE SERVE</h2>
+      <p class="mfg-section-desc" style="color:#555B6E">
+        Purpose-built polymer products engineered for high durability across diverse commercial and industrial sectors.
+      </p>
+    </div>
+
+    <div class="industries-photo-grid" data-reveal>
+
+      <div class="industry-photo-card" style="background-image: url('images/brand/ind-home.jpg')">
+        <div class="industry-content">
+          <span class="ind-tag">Residential</span>
+          <h4 class="ind-name">Home &amp; Living</h4>
+        </div>
+      </div>
+
+      <div class="industry-photo-card" style="background-image: url('images/brand/ind-logistics.jpg')">
+        <div class="industry-content">
+          <span class="ind-tag">Logistics &amp; Warehousing</span>
+          <h4 class="ind-name">Heavy-Duty Crates</h4>
+        </div>
+      </div>
+
+      <div class="industry-photo-card" style="background-image: url('images/brand/ind-automotive.jpg')">
+        <div class="industry-content">
+          <span class="ind-tag">Automotive</span>
+          <h4 class="ind-name">Precision Parts</h4>
+        </div>
+      </div>
+
+      <div class="industry-photo-card" style="background-image: url('images/brand/ind-retail.jpg')">
+        <div class="industry-content">
+          <span class="ind-tag">Hospitality &amp; Events</span>
+          <h4 class="ind-name">Commercial Seating</h4>
+        </div>
+      </div>
+
+      <div class="industry-photo-card" style="background-image: url('images/brand/ind-agriculture.jpg')">
+        <div class="industry-content">
+          <span class="ind-tag">Agriculture</span>
+          <h4 class="ind-name">Harvest Carriers</h4>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     11. CUSTOMER PROOF — TRUSTED BY BUSINESSES
+     ════════════════════════════════════════════════ -->
+<section class="proof-mfg-section" id="proof">
+  <div class="container">
+
+    <div class="mfg-section-header text-center" data-reveal>
+      <span class="mfg-badge mfg-badge--crimson">Proven Performance</span>
+      <h2 class="mfg-section-title" style="color:#0F1320">TRUSTED BY BUSINESSES</h2>
+      <p class="mfg-section-desc" style="color:#555B6E;margin-left:auto;margin-right:auto">
+        Case studies demonstrating how National Plasto solves capacity, durability, and commercial delivery challenges.
+      </p>
+    </div>
+
+    <div class="proof-cases-grid">
+
+      <!-- Case 1 -->
+      <div class="proof-case-card" data-reveal data-delay="1">
+        <div class="case-image-wrapper">
+          <img src="images/brand/case-study-education.jpg" alt="15,000 Campus Chairs Delivered Across 42 Centres" loading="lazy" />
+        </div>
+        <div class="case-body-content">
+          <span class="case-sector">Education &amp; Institutions</span>
+          <h3 class="case-headline">15,000 Campus Chairs Delivered Across 42 Centres</h3>
+          <div class="case-breakdown">
+            <div class="case-row">
+              <span class="case-row-label">Requirement</span>
+              <span class="case-row-text">High-traffic classroom seating with heavy load bearing and anti-tipping geometry.</span>
+            </div>
+            <div class="case-row">
+              <span class="case-row-label">Solution</span>
+              <span class="case-row-text">Custom NP-NTL-058 Activa monoblock batch formulated with high-impact copolymer.</span>
+            </div>
+            <div class="case-row">
+              <span class="case-row-label">Result</span>
+              <span class="case-row-text">100% on-time 4-week phased delivery with 0 structural replacement requests over 3 years.</span>
+            </div>
+          </div>
+          <div class="case-result-badge">
+            <span>Result:</span> 0 Structural Failures · 3 Yrs
+          </div>
+        </div>
+      </div>
+
+      <!-- Case 2 -->
+      <div class="proof-case-card" data-reveal data-delay="2">
+        <div class="case-image-wrapper">
+          <img src="images/brand/case-study-logistics.jpg" alt="Cold-Resistant Distribution Crates for Produce Chain" loading="lazy" />
+        </div>
+        <div class="case-body-content">
+          <span class="case-sector">Logistics &amp; Cold Storage</span>
+          <h3 class="case-headline">Cold-Resistant Distribution Crates for Produce Chain</h3>
+          <div class="case-breakdown">
+            <div class="case-row">
+              <span class="case-row-label">Requirement</span>
+              <span class="case-row-text">Heavy-load stackable crates capable of surviving -15°C cold storage without cracking.</span>
+            </div>
+            <div class="case-row">
+              <span class="case-row-label">Solution</span>
+              <span class="case-row-text">Specialized impact-modified resin with reinforced corner pillars and airflow vents.</span>
+            </div>
+            <div class="case-row">
+              <span class="case-row-label">Result</span>
+              <span class="case-row-text">35% reduction in yearly crate breakage and 20% improvement in truck pallet stacking.</span>
+            </div>
+          </div>
+          <div class="case-result-badge">
+            <span>Result:</span> 35% Breakage Reduction
+          </div>
+        </div>
+      </div>
+
+      <!-- Case 3 -->
+      <div class="proof-case-card" data-reveal data-delay="3">
+        <div class="case-image-wrapper">
+          <img src="images/brand/case-study-hospitality.jpg" alt="Turnkey Patio Furnishing for Regional Resort Group" loading="lazy" />
+        </div>
+        <div class="case-body-content">
+          <span class="case-sector">Commercial Hospitality</span>
+          <h3 class="case-headline">Turnkey Patio Furnishing for Regional Resort Group</h3>
+          <div class="case-breakdown">
+            <div class="case-row">
+              <span class="case-row-label">Requirement</span>
+              <span class="case-row-text">All-weather dining seating in custom bronze tones resisting sun fade and monsoons.</span>
+            </div>
+            <div class="case-row">
+              <span class="case-row-label">Solution</span>
+              <span class="case-row-text">National Sapphire high-gloss finish series with UV masterbatch formulation.</span>
+            </div>
+            <div class="case-row">
+              <span class="case-row-label">Result</span>
+              <span class="case-row-text">Retained rich gloss and mechanical strength through two complete tropical monsoon cycles.</span>
+            </div>
+          </div>
+          <div class="case-result-badge">
+            <span>Result:</span> 100% Color &amp; Gloss Retention
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     12. REACH — REACHING BUSINESSES ACROSS INDIA
+     ════════════════════════════════════════════════ -->
+<section class="reach-mfg-section" id="reach">
+  <div class="container">
+    <div class="reach-grid">
+
+      <!-- Left Story -->
+      <div data-reveal="left">
+        <span class="mfg-badge mfg-badge--crimson">National Logistics Architecture</span>
+        <h2 class="mfg-section-title" style="color:#FAFAF9">
+          REACHING BUSINESSES<br>
+          <span style="color:var(--mfg-crimson)">ACROSS INDIA.</span>
+        </h2>
+        <p class="t-body-lg" style="color:var(--mfg-mist);margin-top:20px">
+          From our centralized manufacturing hub in Kolkata to distributor depots across East, North, West, and South India, National Plasto guarantees fast, reliable stock fulfillment.
+        </p>
+
+        <div class="reach-depot-list">
+          <div class="reach-depot-card">
+            <div class="depot-region">Eastern Hub (Central)</div>
+            <div class="depot-cities">Kolkata Plant · Siliguri · Patna · Ranchi · Bhubaneswar · Guwahati</div>
+          </div>
+          <div class="reach-depot-card">
+            <div class="depot-region">Northern Corridor</div>
+            <div class="depot-cities">Delhi NCR · Kanpur · Lucknow · Varanasi · Jaipur</div>
+          </div>
+          <div class="reach-depot-card">
+            <div class="depot-region">Western Network</div>
+            <div class="depot-cities">Mumbai · Pune · Nagpur · Ahmedabad · Surat</div>
+          </div>
+          <div class="reach-depot-card">
+            <div class="depot-region">Southern Network</div>
+            <div class="depot-cities">Hyderabad · Bengaluru · Chennai · Vijayawada</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Visual Feature -->
+      <div data-reveal="right">
+        <div style="background:linear-gradient(180deg, #131826 0%, #0c0f18 100%);border:1px solid rgba(229,184,105,0.25);border-radius:24px;overflow:hidden;box-shadow:0 30px 70px rgba(0,0,0,0.45);position:relative">
+          
+          <div style="width:100%;height:220px;overflow:hidden;position:relative">
+            <img src="images/brand/reach-kolkata-hub.jpg" alt="National Plasto Kolkata Central Logistics Hub" style="width:100%;height:100%;object-fit:cover" loading="lazy" />
+            <div style="position:absolute;inset:0;background:linear-gradient(180deg, transparent 40%, #131826 100%)"></div>
+            <div style="position:absolute;top:16px;left:16px;background:rgba(11,14,23,0.85);backdrop-filter:blur(8px);padding:6px 14px;border-radius:999px;border:1px solid rgba(229,184,105,0.4);font-family:var(--font-display);font-size:10.5px;font-weight:700;color:#E5B869;text-transform:uppercase;letter-spacing:0.08em">
+              KOLKATA CENTRAL DISPATCH HUB
+            </div>
+          </div>
+
+          <div style="padding:32px 36px">
+            <span class="t-overline text-crimson">Verified Network Density</span>
+            <h3 class="t-h2" style="color:#FAFAF9;margin-top:8px">Direct Plant Dispatch</h3>
+            <p class="t-body" style="color:#94a3b8;margin-top:10px;line-height:1.6">
+              Every shipment is tagged with lot identification and tracked through dedicated logistics partners to minimize transit time and damage.
+            </p>
+
+            <div style="margin-top:28px;padding:22px;background:#1B2236;border:1px solid rgba(255,255,255,0.06);border-radius:16px;display:flex;justify-content:space-between;align-items:center">
+              <div>
+                <span class="t-h3" style="color:#FFFFFF;font-weight:800">500+</span>
+                <p class="t-caption" style="color:#94a3b8;margin-top:2px">Trade Partners</p>
+              </div>
+              <div style="width:1px;height:36px;background:rgba(255,255,255,0.1)"></div>
+              <div>
+                <span class="t-h3" style="color:#FFFFFF;font-weight:800">24-48h</span>
+                <p class="t-caption" style="color:#94a3b8;margin-top:2px">Depot Dispatch</p>
+              </div>
+              <div style="width:1px;height:36px;background:rgba(255,255,255,0.1)"></div>
+              <div>
+                <span class="t-h3" style="color:#E5B869;font-weight:800">100%</span>
+                <p class="t-caption" style="color:#94a3b8;margin-top:2px">Inspection Pass</p>
+              </div>
+            </div>
+
+            <div style="margin-top:28px">
+              <button type="button" class="btn-mfg-primary" style="width:100%;justify-content:center" onclick="openDistributorModal()">
+                Inquire About Territory Dealership →
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     13. DISTRIBUTOR — BECOME A NATIONAL PLASTO PARTNER
+     ════════════════════════════════════════════════ -->
+<section class="distributor-mfg-section" id="distributor">
+  <div class="container">
+
+    <div class="mfg-section-header text-center" data-reveal>
+      <span class="mfg-badge mfg-badge--crimson">Partnership Proposition</span>
+      <h2 class="mfg-section-title" style="color:#0F1320">BECOME A NATIONAL PLASTO PARTNER</h2>
+      <p class="mfg-section-desc" style="color:#555B6E;margin-left:auto;margin-right:auto">
+        Join a progressive, manufacturer-backed distribution network offering competitive factory margins, protected territories, and reliable supply continuity.
+      </p>
+    </div>
+
+    <div class="distributor-perks-grid">
+
+      <div class="distributor-perk-card" data-reveal data-delay="1">
+        <div class="perk-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        </div>
+        <h3 class="perk-title">Direct Factory Supply</h3>
+        <p class="perk-desc">Enjoy direct-from-plant commercial pricing that eliminates middlemen and delivers superior gross profit margins to your business.</p>
+      </div>
+
+      <div class="distributor-perk-card" data-reveal data-delay="2">
+        <div class="perk-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        </div>
+        <h3 class="perk-title">Territory Exclusivity</h3>
+        <p class="perk-desc">Defined geographical market allotments prevent channel cannibalization and safeguard your long-term dealer investments.</p>
+      </div>
+
+      <div class="distributor-perk-card" data-reveal data-delay="3">
+        <div class="perk-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+        </div>
+        <h3 class="perk-title">Full 230+ Product Range</h3>
+        <p class="perk-desc">Complete portfolio access across premium seating, economical arm chairs, tables, stools, baby articles, and industrial crates.</p>
+      </div>
+
+      <div class="distributor-perk-card" data-reveal data-delay="4">
+        <div class="perk-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+        </div>
+        <h3 class="perk-title">Marketing &amp; POS Support</h3>
+        <p class="perk-desc">Physical dealer boards, shop-in-shop display racks, printed catalogues, and digital lead pass-through from national campaigns.</p>
+      </div>
+
+      <div class="distributor-perk-card" data-reveal data-delay="5">
+        <div class="perk-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <h3 class="perk-title">Priority Production Runs</h3>
+        <p class="perk-desc">Peak season reservation guarantees your stock is pre-scheduled on our injection lines before festive surges.</p>
+      </div>
+
+      <div class="distributor-perk-card" data-reveal data-delay="6">
+        <div class="perk-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
+        <h3 class="perk-title">Fast Onboarding</h3>
+        <p class="perk-desc">Transparent credit terms, swift KYC verification, and dedicated relationship managers for seamless account setup.</p>
+      </div>
+
+    </div>
+
+    <div style="margin-top:56px;text-align:center" data-reveal>
+      <button type="button" class="btn-mfg-primary btn-large" onclick="openDistributorModal()" data-cursor="JOIN">
+        <span>Apply for Dealership / Distributorship</span>
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 8h14M9 2l6 6-6 6"/></svg>
+      </button>
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     14. INSIGHTS — TECHNICAL & INDUSTRY KNOWLEDGE
+     ════════════════════════════════════════════════ -->
+<section class="insights-mfg-section" id="insights">
+  <div class="container">
+
+    <div class="mfg-section-header" data-reveal>
+      <span class="mfg-badge mfg-badge--crimson">Engineering Knowledge</span>
+      <h2 class="mfg-section-title" style="color:#0F1320">NATIONAL PLASTO INSIGHTS</h2>
+      <p class="mfg-section-desc" style="color:#555B6E">
+        Expert resources on polymer processing, furniture durability standards, and bulk procurement criteria for Indian business environments.
+      </p>
+    </div>
+
+    <div class="insights-cards-grid">
+
+      <article class="insight-article-card" data-reveal data-delay="1">
+        <div class="insight-thumbnail-wrapper">
+          <img src="images/brand/insight-durability.jpg" alt="Evaluating Plastic Chair Durability" loading="lazy" />
+        </div>
+        <div class="insight-body">
+          <span class="insight-category">Procurement Guide</span>
+          <h3 class="insight-title">Evaluating Plastic Chair Durability: 5 Checks Before Bulk Procurement</h3>
+          <p class="insight-summary">
+            Learn what facility managers must inspect: wall thickness uniformity, ribbing depth under stress points, and why raw polymer melt-flow index dictates drop survivability.
+          </p>
+          <span class="insight-read-time">5 min read · Technical Editorial</span>
+        </div>
+      </article>
+
+      <article class="insight-article-card" data-reveal data-delay="2">
+        <div class="insight-thumbnail-wrapper">
+          <img src="images/brand/insight-moulding.jpg" alt="The Engineering of Injection Moulding" loading="lazy" />
+        </div>
+        <div class="insight-body">
+          <span class="insight-category">Manufacturing Science</span>
+          <h3 class="insight-title">The Engineering of Injection Moulding: How Clamp Tonnage Defines Part Integrity</h3>
+          <p class="insight-summary">
+            A look inside high-tonnage microprocessor presses: balancing cavity pressure, gate placement, and cycle cooling to produce stress-free monoblock structures.
+          </p>
+          <span class="insight-read-time">7 min read · Process Whitepaper</span>
+        </div>
+      </article>
+
+      <article class="insight-article-card" data-reveal data-delay="3">
+        <div class="insight-thumbnail-wrapper">
+          <img src="images/brand/insight-polymer.jpg" alt="Virgin Polypropylene vs Recycled Polymer" loading="lazy" />
+        </div>
+        <div class="insight-body">
+          <span class="insight-category">Materials Analysis</span>
+          <h3 class="insight-title">Virgin Polypropylene vs Recycled Polymer Under Harsh Indian Climates</h3>
+          <p class="insight-summary">
+            Why recycled blends cause premature outdoor embrittlement, and how virgin polypropylene compounded with UV stabilizers delivers a 10-year functional lifespan.
+          </p>
+          <span class="insight-read-time">6 min read · Polymer Science</span>
+        </div>
+      </article>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     15. FINAL CONVERSION CALL TO ACTION
+     ════════════════════════════════════════════════ -->
+<section class="final-cta-mfg-section" id="final-cta">
+  <div class="container">
+    <div class="final-cta-inner" data-reveal>
+      
+      <span class="mfg-badge mfg-badge--gold" style="margin-bottom:20px">Let's Build Together</span>
+      
+      <h2 class="final-cta-title">
+        LET'S BUILD YOUR NEXT<br>
+        <span style="color:var(--mfg-crimson)">PLASTIC SOLUTION.</span>
+      </h2>
+
+      <p class="final-cta-sub">
+        Whether you need a finished product line, bulk institutional supply, territory distribution partnership, or custom OEM moulding — talk directly to our manufacturing engineering team.
+      </p>
+
+      <div class="final-cta-button-group">
+        <a href="#enquiry" class="btn-mfg-primary" data-cursor="QUOTE">
+          <span>Request A Bulk Quote</span>
+        </a>
+        <button type="button" class="btn-mfg-secondary" onclick="openDistributorModal()" data-cursor="PARTNER">
+          <span>Become A Distributor</span>
+        </button>
+        <button type="button" class="btn-mfg-secondary" onclick="openRfqModal('Custom Moulding')" data-cursor="OEM">
+          <span>Custom Moulding Enquiry</span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     ENQUIRY SECTION (MULTI-INTENT SMART INQUIRY)
+     ════════════════════════════════════════════════ -->
+<section class="section theme-graphite enquiry-section grain" id="enquiry">
+  <div class="container">
+    <div class="enquiry-inner">
+
+      <div class="enquiry-intro">
+        <span class="t-overline text-crimson" data-reveal>Direct Plant Access</span>
+        <h2 class="t-h1" style="margin-top:16px;color:var(--text-primary-dark)" data-reveal data-delay="1">
+          Connect With Our<br>Production &amp;<br><span class="text-crimson">Sales Desk.</span>
+        </h2>
+
+        <div class="enquiry-contact-info" style="margin-top:40px" data-reveal data-delay="2">
+          <div class="contact-info-item">
+            <svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 3h12v10H2z"/><path d="M2 3l6 5 6-5"/></svg>
+            <a href="mailto:info@nationalplasto.com" class="t-body" style="color:var(--text-secondary-dark)">info@nationalplasto.com</a>
+          </div>
+          <div class="contact-info-item" style="margin-top:16px">
+            <svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 2h3l1.5 4-2 1a9 9 0 0 0 3.5 3.5l1-2 4 1.5v3C8 14 2 8 2 2h1z"/></svg>
+            <a href="tel:+919830012345" class="t-body" style="color:var(--text-secondary-dark)">+91 98300 12345 (Sales Desk)</a>
+          </div>
+          <div class="contact-info-item" style="margin-top:16px">
+            <svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 9a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/><path d="M8 1a6 6 0 0 1 6 6c0 5-6 8-6 8S2 12 2 7a6 6 0 0 1 6-6z"/></svg>
+            <span class="t-body" style="color:var(--text-secondary-dark)">19 Sukeas Lane, Kolkata 700001, West Bengal, India</span>
+          </div>
+        </div>
+
+        <div style="margin-top:36px" data-reveal data-delay="3">
+          <a href="https://wa.me/919830012345?text=Hello%2C%20I%20would%20like%20to%20inquire%20about%20National%20Plasto%20products." class="btn-whatsapp" target="_blank" rel="noopener" data-cursor="CHAT">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+            <span>Direct WhatsApp Desk</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Multi-Step Enquiry Form -->
+      <div class="enquiry-form-wrap" data-reveal="right">
+        <div class="enquiry-form-card">
+
+          <!-- Step Indicators -->
+          <div class="form-steps" id="formSteps">
+            <div class="form-step-dot active" data-step="1"></div>
+            <div class="form-step-line"></div>
+            <div class="form-step-dot" data-step="2"></div>
+            <div class="form-step-line"></div>
+            <div class="form-step-dot" data-step="3"></div>
+            <div class="form-step-line"></div>
+            <div class="form-step-dot" data-step="4"></div>
+          </div>
+
+          <!-- Step 1: Intent Selection -->
+          <div class="form-step-panel active" id="step1">
+            <h3 class="t-h5" style="margin-bottom:8px;color:#FFFFFF">What is your requirement?</h3>
+            <p class="t-caption" style="color:#cbd5e1;margin-bottom:24px">Select your primary objective to route to the correct team.</p>
+            <div class="intent-grid">
+              <button class="intent-btn" data-value="bulk" data-next="2" onclick="selectIntent(this)">Bulk / Institutional Order</button>
+              <button class="intent-btn" data-value="distributor" data-next="2" onclick="selectIntent(this)">Become a Distributor</button>
+              <button class="intent-btn" data-value="custom" data-next="2" onclick="selectIntent(this)">Custom Moulding / OEM</button>
+              <button class="intent-btn" data-value="product" data-next="2" onclick="selectIntent(this)">Product Pricing &amp; Catalogue</button>
+              <button class="intent-btn" data-value="industrial" data-next="2" onclick="selectIntent(this)">Industrial Storage &amp; Crates</button>
+              <button class="intent-btn" data-value="general" data-next="2" onclick="selectIntent(this)">General Business Enquiry</button>
+            </div>
+          </div>
+
+          <!-- Step 2: Category / Application -->
+          <div class="form-step-panel" id="step2">
+            <h3 class="t-h5" style="margin-bottom:8px;color:#FFFFFF">Which product line or area?</h3>
+            <p class="t-caption" style="color:#cbd5e1;margin-bottom:24px">Select the relevant category.</p>
+            <div class="category-select-grid">
+              <button class="cat-select-btn" data-value="chairs" onclick="selectCategory(this)">Chairs (129)</button>
+              <button class="cat-select-btn" data-value="tables" onclick="selectCategory(this)">Tables (46)</button>
+              <button class="cat-select-btn" data-value="stools" onclick="selectCategory(this)">Stools &amp; Patla (25)</button>
+              <button class="cat-select-btn" data-value="kids" onclick="selectCategory(this)">Baby &amp; Kids (21)</button>
+              <button class="cat-select-btn" data-value="storage" onclick="selectCategory(this)">Industrial Crates (9)</button>
+              <button class="cat-select-btn" data-value="all" onclick="selectCategory(this)">Complete Range / Custom</button>
+            </div>
+            <button class="form-back-btn" onclick="goToStep(1)">← Back</button>
+          </div>
+
+          <!-- Step 3: Technical Requirement Details -->
+          <div class="form-step-panel" id="step3">
+            <h3 class="t-h5" style="margin-bottom:8px;color:#FFFFFF">Provide Details &amp; Quantities</h3>
+            <p class="t-caption" style="color:#cbd5e1;margin-bottom:20px">Mention volume, delivery city, or any specific specifications.</p>
+            <textarea class="form-textarea" id="enquiryMessage" placeholder="Specify estimated quantities, target delivery date, target location, and any technical or drawing details..." rows="4"></textarea>
+            <div class="form-nav">
+              <button class="form-back-btn" onclick="goToStep(2)">← Back</button>
+              <button class="btn-secondary" onclick="goToStep(4)">Continue to Contact Info →</button>
+            </div>
+          </div>
+
+          <!-- Step 4: Contact & Organization -->
+          <div class="form-step-panel" id="step4">
+            <h3 class="t-h5" style="margin-bottom:8px;color:#FFFFFF">Where should we send the proposal?</h3>
+            <p class="t-caption" style="color:#cbd5e1;margin-bottom:20px">Your commercial contact details are kept strictly confidential.</p>
+            <div class="form-fields">
+              <input type="text" class="form-input" id="enquiryName" placeholder="Full Name *" required />
+              <input type="email" class="form-input" id="enquiryEmail" placeholder="Corporate Email Address *" required />
+              <input type="tel" class="form-input" id="enquiryPhone" placeholder="Phone / WhatsApp Number *" required />
+              <input type="text" class="form-input" id="enquiryCompany" placeholder="Company / Institutional Name" />
+            </div>
+            <div class="form-nav" style="margin-top:24px">
+              <button class="form-back-btn" onclick="goToStep(3)">← Back</button>
+              <button class="btn-primary" onclick="submitEnquiry()" style="flex:1">
+                <span>Submit Request</span>
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 6h10M7 2l4 4-4 4"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Success State -->
+          <div class="form-step-panel" id="stepSuccess">
+            <div style="text-align:center;padding:36px 0">
+              <div class="success-icon">
+                <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="var(--brand-crimson)" stroke-width="2" stroke-linecap="round"><circle cx="20" cy="20" r="16"/><path d="M13 20l5 5 9-10"/></svg>
+              </div>
+              <h3 class="t-h4" style="margin-top:20px;margin-bottom:8px;color:#FFFFFF">Request Dispatched</h3>
+              <p class="t-body" style="color:#cbd5e1;font-size:14px">Our industrial sales and technical desk will review your requirements and respond within one business day.</p>
+              <a href="https://wa.me/919830012345" class="btn-whatsapp" style="display:inline-flex;margin-top:28px" target="_blank" rel="noopener">
+                <span>Direct WhatsApp Follow-up</span>
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     FOOTER
+     ════════════════════════════════════════════════ -->
+<footer class="site-footer theme-dark" id="contact">
+  <div class="container">
+
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-brand-logos">
+          <img src="images/brand/national-plasto-dark.png" alt="National Plasto" class="footer-logo-img" />
+          <span class="footer-logo-divider"></span>
+          <img src="images/brand/next-nppl-dark.png" alt="NEXT NPPL" class="footer-next-logo" />
+        </div>
+        <p class="t-body" style="color:var(--text-secondary-dark);max-width:340px;margin-top:20px;line-height:1.6">
+          National Plasto Products Private Limited. Precision polymer moulding and industrial manufacturing solutions for homes, businesses, and industries across India.
+        </p>
+        <div style="margin-top:14px">
+          <span class="cred-chip-verified" style="background:rgba(255,255,255,0.06);color:#FAFAF9;border-color:rgba(255,255,255,0.15)">
+            ISO 9001:2015 &amp; RDSO Lineage
+          </span>
+        </div>
+
+        <div class="social-links" style="margin-top:28px;display:flex;gap:14px">
+          <a href="https://www.linkedin.com/company/nationalplasto/" target="_blank" rel="noopener" class="social-link" aria-label="LinkedIn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+          <a href="#" class="social-link" aria-label="Instagram">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+          <a href="#" class="social-link" aria-label="Facebook">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </a>
+          <a href="#" class="social-link" aria-label="YouTube">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20.06 12 20.06 12 20.06s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon fill="white" points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-links-grid">
+        <div class="footer-col">
+          <h4 class="t-label" style="color:var(--text-tertiary-dark);margin-bottom:18px">Corporate</h4>
+          <ul class="footer-link-list">
+            <li><a href="about.html">About National Plasto</a></li>
+            <li><a href="index.html#business-verticals">Our Business Verticals</a></li>
+            <li><a href="manufacturing.html">Factory &amp; Infrastructure</a></li>
+            <li><a href="quality.html">Quality Assurance &amp; ISO</a></li>
+            <li><a href="solutions.html">Case Studies &amp; Proof</a></li>
+            <li><a href="manufacturing.html">Pan-India Reach</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="t-label" style="color:var(--text-tertiary-dark);margin-bottom:18px">Products</h4>
+          <ul class="footer-link-list">
+            <li><a href="products.html">Chairs (129)</a></li>
+            <li><a href="products.html">Tables (46)</a></li>
+            <li><a href="products.html">Stools &amp; Patla (25)</a></li>
+            <li><a href="products.html">Baby &amp; Kids Range</a></li>
+            <li><a href="products.html">Storage &amp; Crates</a></li>
+            <li><a href="solutions.html">Custom Moulding &amp; OEM</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="t-label" style="color:var(--text-tertiary-dark);margin-bottom:18px">Partnerships</h4>
+          <ul class="footer-link-list">
+            <li><a href="javascript:void(0)" onclick="openDistributorModal()">Become a Distributor</a></li>
+            <li><a href="solutions.html">OEM Manufacturing</a></li>
+            <li><a href="solutions.html">Institutional Tenders</a></li>
+            <li><a href="manufacturing.html">Depot Locator</a></li>
+            <li><a href="quality.html">Insights &amp; Technical Guides</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="t-label" style="color:var(--text-tertiary-dark);margin-bottom:18px">Manufacturing &amp; Office</h4>
+          <address style="font-style:normal">
+            <p class="t-caption" style="color:var(--text-secondary-dark);line-height:1.7">
+              19 Sukeas Lane<br>
+              Kolkata, West Bengal<br>
+              India 700001
+            </p>
+            <a href="tel:+919830012345" class="t-caption footer-contact-link" style="margin-top:10px;display:block">+91 98300 12345</a>
+            <a href="mailto:info@nationalplasto.com" class="t-caption footer-contact-link">info@nationalplasto.com</a>
+          </address>
+        </div>
+      </div>
+    </div>
+
+    <div class="separator" style="margin:40px 0"></div>
+
+    <div class="footer-bottom">
+      <p class="t-caption" style="color:var(--text-tertiary-dark)">
+        © 2026 National Plasto Products Private Limited. All Rights Reserved. Est. 1997 · Precision Polymer Manufacturing.
+      </p>
+      <div style="display:flex;gap:20px">
+        <a href="#" class="t-caption footer-legal-link">Privacy Policy</a>
+        <a href="#" class="t-caption footer-legal-link">Terms &amp; Conditions</a>
+        <a href="#" class="t-caption footer-legal-link">Quality Policy</a>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+<!-- App-like Mobile Bottom Navigation -->
+<nav class="mobile-bottom-nav" id="mobileBottomNav" aria-label="Mobile Bottom Navigation">
+  <a href="index.html" class="bottom-nav-item active">
+    <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+    <span>Home</span>
+  </a>
+  <a href="products.html" class="bottom-nav-item">
+    <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+    <span>Products</span>
+  </a>
+  <a href="#enquiry" class="bottom-nav-item bottom-nav-fab-wrap">
+    <div class="bottom-nav-fab">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+    </div>
+    <span class="fab-label">Quote</span>
+  </a>
+  <button type="button" onclick="openCatalogueModal('all')" class="bottom-nav-item" style="background:transparent;border:none;">
+    <svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+    <span>Catalog</span>
+  </button>
+  <a href="https://wa.me/919830012345" target="_blank" class="bottom-nav-item">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+    <span>Call</span>
+  </a>
+</nav>
+
+<!-- ════════════════════════════════════════════════
+     MODAL: DISTRIBUTOR ONBOARDING
+     ════════════════════════════════════════════════ -->
+<div class="mfg-modal-backdrop" id="distributorModal" onclick="closeDistributorModal(event)">
+  <div class="mfg-modal-card" onclick="event.stopPropagation()">
+    <div class="mfg-modal-header">
+      <div>
+        <span class="mfg-badge mfg-badge--crimson">Partnership Desk</span>
+        <h3 class="t-h4" style="margin-top:6px;color:#0F1320">Become a National Plasto Partner</h3>
+      </div>
+      <button type="button" class="search-close" onclick="closeDistributorModal()" style="position:static;color:#0F1320">✕</button>
+    </div>
+    <div class="mfg-modal-body">
+      <p class="t-caption" style="color:#555B6E;margin-bottom:20px">
+        Direct factory supply, competitive trade margins, territory exclusivity, and dedicated marketing support. Fill in your entity details to begin the evaluation process.
+      </p>
+      <form id="distributorForm" onsubmit="submitDistributorForm(event)">
+        <div class="mfg-form-grid">
+          <div>
+            <label class="mfg-input-label">Contact Person *</label>
+            <input type="text" class="mfg-text-input" id="distName" placeholder="Full Name" required />
+          </div>
+          <div>
+            <label class="mfg-input-label">Phone / WhatsApp *</label>
+            <input type="tel" class="mfg-text-input" id="distPhone" placeholder="+91 98XXXXXXXX" required />
+          </div>
+          <div class="full-width">
+            <label class="mfg-input-label">Firm / Business Entity Name *</label>
+            <input type="text" class="mfg-text-input" id="distCompany" placeholder="M/s Example Trading Co." required />
+          </div>
+          <div>
+            <label class="mfg-input-label">Email Address *</label>
+            <input type="email" class="mfg-text-input" id="distEmail" placeholder="partner@firm.com" required />
+          </div>
+          <div>
+            <label class="mfg-input-label">Target Territory / City *</label>
+            <input type="text" class="mfg-text-input" id="distTerritory" placeholder="City, State" required />
+          </div>
+          <div>
+            <label class="mfg-input-label">Annual Turnover Bracket</label>
+            <select class="mfg-select-input" id="distTurnover">
+              <option value="up-to-50L">Up to ₹50 Lakhs</option>
+              <option value="50L-2Cr">₹50 Lakhs – ₹2 Crores</option>
+              <option value="2Cr-5Cr">₹2 Crores – ₹5 Crores</option>
+              <option value="5Cr-plus">₹5 Crores +</option>
+            </select>
+          </div>
+          <div>
+            <label class="mfg-input-label">Warehouse Space (sq ft)</label>
+            <input type="text" class="mfg-text-input" id="distWarehouse" placeholder="e.g. 2,500 sq ft" />
+          </div>
+          <div class="full-width">
+            <label class="mfg-input-label">Existing Lines / Brands Carried</label>
+            <input type="text" class="mfg-text-input" id="distLines" placeholder="e.g. Plastic furniture, hardware, FMCG distribution" />
+          </div>
+          <div class="full-width" style="margin-top:8px">
+            <button type="submit" class="btn-mfg-primary" style="width:100%;justify-content:center">
+              Submit Distributor Application
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     MODAL: CUSTOM MOULDING & OEM RFQ
+     ════════════════════════════════════════════════ -->
+<div class="mfg-modal-backdrop" id="rfqModal" onclick="closeRfqModal(event)">
+  <div class="mfg-modal-card" onclick="event.stopPropagation()">
+    <div class="mfg-modal-header">
+      <div>
+        <span class="mfg-badge mfg-badge--crimson">Engineering Desk</span>
+        <h3 class="t-h4" style="margin-top:6px;color:#0F1320" id="rfqModalTitle">Custom Moulding &amp; OEM RFQ</h3>
+      </div>
+      <button type="button" class="search-close" onclick="closeRfqModal()" style="position:static;color:#0F1320">✕</button>
+    </div>
+    <div class="mfg-modal-body">
+      <p class="t-caption" style="color:#555B6E;margin-bottom:20px">
+        Submit your project specifications, annual volume targets, and drawing notes directly to our toolmaking and production engineering team.
+      </p>
+      <form id="rfqForm" onsubmit="submitRfqForm(event)">
+        <div class="mfg-form-grid">
+          <div>
+            <label class="mfg-input-label">Contact Name *</label>
+            <input type="text" class="mfg-text-input" id="rfqName" placeholder="Full Name" required />
+          </div>
+          <div>
+            <label class="mfg-input-label">Company / Entity *</label>
+            <input type="text" class="mfg-text-input" id="rfqCompany" placeholder="Organization" required />
+          </div>
+          <div>
+            <label class="mfg-input-label">Email Address *</label>
+            <input type="email" class="mfg-text-input" id="rfqEmail" placeholder="name@company.com" required />
+          </div>
+          <div>
+            <label class="mfg-input-label">Phone Number *</label>
+            <input type="tel" class="mfg-text-input" id="rfqPhone" placeholder="+91 98XXXXXXXX" required />
+          </div>
+          <div class="full-width">
+            <label class="mfg-input-label">Project / Component Name *</label>
+            <input type="text" class="mfg-text-input" id="rfqProject" placeholder="e.g. Stackable Chair OEM / Logistics Crate / Custom Polymer Enclosure" required />
+          </div>
+          <div>
+            <label class="mfg-input-label">Estimated Annual Volume</label>
+            <input type="text" class="mfg-text-input" id="rfqVolume" placeholder="e.g. 10,000 units/year" />
+          </div>
+          <div>
+            <label class="mfg-input-label">Target Delivery Date</label>
+            <input type="text" class="mfg-text-input" id="rfqTimeline" placeholder="e.g. Q4 2026" />
+          </div>
+          <div class="full-width">
+            <label class="mfg-input-label">Technical Specification / Drawing Notes</label>
+            <textarea class="mfg-textarea-input" id="rfqSpecs" rows="3" placeholder="Provide dimensions, weight constraints, preferred resin (PP / HDPE / ABS), colorway, and tooling requirements..."></textarea>
+          </div>
+          <div class="full-width" style="margin-top:8px">
+            <button type="submit" class="btn-mfg-primary" style="width:100%;justify-content:center">
+              Submit Engineering Specification
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     MODAL: PRODUCT CATALOGUE MASTER EXPLORER
+     ════════════════════════════════════════════════ -->
+<div class="catalogue-modal" id="catalogueModal">
+  <div class="catalogue-modal-inner">
+    <button class="catalogue-close" id="catalogueClose" aria-label="Close catalogue">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M15 5L5 15M5 5l10 10"/></svg>
+    </button>
+    <div class="catalogue-modal-content">
+      <div class="catalogue-modal-sidebar">
+        <span class="mfg-badge mfg-badge--crimson" style="margin-bottom:12px">Master Database</span>
+        <h3 class="t-h4" style="margin-bottom:20px">Browse Catalogue</h3>
+        <div class="catalogue-nav">
+          <button class="cat-nav-btn active" data-filter="all" onclick="filterCatalogue('all',this)">All Products (230)</button>
+          <button class="cat-nav-btn" data-filter="chairs" onclick="filterCatalogue('chairs',this)">Chairs (129)</button>
+          <button class="cat-nav-btn" data-filter="tables" onclick="filterCatalogue('tables',this)">Tables (46)</button>
+          <button class="cat-nav-btn" data-filter="stools" onclick="filterCatalogue('stools',this)">Stools &amp; Patla (25)</button>
+          <button class="cat-nav-btn" data-filter="kids" onclick="filterCatalogue('kids',this)">Baby &amp; Kids (21)</button>
+          <button class="cat-nav-btn" data-filter="storage" onclick="filterCatalogue('storage',this)">Storage &amp; Crates (9)</button>
+        </div>
+        <div style="margin-top:auto;padding-top:32px">
+          <a href="#enquiry" class="btn-primary" style="width:100%;justify-content:center;display:flex" onclick="document.getElementById('catalogueModal').classList.remove('active')">
+            Request Bulk Quote
+          </a>
+        </div>
+      </div>
+      <div class="catalogue-modal-products" id="catalogueProducts">
+        <!-- Populated dynamically by catalogue-data.js -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Search Overlay -->
+<div class="search-overlay" id="searchOverlay">
+  <button class="search-close" id="searchClose" aria-label="Close search">
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M15 5L5 15M5 5l10 10"/></svg>
+  </button>
+  <div class="search-inner">
+    <div class="t-overline text-crimson" style="margin-bottom:16px">Search National Plasto Catalogue</div>
+    <input type="search" class="search-input" id="searchInput" placeholder="Type product name, SKU, or category (e.g. Activa, Amazon, Crate, Table)..." autocomplete="off" />
+    <div class="search-hint t-caption" style="margin-top:16px;color:var(--text-secondary-dark)">
+      Quick filters: Chairs · Tables · Stools · NEXT Collection · National Sapphire · Industrial
+    </div>
+    <div class="search-results" id="searchResults"></div>
+  </div>
+</div>
+
+<!-- JS Core -->
+<script src="js/catalogue-data.js"></script>
+<script src="js/loader.js"></script>
+<script src="js/hero-advance.js?v=3" defer></script>
+<script src="js/main.js" defer></script>
+<script src="js/three-scene.js" defer></script>
+
+<script>
+/* ─── MODAL CONTROLS & B2B SCRIPTING ─── */
+
+function openDistributorModal() {
+  document.getElementById('distributorModal')?.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+function closeDistributorModal(e) {
+  if (e && e.target !== e.currentTarget) return;
+  document.getElementById('distributorModal')?.classList.remove('active');
+  document.body.style.overflow = '';
+}
+function submitDistributorForm(e) {
+  e.preventDefault();
+  const name = document.getElementById('distName').value;
+  const company = document.getElementById('distCompany').value;
+  const territory = document.getElementById('distTerritory').value;
+  alert(`Thank you, ${name}! Your distributor application for ${company} in ${territory} has been received. Our trade desk will contact you within 24 hours.`);
+  document.getElementById('distributorModal')?.classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+function openRfqModal(title) {
+  if (title) {
+    const el = document.getElementById('rfqModalTitle');
+    if (el) el.textContent = title + ' — RFQ';
+  }
+  document.getElementById('rfqModal')?.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+function closeRfqModal(e) {
+  if (e && e.target !== e.currentTarget) return;
+  document.getElementById('rfqModal')?.classList.remove('active');
+  document.body.style.overflow = '';
+}
+function submitRfqForm(e) {
+  e.preventDefault();
+  const name = document.getElementById('rfqName').value;
+  const project = document.getElementById('rfqProject').value;
+  alert(`Thank you, ${name}! Your engineering specification for "${project}" has been dispatched to our toolmaking and production desk.`);
+  document.getElementById('rfqModal')?.classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+/* Category Filter for Featured Grid */
+function filterFeaturedGrid(category, btn) {
+  document.querySelectorAll('#categoryTabs .taxonomy-tab-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+
+  const cards = document.querySelectorAll('#featuredGridContainer .product-card-editorial');
+  cards.forEach(card => {
+    if (category === 'all' || card.dataset.category === category) {
+      card.style.display = '';
+    } else {
+      card.style.display = 'none';
+    }
+  });
+}
+
+/* Multi-Step Smart Enquiry Script */
+let inquiryData = {};
+function selectIntent(btn) {
+  document.querySelectorAll('.intent-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  inquiryData.intent = btn.dataset.value;
+  setTimeout(() => goToStep(2), 250);
+}
+function selectCategory(btn) {
+  document.querySelectorAll('.cat-select-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  inquiryData.category = btn.dataset.value;
+  setTimeout(() => goToStep(3), 250);
+}
+function goToStep(n) {
+  document.querySelectorAll('.form-step-panel').forEach(p => p.classList.remove('active'));
+  document.getElementById('step' + n)?.classList.add('active');
+  document.querySelectorAll('.form-step-dot').forEach((d, i) => {
+    d.classList.toggle('active', i < n);
+    d.classList.toggle('completed', i < n - 1);
+  });
+}
+function prefillQuote(productStr) {
+  const msgEl = document.getElementById('enquiryMessage');
+  if (msgEl) {
+    msgEl.value = `Hello, I would like to request commercial volume pricing, MOQ, and technical datasheets for ${productStr}.`;
+  }
+  goToStep(4);
+  document.getElementById('enquiry')?.scrollIntoView({ behavior: 'smooth' });
+}
+function submitEnquiry() {
+  const name = document.getElementById('enquiryName').value;
+  const email = document.getElementById('enquiryEmail').value;
+  const phone = document.getElementById('enquiryPhone').value;
+  if (!name || !email || !phone) {
+    alert('Please fill in your name, email, and phone number.');
+    return;
+  }
+  document.querySelectorAll('.form-step-panel').forEach(p => p.classList.remove('active'));
+  document.getElementById('stepSuccess')?.classList.add('active');
+  document.querySelectorAll('.form-step-dot').forEach(d => d.classList.add('completed'));
+}
+
+/* Catalogue Modal & Dynamic Population */
+function getProductsList() {
+  if (window.NPPL_DATA && window.NPPL_DATA.allWithImages) {
+    return window.NPPL_DATA.allWithImages;
+  }
+  return [];
+}
+
+function renderCatalogue(filter) {
+  const all = getProductsList();
+  const data = filter === 'all' ? all : all.filter(p => {
+    if (filter === 'chairs') return p.categorySlug.includes('chair');
+    if (filter === 'tables') return p.categorySlug.includes('table');
+    if (filter === 'stools') return p.categorySlug.includes('stool');
+    if (filter === 'kids') return p.categorySlug.includes('baby') || p.categorySlug.includes('kid');
+    if (filter === 'storage') return p.categorySlug.includes('storage');
+    return true;
+  });
+
+  const container = document.getElementById('catalogueProducts');
+  if (!container) return;
+
+  if (data.length === 0) {
+    container.innerHTML = '<p style="padding:24px;color:var(--text-tertiary-light)">Loading products...</p>';
+    return;
+  }
+
+  container.innerHTML = data.slice(0, 50).map(p => {
+    const imgUrl = (p.images && p.images[0]) ? p.images[0].url : 'images/products/np-ntl-058-89dcdcfa74.jpg';
+    return `
+      <div class="cat-product-row">
+        <img src="${imgUrl}" alt="${p.name}" class="cat-thumb-img" />
+        <div class="cat-product-info">
+          <div style="display:flex;align-items:center;gap:6px">
+            <span class="t-overline" style="font-size:9px;color:var(--brand-crimson);font-weight:700">${p.sku}</span>
+            <span class="collection-count-pill" style="margin:0;font-size:8px">${p.collection}</span>
+          </div>
+          <p class="t-h6" style="margin-top:2px;font-weight:700">${p.name}</p>
+          <span class="t-caption" style="color:var(--text-tertiary-light)">${p.category} · 100% Virgin Polymer</span>
+        </div>
+        <a href="#enquiry" class="t-label text-crimson" style="font-size:11px;font-weight:700;white-space:nowrap" onclick="prefillQuote('${p.name} (${p.sku})');document.getElementById('catalogueModal').classList.remove('active')">Quote →</a>
+      </div>
+    `;
+  }).join('');
+}
+
+function filterCatalogue(filter, btn) {
+  document.querySelectorAll('.cat-nav-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderCatalogue(filter);
+}
+
+function openCatalogueModal(cat) {
+  document.getElementById('catalogueModal')?.classList.add('active');
+  document.body.style.overflow = 'hidden';
+  if (cat && cat !== 'all') {
+    const btn = document.querySelector(`.cat-nav-btn[data-filter="${cat}"]`);
+    if (btn) filterCatalogue(cat, btn);
+    else renderCatalogue('all');
+  } else {
+    renderCatalogue('all');
+  }
+}
+
+function filterCatalogueCategory(cat) {
+  openCatalogueModal(cat);
+}
+
+function quickViewProduct(sku) {
+  const all = getProductsList();
+  const p = all.find(x => x.sku === sku);
+  if (p) {
+    prefillQuote(p.name + ' (' + p.sku + ')');
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  renderCatalogue('all');
+  document.getElementById('catalogueClose')?.addEventListener('click', () => {
+    document.getElementById('catalogueModal')?.classList.remove('active');
+    document.body.style.overflow = '';
+  });
+});
+
+/* Search Overlay with Live Results */
+document.getElementById('searchTrigger')?.addEventListener('click', () => {
+  document.getElementById('searchOverlay')?.classList.add('active');
+  setTimeout(() => document.getElementById('searchInput')?.focus(), 250);
+});
+document.getElementById('searchClose')?.addEventListener('click', () => {
+  document.getElementById('searchOverlay')?.classList.remove('active');
+});
+
+document.getElementById('searchInput')?.addEventListener('input', function() {
+  const q = this.value.trim().toLowerCase();
+  const container = document.getElementById('searchResults');
+  if (!container) return;
+  if (!q) { container.innerHTML = ''; return; }
+
+  const all = getProductsList();
+  const results = all.filter(p => 
+    p.name.toLowerCase().includes(q) || 
+    p.sku.toLowerCase().includes(q) || 
+    p.collection.toLowerCase().includes(q) || 
+    p.category.toLowerCase().includes(q)
+  ).slice(0, 10);
+
+  container.innerHTML = results.length ? results.map(p => {
+    const imgUrl = (p.images && p.images[0]) ? p.images[0].url : 'images/products/np-ntl-058-89dcdcfa74.jpg';
+    return `
+      <a href="#enquiry" class="search-result-item" onclick="prefillQuote('${p.name} (${p.sku})');document.getElementById('searchOverlay').classList.remove('active')">
+        <img src="${imgUrl}" alt="${p.name}" class="search-thumb" />
+        <div class="search-info">
+          <div style="display:flex;align-items:center;gap:8px">
+            <span class="t-h6" style="color:white">${p.name}</span>
+            <span class="collection-count-pill" style="margin:0;font-size:8px">${p.collection}</span>
+          </div>
+          <span class="t-caption" style="color:var(--brand-silver);margin-top:2px">${p.sku} · ${p.category}</span>
+        </div>
+        <span class="search-quote-btn">Quote →</span>
+      </a>
+    `;
+  }).join('') : '<p class="t-caption" style="color:var(--brand-steel);padding:16px 0">No products found matching "' + q + '"</p>';
+});
+</script>
+
+</body>
+</html>

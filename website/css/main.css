@@ -1,0 +1,174 @@
+/* ============================================================
+   NATIONAL PLASTO — ULTRA PREMIUM DESIGN SYSTEM
+   National Plastic Moulded Products Limited (NPPL)
+   Founded 1983 · Touch of Elegance · Excellence in Craft
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap');
+
+/* ─────────────────────────────────────────────
+   DESIGN TOKENS
+   ───────────────────────────────────────────── */
+:root {
+  --brand-crimson:        #C8102E;
+  --brand-crimson-deep:   #A80B24;
+  --brand-crimson-bright: #E8192F;
+  --brand-crimson-glow:   rgba(200, 16, 46, 0.15);
+  --brand-midnight:       #07090F;
+  --brand-graphite:       #0F1320;
+  --brand-slate:          #1C2035;
+  --brand-slate-mid:      #262B42;
+  --brand-slate-light:    #353A56;
+  --brand-ivory:          #F8F4EE;
+  --brand-porcelain:      #F3EFE8;
+  --brand-white:          #FAFAF9;
+  --brand-warm-white:     #FFFDF9;
+  --brand-gold:           #C8A55E;
+  --brand-gold-light:     #E8C880;
+  --brand-silver:         #8899AA;
+  --brand-steel:          #6B7A8D;
+  --brand-mist:           #B8C4D4;
+  --text-primary-dark:    #FAFAF9;
+  --text-secondary-dark:  rgba(250, 250, 249, 0.60);
+  --text-tertiary-dark:   rgba(250, 250, 249, 0.35);
+  --text-primary-light:   #0F1320;
+  --text-secondary-light: #3A3F54;
+  --text-tertiary-light:  #6B7A8D;
+  --border-dark:          rgba(255, 255, 255, 0.08);
+  --border-dark-strong:   rgba(255, 255, 255, 0.15);
+  --border-light:         rgba(15, 19, 32, 0.08);
+  --border-light-strong:  rgba(15, 19, 32, 0.15);
+  --font-display: 'Space Grotesk', -apple-system, sans-serif;
+  --font-body:    'Instrument Sans', -apple-system, sans-serif;
+  --radius-sm:   4px;
+  --radius-md:   8px;
+  --radius-lg:   16px;
+  --radius-xl:   24px;
+  --radius-full: 9999px;
+  --shadow-sm:      0 2px 8px rgba(0,0,0,0.12);
+  --shadow-md:      0 8px 32px rgba(0,0,0,0.18);
+  --shadow-lg:      0 24px 64px rgba(0,0,0,0.28);
+  --shadow-xl:      0 40px 100px rgba(0,0,0,0.40);
+  --shadow-crimson: 0 12px 40px rgba(200,16,46,0.30);
+  --ease-out-expo:   cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring:     cubic-bezier(0.34, 1.56, 0.64, 1);
+  --dur-micro:   150ms;
+  --dur-fast:    280ms;
+  --dur-normal:  450ms;
+  --dur-slow:    700ms;
+  --z-dropdown: 100;
+  --z-sticky:   200;
+  --z-overlay:  500;
+  --z-modal:    1000;
+  --z-cursor:   9999;
+  --container-max:  1400px;
+  --header-h:       80px;
+}
+
+/* ─── RESET ─── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 16px; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+body { font-family: var(--font-body); font-size: 16px; line-height: 1.6; color: var(--text-primary-light); background: var(--brand-white); overflow-x: hidden; cursor: none; }
+body.menu-open { overflow: hidden; }
+img { display: block; max-width: 100%; height: auto; }
+a { text-decoration: none; color: inherit; }
+button { border: none; background: none; cursor: none; font-family: inherit; }
+ul, ol { list-style: none; }
+
+/* ─── CUSTOM CURSOR ─── */
+.cursor-dot {
+  position: fixed; top: 0; left: 0;
+  width: 8px; height: 8px;
+  background: var(--brand-crimson);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: var(--z-cursor);
+  transform: translate(-50%, -50%);
+  transition: width var(--dur-fast) var(--ease-out-expo), height var(--dur-fast) var(--ease-out-expo);
+  mix-blend-mode: normal;
+  will-change: transform;
+}
+.cursor-ring {
+  position: fixed; top: 0; left: 0;
+  width: 40px; height: 40px;
+  border: 1.5px solid rgba(200,16,46,0.45);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: var(--z-cursor);
+  transform: translate(-50%, -50%);
+  transition: width var(--dur-normal) var(--ease-out-expo), height var(--dur-normal) var(--ease-out-expo), background var(--dur-fast) var(--ease-out-expo), border-color var(--dur-fast) var(--ease-out-expo);
+  will-change: transform;
+}
+.cursor-label {
+  position: fixed; top: 0; left: 0;
+  pointer-events: none;
+  z-index: var(--z-cursor);
+  transform: translate(-50%, -50%);
+  font-family: var(--font-display);
+  font-size: 9px; font-weight: 600;
+  letter-spacing: 0.14em;
+  color: var(--brand-white);
+  opacity: 0;
+  transition: opacity var(--dur-fast) var(--ease-out-expo);
+  text-transform: uppercase;
+  white-space: nowrap;
+  will-change: transform;
+}
+.cursor-state-active .cursor-ring { width: 80px; height: 80px; border-color: var(--brand-crimson); background: rgba(200,16,46,0.08); }
+.cursor-state-active .cursor-label { opacity: 1; }
+
+/* ─── TYPOGRAPHY ─── */
+.t-overline { font-family: var(--font-display); font-size: 10px; font-weight: 600; letter-spacing: 0.20em; text-transform: uppercase; }
+.t-label { font-family: var(--font-display); font-size: 12px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; }
+.t-body { font-family: var(--font-body); font-size: 16px; line-height: 1.7; }
+.t-body-lg { font-family: var(--font-body); font-size: 18px; line-height: 1.75; }
+.t-h6 { font-family: var(--font-display); font-size: 14px; font-weight: 600; }
+.t-h5 { font-family: var(--font-display); font-size: 18px; font-weight: 600; }
+.t-h4 { font-family: var(--font-display); font-size: 24px; font-weight: 700; line-height: 1.25; }
+.t-h3 { font-family: var(--font-display); font-size: 32px; font-weight: 700; line-height: 1.15; letter-spacing: -0.01em; }
+.t-h2 { font-family: var(--font-display); font-size: 48px; font-weight: 700; line-height: 1.08; letter-spacing: -0.02em; }
+.t-h1 { font-family: var(--font-display); font-size: clamp(52px, 6vw, 80px); font-weight: 700; line-height: 1.0; letter-spacing: -0.03em; }
+.t-giant { font-family: var(--font-display); font-size: clamp(64px, 9vw, 140px); font-weight: 700; line-height: 0.92; letter-spacing: -0.04em; }
+.t-mega { font-family: var(--font-display); font-size: clamp(80px, 13vw, 200px); font-weight: 700; line-height: 0.88; letter-spacing: -0.05em; }
+
+/* ─── LAYOUT ─── */
+.container { width: 100%; max-width: var(--container-max); margin: 0 auto; padding: 0 64px; }
+.section { padding: 120px 0; }
+.section--sm { padding: 80px 0; }
+.section--lg { padding: 160px 0; }
+
+/* ─── THEMES ─── */
+.theme-dark { background: var(--brand-midnight); color: var(--text-primary-dark); }
+.theme-graphite { background: var(--brand-graphite); color: var(--text-primary-dark); }
+.theme-slate { background: var(--brand-slate); color: var(--text-primary-dark); }
+.theme-ivory { background: var(--brand-ivory); color: var(--text-primary-light); }
+.theme-white { background: var(--brand-white); color: var(--text-primary-light); }
+.theme-crimson { background: var(--brand-crimson-deep); color: var(--text-primary-dark); }
+
+/* ─── SCROLL REVEAL ─── */
+[data-reveal] { opacity: 0; transform: translateY(40px); transition: opacity var(--dur-slow) var(--ease-out-expo), transform var(--dur-slow) var(--ease-out-expo); }
+[data-reveal="left"] { transform: translateX(-40px); }
+[data-reveal="right"] { transform: translateX(40px); }
+[data-reveal="scale"] { transform: scale(0.90) translateY(20px); }
+[data-reveal="fade"] { transform: none; }
+[data-reveal].revealed { opacity: 1; transform: none; }
+[data-delay="1"].revealed { transition-delay: 80ms; }
+[data-delay="2"].revealed { transition-delay: 160ms; }
+[data-delay="3"].revealed { transition-delay: 240ms; }
+[data-delay="4"].revealed { transition-delay: 320ms; }
+[data-delay="5"].revealed { transition-delay: 400ms; }
+[data-delay="6"].revealed { transition-delay: 480ms; }
+
+/* ─── DECORATIVE ─── */
+.line-accent { display: block; width: 40px; height: 2px; background: var(--brand-crimson); }
+.dot-accent { display: inline-block; width: 5px; height: 5px; border-radius: 50%; background: var(--brand-crimson); }
+.separator { width: 100%; height: 1px; background: linear-gradient(90deg, transparent, rgba(200,16,46,0.3), transparent); }
+.grid-bg { background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px); background-size: 60px 60px; }
+
+/* ─── COLOR UTILS ─── */
+.text-crimson { color: var(--brand-crimson); }
+.text-gold { color: var(--brand-gold); }
+.text-silver { color: var(--brand-silver); }
+.text-mist { color: var(--brand-mist); }
+.text-dim { color: var(--text-secondary-dark); }
+

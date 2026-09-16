@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Explore National Plasto's complete product database. 230+ precision moulded plastic chairs, tables, stools, kids furniture, and industrial crates arranged under Next, National, Sapphire, and Captain." />
+  <title>Product Database & Catalogue — National Plasto</title>
+  
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/components.css?v=2" />
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <link rel="icon" type="image/png" href="icon.png" />
+  <link rel="apple-touch-icon" href="apple-icon.png" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/brand-manufacturing.css" />
+  <link rel="stylesheet" href="css/luxury-theme.css" />
+  <link rel="stylesheet" href="css/hero-advance.css?v=5" />
+  <link rel="stylesheet" href="css/mobile.css?v=1" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@600;700;800&family=Instrument+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    .page-hero-banner {
+      padding: 160px 0 80px;
+      background: radial-gradient(circle at 50% 0%, #171f33 0%, #090c14 100%);
+      border-bottom: 1px solid rgba(229, 184, 105, 0.2);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .page-hero-banner::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 600px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(200, 16, 46, 0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .site-header {
+      background: rgba(8, 7, 6, 0.96) !important;
+      backdrop-filter: blur(20px) !important;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Custom Cursor -->
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+<div class="cursor-label" id="cursorLabel"></div>
+
+<!-- HEADER / NAVIGATION -->
+<header class="site-header" id="siteHeader">
+  <div class="header-inner">
+    <a href="index.html" class="header-logo" aria-label="National Plasto Home">
+      <img src="images/brand/national-plasto-dark.png" alt="National Plasto" class="header-logo-primary" />
+    </a>
+
+    <div class="header-right-cluster">
+      <nav class="header-nav" id="headerNav" aria-label="Main navigation">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="products.html" class="nav-link active-nav">Products</a>
+        <a href="solutions.html" class="nav-link">Solutions</a>
+        <a href="manufacturing.html" class="nav-link">Manufacturing</a>
+        <a href="quality.html" class="nav-link">Quality</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="icon-btn" id="searchTrigger" aria-label="Search Products" data-cursor="SEARCH">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </button>
+
+        <button type="button" class="header-btn-partner" onclick="openDistributorModal()" data-cursor="PARTNER">
+          <span>PARTNER WITH US</span>
+        </button>
+
+        <a href="contact.html" class="header-btn-touch" data-cursor="QUOTE">
+          <span>GET A QUOTE</span>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
+
+        <button class="hamburger" id="menuToggle" aria-label="Menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile Menu Overlay -->
+<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <div class="mobile-menu-inner">
+    <nav class="mobile-nav">
+      <a href="index.html" class="mobile-nav-link">Home</a>
+      <a href="products.html" class="mobile-nav-link">Product Database</a>
+      <a href="solutions.html" class="mobile-nav-link">Solutions &amp; OEM</a>
+      <a href="manufacturing.html" class="mobile-nav-link">Manufacturing Excellence</a>
+      <a href="quality.html" class="mobile-nav-link">Quality &amp; ISO Lab</a>
+      <a href="about.html" class="mobile-nav-link">About National Plasto</a>
+      <a href="contact.html" class="mobile-nav-link">Contact &amp; RFQ</a>
+    </nav>
+  </div>
+</div>
+
+<!-- PAGE HERO BANNER -->
+<section class="page-hero-banner">
+  <div class="container">
+    <span class="mfg-badge mfg-badge--gold" style="margin-bottom: 16px;">Precision Polymer Database</span>
+    <h1 class="t-h1" style="color: #FFFFFF; font-family: var(--font-display); font-size: clamp(36px, 4.5vw, 60px); font-weight: 800; letter-spacing: -0.02em;">
+      PRODUCT CATALOGUE &amp; DATABASE
+    </h1>
+    <p class="t-body-lg" style="color: #94a3b8; max-width: 680px; margin: 18px auto 0; line-height: 1.6;">
+      Explore our comprehensive master portfolio of 230+ engineered polymer articles arranged across our four signature brand verticals: <strong>Next</strong>, <strong>National</strong>, <strong>Sapphire</strong>, and <strong>Captain</strong>.
+    </p>
+  </div>
+</section>
+
+<!-- PRODUCTS DATABASE SECTION -->
+<section class="products-mfg-section" id="products" style="padding: 60px 0 100px;">
+  <div class="container">
+
+    <!-- PRIMARY BRAND NAVIGATION TABS -->
+    <div class="product-brand-tabs-nav" role="tablist" aria-label="Filter by Brand Collection">
+      <button type="button" class="prod-brand-tab-btn active" data-brand="all" onclick="selectDatabaseBrand('all', this)" role="tab" aria-selected="true">
+        <span>ALL BRANDS</span>
+        <span class="brand-badge-count">160</span>
+      </button>
+      <button type="button" class="prod-brand-tab-btn tab-brand-next" data-brand="next" onclick="selectDatabaseBrand('next', this)" role="tab" aria-selected="false">
+        <span>NEXT</span>
+        <span class="brand-badge-count">46</span>
+      </button>
+      <button type="button" class="prod-brand-tab-btn tab-brand-national" data-brand="national" onclick="selectDatabaseBrand('national', this)" role="tab" aria-selected="false">
+        <span>NATIONAL</span>
+        <span class="brand-badge-count">66</span>
+      </button>
+      <button type="button" class="prod-brand-tab-btn tab-brand-sapphire" data-brand="national-sapphire" onclick="selectDatabaseBrand('national-sapphire', this)" role="tab" aria-selected="false">
+        <span>SAPPHIRE</span>
+        <span class="brand-badge-count">30</span>
+      </button>
+      <button type="button" class="prod-brand-tab-btn tab-brand-captain" data-brand="captain" onclick="selectDatabaseBrand('captain', this)" role="tab" aria-selected="false">
+        <span>CAPTAIN</span>
+        <span class="brand-badge-count">18</span>
+      </button>
+    </div>
+
+    <!-- SEARCH & SECONDARY CATEGORY FILTER BAR -->
+    <div class="product-database-controls-bar">
+      <div class="product-search-input-wrap">
+        <svg class="search-input-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" id="dbProductSearch" class="product-db-search-input" placeholder="Search by model name (e.g. Activa, Polo), SKU code, or category..." oninput="onDatabaseSearchInput(this.value)" />
+        <button type="button" id="dbSearchClearBtn" class="search-clear-btn" onclick="clearDatabaseSearch()" style="display:none;" aria-label="Clear search">✕</button>
+      </div>
+
+      <div class="product-db-category-chips" id="dbCategoryChips">
+        <button type="button" class="db-cat-chip active" data-cat="all" onclick="selectDatabaseCategory('all', this)">All Types</button>
+        <button type="button" class="db-cat-chip" data-cat="chairs" onclick="selectDatabaseCategory('chairs', this)">Chairs</button>
+        <button type="button" class="db-cat-chip" data-cat="tables" onclick="selectDatabaseCategory('tables', this)">Tables</button>
+        <button type="button" class="db-cat-chip" data-cat="stools" onclick="selectDatabaseCategory('stools', this)">Stools &amp; Patla</button>
+        <button type="button" class="db-cat-chip" data-cat="kids" onclick="selectDatabaseCategory('kids', this)">Baby &amp; Kids</button>
+        <button type="button" class="db-cat-chip" data-cat="storage" onclick="selectDatabaseCategory('storage', this)">Storage &amp; Crates</button>
+      </div>
+
+      <div class="product-db-status-row">
+        <span id="productDbCountStatus" class="product-db-counter-badge">Showing 160 products across all brands</span>
+      </div>
+    </div>
+
+    <!-- DYNAMIC PRODUCT DATABASE GRID (100% TRANSPARENT PNG CUTOUTS) -->
+    <div class="products-visual-grid" id="featuredGridContainer"></div>
+
+    <!-- Load More Actions Container -->
+    <div class="product-db-load-more-wrap" id="dbLoadMoreWrap" style="text-align: center; margin-top: 48px;">
+      <button type="button" class="btn-db-load-more" id="btnDbLoadMore" onclick="loadMoreDbProducts()">
+        <span>Load More Products</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+      </button>
+    </div>
+
+  </div>
+</section>
+
+<!-- CALL TO ACTION BANNER -->
+<section class="final-cta-mfg-section" style="padding: 90px 0;">
+  <div class="container">
+    <div class="final-cta-inner">
+      <span class="mfg-badge mfg-badge--gold" style="margin-bottom: 20px;">Procurement &amp; Custom Moulding</span>
+      <h2 class="final-cta-title">NEED CUSTOM SPECS OR <span style="color:var(--mfg-crimson)">BULK PRICING?</span></h2>
+      <p class="final-cta-sub">
+        Our engineering desk provides turnkey mould design, custom resin compounding, and volume tier pricing for tenders and distributors.
+      </p>
+      <div class="final-cta-button-group">
+        <a href="contact.html" class="btn-mfg-primary">Request Commercial Quotation</a>
+        <button type="button" class="btn-mfg-secondary" onclick="openDistributorModal()">Distributor Inquiries</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer theme-dark" id="contact">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-brand-logos">
+          <img src="images/brand/national-plasto-dark.png" alt="National Plasto" class="footer-logo-img" />
+          <span class="footer-logo-divider"></span>
+          <img src="images/brand/next-nppl-dark.png" alt="NEXT NPPL" class="footer-next-logo" />
+        </div>
+        <p class="t-body" style="color:var(--text-secondary-dark);max-width:340px;margin-top:20px;line-height:1.6">
+          National Plasto Products Private Limited. Precision polymer moulding and industrial manufacturing solutions across India.
+        </p>
+      </div>
+
+      <div class="footer-links-grid">
+        <div class="footer-col">
+          <h4 class="t-label" style="color:var(--text-tertiary-dark);margin-bottom:18px">Pages</h4>
+          <ul class="footer-link-list">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Product Database</a></li>
+            <li><a href="solutions.html">B2B Solutions &amp; OEM</a></li>
+            <li><a href="manufacturing.html">Manufacturing Plant</a></li>
+            <li><a href="quality.html">Quality &amp; Testing Lab</a></li>
+            <li><a href="about.html">About National Plasto</a></li>
+            <li><a href="contact.html">Contact &amp; RFQ</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="t-label" style="color:var(--text-tertiary-dark);margin-bottom:18px">Brands</h4>
+          <ul class="footer-link-list">
+            <li><a href="products.html" onclick="selectDatabaseBrand('next')">Next NPPL (46 Models)</a></li>
+            <li><a href="products.html" onclick="selectDatabaseBrand('national')">National Flagship (66 Models)</a></li>
+            <li><a href="products.html" onclick="selectDatabaseBrand('national-sapphire')">Sapphire Luxury (30 Models)</a></li>
+            <li><a href="products.html" onclick="selectDatabaseBrand('captain')">Captain Heavy Duty (18 Models)</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="t-label" style="color:var(--text-tertiary-dark);margin-bottom:18px">Contact</h4>
+          <address style="font-style:normal">
+            <p class="t-caption" style="color:var(--text-secondary-dark);line-height:1.7">
+              19 Sukeas Lane, Kolkata 700001, West Bengal, India
+            </p>
+            <a href="tel:+919830012345" class="t-caption footer-contact-link" style="margin-top:10px;display:block">+91 98300 12345</a>
+            <a href="mailto:info@nationalplasto.com" class="t-caption footer-contact-link">info@nationalplasto.com</a>
+          </address>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- MODAL: DISTRIBUTOR ONBOARDING -->
+<div class="mfg-modal-backdrop" id="distributorModal" onclick="closeDistributorModal(event)">
+  <div class="mfg-modal-card" onclick="event.stopPropagation()">
+    <div class="mfg-modal-header">
+      <div>
+        <span class="mfg-badge mfg-badge--crimson">Partnership Desk</span>
+        <h3 class="t-h4" style="margin-top:6px;color:#0F1320">Become a National Plasto Partner</h3>
+      </div>
+      <button type="button" class="search-close" onclick="closeDistributorModal()" style="position:static;color:#0F1320">✕</button>
+    </div>
+    <div class="mfg-modal-body">
+      <form id="distributorForm" onsubmit="submitDistributorForm(event)">
+        <div class="mfg-form-grid">
+          <div><label class="mfg-input-label">Contact Person *</label><input type="text" class="mfg-text-input" id="distName" required /></div>
+          <div><label class="mfg-input-label">Phone *</label><input type="tel" class="mfg-text-input" id="distPhone" required /></div>
+          <div class="full-width"><label class="mfg-input-label">Firm Name *</label><input type="text" class="mfg-text-input" id="distCompany" required /></div>
+          <div><label class="mfg-input-label">Email *</label><input type="email" class="mfg-text-input" id="distEmail" required /></div>
+          <div><label class="mfg-input-label">Territory / City *</label><input type="text" class="mfg-text-input" id="distTerritory" required /></div>
+          <div class="full-width"><button type="submit" class="btn-mfg-primary" style="width:100%;justify-content:center">Submit Application</button></div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- SCRIPTS -->
+<script src="js/catalogue-data.js"></script>
+<script src="js/main.js"></script>
+<script>
+function openDistributorModal() {
+  document.getElementById('distributorModal')?.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+function closeDistributorModal(e) {
+  if (e && e.target !== e.currentTarget) return;
+  document.getElementById('distributorModal')?.classList.remove('active');
+  document.body.style.overflow = '';
+}
+function submitDistributorForm(e) {
+  e.preventDefault();
+  alert('Thank you! Your dealership application has been received. Our sales desk will contact you within 24 hours.');
+  document.getElementById('distributorModal')?.classList.remove('active');
+  document.body.style.overflow = '';
+}
+function prefillQuote(productStr) {
+  window.location.href = `contact.html?product=${encodeURIComponent(productStr)}`;
+}
+function quickViewProduct(sku) {
+  prefillQuote(sku);
+}
+</script>
+
+</body>
+</html>
