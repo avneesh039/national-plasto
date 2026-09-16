@@ -557,8 +557,8 @@ window.switchAboutTab = function(index) {
               <a href="#enquiry" class="btn-quote-link" onclick="prefillQuote('${p.name} (${p.sku})')">
                 <span>Get A Quote</span> →
               </a>
-              <button type="button" class="btn-ghost-sm" onclick="quickViewProduct('${p.sku}')" style="font-size:11px;font-weight:700;text-transform:uppercase;background:none;border:none;cursor:pointer">
-                Datasheet
+              <button type="button" class="btn-ghost-sm" onclick="openFeatures('${p.sku}')" style="font-size:11px;font-weight:700;text-transform:uppercase;background:none;border:none;cursor:pointer">
+                Our Feature
               </button>
             </div>
           </div>
@@ -615,6 +615,122 @@ window.switchAboutTab = function(index) {
     visibleLimit += 16;
     renderDatabaseGrid();
   };
+
+  /* ── Product features ──
+     Read from the catalogue record and the collection it belongs to. The
+     dataset holds no per-model dimensions, mass, load rating, colours or
+     warranty, so the build features below are the ones true of the whole
+     moulded range, and the measured figures are asked for, not invented. */
+  const RANGE_FEATURES = [
+    ['100% prime virgin polypropylene', 'No reprocessed filler in the mix.'],
+    ['UV inhibitors and impact modifiers', 'Holds colour and resists cracking outdoors.'],
+    ['Stackable', 'Stores and ships in column.'],
+    ['Injection moulded', 'Single-shot body, no welded joints.']
+  ];
+
+  window.openFeatures = function(sku) {
+    const p = getAllProducts().find(x => x.sku === sku);
+    const body = document.getElementById('featBody');
+    const modal = document.getElementById('featureModal');
+    const title = document.getElementById('featTitle');
+    if (!p || !body || !modal) return;
+
+    const coll = (window.NPPL_DATA && window.NPPL_DATA.collections)
+      ? window.NPPL_DATA.collections[p.collectionSlug] : null;
+    const imgs = (p.images || []).filter(i => i && i.url);
+    const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, c =>
+      ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+
+    title.textContent = p.name;
+
+    body.innerHTML = `
+      <div class="feat-grid">
+        <div class="feat-media">
+          <div class="feat-media-main">
+            <img id="featMainImg" src="${esc(imgs[0] ? imgs[0].url : '')}" alt="${esc(p.name)}" />
+          </div>
+          ${imgs.length > 1 ? `
+            <div class="feat-thumbs">
+              ${imgs.map((im, i) => `
+                <button type="button" class="feat-thumb${i === 0 ? ' active' : ''}"
+                        onclick="featureImage('${esc(im.url)}', this)" aria-label="View ${esc(p.name)} image ${i + 1}">
+                  <img src="${esc(im.url)}" alt="" />
+                </button>
+              `).join('')}
+            </div>
+          ` : ''}
+          <p class="feat-ident">
+            <span class="feat-mono">${esc(p.sku)}</span>
+            <span class="feat-ident-sep">·</span>
+            ${esc(p.collection)}
+            <span class="feat-ident-sep">·</span>
+            ${esc(p.category)}
+          </p>
+        </div>
+
+        <div class="feat-info">
+          <section class="feat-block">
+            <h4 class="feat-block-title">Our features</h4>
+            <ul class="feat-list">
+              ${RANGE_FEATURES.map(f => `
+                <li>
+                  <span class="feat-list-name">${esc(f[0])}</span>
+                  <span class="feat-list-note">${esc(f[1])}</span>
+                </li>
+              `).join('')}
+              ${p.isPremium ? `
+                <li>
+                  <span class="feat-list-name">Premium line</span>
+                  <span class="feat-list-note">Top tier of the ${esc(p.collection)} range.</span>
+                </li>
+              ` : ''}
+            </ul>
+            <p class="feat-footnote">Build features of the moulded furniture range — not a per-model measurement.</p>
+          </section>
+
+          ${coll ? `
+            <section class="feat-block">
+              <h4 class="feat-block-title">${esc(coll.name)}</h4>
+              <p class="feat-lede">${esc(coll.tagline)}</p>
+              <p class="feat-text">${esc(coll.description)}</p>
+            </section>
+          ` : ''}
+
+          <div class="feat-actions">
+            <a href="#" class="btn-mfg-primary"
+               onclick="prefillQuote(${JSON.stringify(p.name + ' (' + p.sku + ') — full specification').replace(/"/g, '&quot;')}); return false;">
+              Request full specification
+            </a>
+          </div>
+          <p class="feat-footnote">Dimensions, unit mass, load rating, colours and MOQ are sent against the SKU above.</p>
+        </div>
+      </div>
+    `;
+
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    const closeBtn = modal.querySelector('.search-close');
+    if (closeBtn) closeBtn.focus();
+  };
+
+  window.featureImage = function(url, btn) {
+    const main = document.getElementById('featMainImg');
+    if (main) main.src = url;
+    document.querySelectorAll('.feat-thumb').forEach(b => b.classList.remove('active'));
+    if (btn) btn.classList.add('active');
+  };
+
+  window.closeFeatures = function(e) {
+    if (e && e.target !== e.currentTarget) return;
+    const modal = document.getElementById('featureModal');
+    if (modal) modal.classList.remove('active');
+    document.body.style.overflow = '';
+  };
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') window.closeFeatures();
+  });
+
 
   // Initial load
   if (document.readyState === 'loading') {

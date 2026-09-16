@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="css/animations.css" />
   <link rel="stylesheet" href="css/brand-manufacturing.css" />
   <link rel="stylesheet" href="css/luxury-theme.css" />
-  <link rel="stylesheet" href="css/hero-advance.css?v=5" />
+  <link rel="stylesheet" href="css/hero-advance.css?v=7" />
   <link rel="stylesheet" href="css/mobile.css?v=5" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -257,6 +257,20 @@
 </footer>
 
 <!-- MODAL: DISTRIBUTOR ONBOARDING -->
+<!-- PRODUCT FEATURES -->
+<div class="mfg-modal-backdrop" id="featureModal" onclick="closeFeatures(event)" role="dialog" aria-modal="true" aria-labelledby="featTitle">
+  <div class="mfg-modal-card feature-card" onclick="event.stopPropagation()">
+    <div class="mfg-modal-header">
+      <div>
+        <span class="mfg-badge mfg-badge--crimson">Product Features</span>
+        <h3 class="t-h4" id="featTitle" style="margin-top:6px;color:#0F1320">&nbsp;</h3>
+      </div>
+      <button type="button" class="search-close" onclick="closeFeatures()" style="position:static;color:#0F1320" aria-label="Close features">✕</button>
+    </div>
+    <div class="mfg-modal-body" id="featBody"></div>
+  </div>
+</div>
+
 <div class="mfg-modal-backdrop" id="distributorModal" onclick="closeDistributorModal(event)">
   <div class="mfg-modal-card" onclick="event.stopPropagation()">
     <div class="mfg-modal-header">
@@ -271,9 +285,9 @@
         <div class="mfg-form-grid">
           <div><label class="mfg-input-label">Contact Person *</label><input type="text" class="mfg-text-input" id="distName" required /></div>
           <div><label class="mfg-input-label">Phone *</label><input type="tel" class="mfg-text-input" id="distPhone" required /></div>
-          <div class="full-width"><label class="mfg-input-label">Firm Name *</label><input type="text" class="mfg-text-input" id="distCompany" required /></div>
+          <div class="full-width"><label class="mfg-input-label">Firm Name</label><input type="text" class="mfg-text-input" id="distCompany" /></div>
           <div><label class="mfg-input-label">Email *</label><input type="email" class="mfg-text-input" id="distEmail" required /></div>
-          <div><label class="mfg-input-label">Territory / City *</label><input type="text" class="mfg-text-input" id="distTerritory" required /></div>
+          <div><label class="mfg-input-label">Territory / City</label><input type="text" class="mfg-text-input" id="distTerritory" /></div>
           <div class="full-width"><button type="submit" class="btn-mfg-primary" style="width:100%;justify-content:center">Submit Application</button></div>
         </div>
       </form>
@@ -283,7 +297,7 @@
 
 <!-- SCRIPTS -->
 <script src="js/catalogue-data.js"></script>
-<script src="js/main.js"></script>
+<script src="js/main.js?v=3"></script>
 <script>
 function openDistributorModal() {
   document.getElementById('distributorModal')?.classList.add('active');

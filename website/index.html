@@ -19,7 +19,7 @@
   <link rel="stylesheet" href="css/luxury-theme.css" />
   <link rel="stylesheet" href="css/vibrant-theme.css" />
   <link rel="stylesheet" href="css/light-mode.css?v=2" />
-  <link rel="stylesheet" href="css/hero-advance.css?v=5" />
+  <link rel="stylesheet" href="css/hero-advance.css?v=7" />
   <link rel="stylesheet" href="css/mobile.css?v=5" />
 
   <!-- Fonts: Alex Brush (Touch of Elegance), Cinzel, Space Grotesk, DM Serif Display, Playfair Display -->
@@ -1549,8 +1549,8 @@
       <span class="mfg-badge mfg-badge--gold" style="margin-bottom:20px">Let's Build Together</span>
       
       <h2 class="final-cta-title">
-        LET'S BUILD YOUR NEXT<br>
-        <span style="color:var(--mfg-crimson)">PLASTIC SOLUTION.</span>
+        Built Strong. Built Smart.<br>
+        <span style="color:var(--mfg-crimson)">Built for You.</span>
       </h2>
 
       <p class="final-cta-sub">
@@ -1862,16 +1862,16 @@
             <input type="tel" class="mfg-text-input" id="distPhone" placeholder="+91 98XXXXXXXX" required />
           </div>
           <div class="full-width">
-            <label class="mfg-input-label">Firm / Business Entity Name *</label>
-            <input type="text" class="mfg-text-input" id="distCompany" placeholder="M/s Example Trading Co." required />
+            <label class="mfg-input-label">Firm / Business Entity Name</label>
+            <input type="text" class="mfg-text-input" id="distCompany" placeholder="M/s Example Trading Co." />
           </div>
           <div>
             <label class="mfg-input-label">Email Address *</label>
             <input type="email" class="mfg-text-input" id="distEmail" placeholder="partner@firm.com" required />
           </div>
           <div>
-            <label class="mfg-input-label">Target Territory / City *</label>
-            <input type="text" class="mfg-text-input" id="distTerritory" placeholder="City, State" required />
+            <label class="mfg-input-label">Target Territory / City</label>
+            <input type="text" class="mfg-text-input" id="distTerritory" placeholder="City, State" />
           </div>
           <div>
             <label class="mfg-input-label">Annual Turnover Bracket</label>
@@ -2014,7 +2014,7 @@
 <script src="js/catalogue-data.js"></script>
 <script src="js/loader.js"></script>
 <script src="js/hero-advance.js?v=3" defer></script>
-<script src="js/main.js" defer></script>
+<script src="js/main.js?v=3" defer></script>
 <script src="js/three-scene.js" defer></script>
 
 <script>
@@ -2031,10 +2031,15 @@ function closeDistributorModal(e) {
 }
 function submitDistributorForm(e) {
   e.preventDefault();
-  const name = document.getElementById('distName').value;
-  const company = document.getElementById('distCompany').value;
-  const territory = document.getElementById('distTerritory').value;
-  alert(`Thank you, ${name}! Your distributor application for ${company} in ${territory} has been received. Our trade desk will contact you within 24 hours.`);
+  const name = document.getElementById('distName').value.trim();
+  const company = document.getElementById('distCompany').value.trim();
+  const territory = document.getElementById('distTerritory').value.trim();
+  /* Firm and territory are optional, so the sentence is built from whatever
+     was filled in rather than leaving gaps where the blanks were. */
+  let subject = 'Your distributor application';
+  if (company) subject += ` for ${company}`;
+  if (territory) subject += ` in ${territory}`;
+  alert(`Thank you, ${name}! ${subject} has been received. Our trade desk will contact you within 24 hours.`);
   document.getElementById('distributorModal')?.classList.remove('active');
   document.body.style.overflow = '';
 }
