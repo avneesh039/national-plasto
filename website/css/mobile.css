@@ -13,11 +13,30 @@
   body { cursor: auto !important; }
   button, a, .hamburger, .icon-btn { cursor: pointer !important; }
   .cursor-dot, .cursor-ring, .cursor-label { display: none !important; }
-  .mobile-bottom-nav { display: none !important; }
 }
 
 /* Base rule to hide mobile-bottom-nav on desktop */
 .mobile-bottom-nav { display: none; }
+
+/* iOS auto-zooms the page when a focused field is under 16px. Keep every
+   text entry at 16px on phones so tapping a field never zooms the layout. */
+@media (max-width: 768px) {
+  .form-input,
+  .form-textarea,
+  .mfg-text-input,
+  .mfg-textarea-input,
+  .mfg-select-input,
+  .product-db-search-input,
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="number"],
+  input[type="search"],
+  textarea,
+  select {
+    font-size: 16px;
+  }
+}
 
 /* ═══════════════════════════════════════════════════════════════════════
    BREAKPOINT: ≤ 1200px — Large Tablets / Small Desktops
@@ -285,7 +304,11 @@
 
   /* About (luxury hero-advance section) */
   .about-mfg-section { padding: 72px 0 !important; }
-  .about-luxury-grid { grid-template-columns: 1fr; gap: 40px; }
+  /* minmax(0,1fr), not 1fr: a plain 1fr track is minmax(auto,1fr) and cannot
+     shrink below its widest child's min-content, which drags the other column
+     out with it. min-width:0 frees the columns the same way. */
+  .about-luxury-grid { grid-template-columns: minmax(0, 1fr); gap: 40px; }
+  .about-left-col, .about-right-col { min-width: 0; }
   .about-features-modern-grid { grid-template-columns: 1fr; }
   .about-metric-strip { flex-wrap: wrap; gap: 12px; padding: 14px 16px; }
   .about-metric-divider { display: none; }
@@ -295,11 +318,14 @@
   .btn-about-primary, .btn-about-secondary { width: 100%; justify-content: center; }
   .about-floating-badge { position: static; margin-top: 12px; width: 100%; }
   .badge-top-right, .badge-bottom-left { position: static; }
-  .about-stage-tabs {
+  /* The element is .about-stage-nav — the .about-stage-tabs this rule used to
+     name exists in no page, so the scroll fix never applied and the three
+     nowrap tabs forced the whole About grid 444px wide. */
+  .about-stage-nav {
     flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch;
     padding-bottom: 4px; scrollbar-width: none; justify-content: flex-start;
   }
-  .about-stage-tabs::-webkit-scrollbar { display: none; }
+  .about-stage-nav::-webkit-scrollbar { display: none; }
   .about-stage-tab { white-space: nowrap; flex-shrink: 0; font-size: 11px; padding: 8px 14px; }
 
   /* About card mobile */
@@ -312,6 +338,17 @@
   .hero-mfg-desc { font-size: 15px; margin-top: 16px; }
   .hero-mfg-actions { flex-direction: column; align-items: stretch; gap: 12px; }
   .btn-mfg-primary, .btn-mfg-secondary { width: 100%; justify-content: center; padding: 14px 24px; }
+
+  /* This bar's rows carry inline flex-shrink:0 and min-width:300px, so they
+     cannot shrink and clip the button on a 360px screen. Inline styles need
+     !important to beat. */
+  .quality-credentials-bar > div {
+    min-width: 0 !important;
+    flex-shrink: 1 !important;
+    flex-wrap: wrap;
+  }
+  .quality-credentials-bar > div:last-child { width: 100%; }
+
   .hero-mfg-specs-bar { flex-wrap: wrap; gap: 16px; margin-top: 28px; padding-top: 20px; }
   .hero-showcase-wrapper { max-width: 100%; }
   .hero-floating-proof-chip { flex-direction: column; align-items: flex-start; gap: 10px; bottom: 12px; left: 12px; right: 12px; }
@@ -471,7 +508,6 @@
   .hero-mfg-actions { gap: 10px; }
   .catalogue-actions { flex-direction: column; align-items: stretch; gap: 10px; }
   .catalogue-actions a, .catalogue-actions button { width: 100%; justify-content: center; }
-  .mobile-nav-link { font-size: clamp(24px, 8vw, 40px); }
   .hero-mfg-specs-bar { gap: 12px; }
 }
 
@@ -486,11 +522,47 @@
   .hero-reveal-script { font-size: clamp(22px, 10vw, 34px) !important; }
   .mfg-section-title { font-size: clamp(22px, 8vw, 34px) !important; }
   .hero-mfg-title { font-size: clamp(24px, 9vw, 36px) !important; }
-  .mobile-nav-link { font-size: clamp(20px, 7vw, 32px); }
-  .mobile-menu-inner { padding: 28px 20px; }
   .hero-cta-explore, .hero-btn-contact { font-size: 10px; padding: 12px 16px; }
   .trust-metric-num { font-size: 24px !important; }
   .about-metric-num { font-size: 24px !important; }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   FULLSCREEN MOBILE MENU
+   Seven links plus the footer block overflow a phone screen, so the panel
+   scrolls and the type is sized to keep long labels on one line.
+   ═══════════════════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  /* Stretch, not centre: centring a panel taller than the screen clips
+     its top beyond reach. */
+  .mobile-menu { align-items: stretch; }
+
+  .mobile-menu-inner {
+    height: 100%;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+    /* Clear the 68px fixed header, which sits above this panel. */
+    padding: calc(68px + 20px) 20px 32px;
+    justify-content: flex-start;
+  }
+
+  /* The header clearance now lives on the panel padding. */
+  .mobile-nav { margin-top: 0; }
+
+  .mobile-nav-link {
+    font-size: clamp(18px, 5.6vw, 25px);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    padding: 13px 0;
+    gap: 12px;
+  }
+
+  .mobile-menu-footer {
+    margin-top: 32px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
 }
 
 /* ═══════════════════════════════════════════════════════════════════════
@@ -500,6 +572,22 @@
   .site-header {
     padding-left: env(safe-area-inset-left);
     padding-right: env(safe-area-inset-right);
+  }
+
+  /* viewport-fit=cover runs the page under the status bar, so the fixed
+     header grows by the top inset and pads its content clear of the notch.
+     border-box keeps .header-inner's height:100% at the original 68px. */
+  @media (max-width: 768px) {
+    .site-header {
+      height: calc(68px + env(safe-area-inset-top)) !important;
+      padding-top: env(safe-area-inset-top);
+    }
+    .site-header.scrolled {
+      height: calc(62px + env(safe-area-inset-top)) !important;
+    }
+    .mobile-menu-inner {
+      padding-top: calc(68px + env(safe-area-inset-top) + 20px);
+    }
   }
   .mobile-sticky-bar {
     padding-bottom: max(12px, env(safe-area-inset-bottom));
