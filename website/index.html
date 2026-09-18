@@ -19,7 +19,7 @@
   <link rel="stylesheet" href="css/luxury-theme.css" />
   <link rel="stylesheet" href="css/vibrant-theme.css" />
   <link rel="stylesheet" href="css/light-mode.css?v=2" />
-  <link rel="stylesheet" href="css/hero-advance.css?v=7" />
+  <link rel="stylesheet" href="css/hero-advance.css?v=11" />
   <link rel="stylesheet" href="css/mobile.css?v=5" />
 
   <!-- Fonts: Alex Brush (Touch of Elegance), Cinzel, Space Grotesk, DM Serif Display, Playfair Display -->
@@ -159,6 +159,12 @@
         <a href="quality.html" class="nav-link">Quality</a>
         <a href="about.html" class="nav-link">About</a>
         <a href="contact.html" class="nav-link">Contact</a>
+        <button type="button" class="nav-link nav-catalogue-btn" onclick="downloadCatalogue(this)" data-cursor="CATALOGUE">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
+          </svg>
+          <span>Catalogue</span>
+        </button>
       </nav>
 
       <div class="header-actions">
@@ -197,6 +203,7 @@
       <a href="quality.html" class="mobile-nav-link" data-index="05">Quality &amp; ISO Certification</a>
       <a href="about.html" class="mobile-nav-link" data-index="06">About National Plasto</a>
       <a href="contact.html" class="mobile-nav-link" data-index="07">Contact &amp; RFQ</a>
+      <button type="button" class="mobile-nav-link mobile-nav-catalogue" data-index="08" onclick="downloadCatalogue(this)">Download Catalogue</button>
     </nav>
     <div class="mobile-menu-footer">
       <p class="t-label text-dim">National Plasto Products Private Limited</p>
@@ -1965,6 +1972,20 @@
 <!-- ════════════════════════════════════════════════
      MODAL: PRODUCT CATALOGUE MASTER EXPLORER
      ════════════════════════════════════════════════ -->
+<!-- SHOP NOW -->
+<div class="mfg-modal-backdrop" id="shopModal" onclick="closeShop(event)" role="dialog" aria-modal="true" aria-labelledby="shopTitle">
+  <div class="mfg-modal-card shop-card" onclick="event.stopPropagation()">
+    <div class="mfg-modal-header">
+      <div>
+        <span class="mfg-badge mfg-badge--crimson">Buy Online</span>
+        <h3 class="t-h4" id="shopTitle" style="margin-top:6px;color:#0F1320">&nbsp;</h3>
+      </div>
+      <button type="button" class="search-close" onclick="closeShop()" style="position:static;color:#0F1320" aria-label="Close">&#10005;</button>
+    </div>
+    <div class="mfg-modal-body" id="shopBody"></div>
+  </div>
+</div>
+
 <div class="catalogue-modal" id="catalogueModal">
   <div class="catalogue-modal-inner">
     <button class="catalogue-close" id="catalogueClose" aria-label="Close catalogue">
@@ -2014,7 +2035,7 @@
 <script src="js/catalogue-data.js"></script>
 <script src="js/loader.js"></script>
 <script src="js/hero-advance.js?v=3" defer></script>
-<script src="js/main.js?v=3" defer></script>
+<script src="js/main.js?v=4" defer></script>
 <script src="js/three-scene.js" defer></script>
 
 <script>

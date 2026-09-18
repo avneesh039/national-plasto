@@ -3746,3 +3746,152 @@
   .feat-grid { grid-template-columns: minmax(0, 1fr); gap: 22px; }
   .feat-actions > * { width: 100%; justify-content: center; }
 }
+
+/* ═══════════════════════════════════════════════════════════════════════
+   SHOP NOW — card button + marketplace chooser
+   ═══════════════════════════════════════════════════════════════════════ */
+.btn-shop-now {
+  margin-top: 14px;
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 11px 18px;
+  border: none;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #C8102E 0%, #A80B24 100%);
+  color: #FFFFFF;
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.btn-shop-now:hover,
+.btn-shop-now:focus-visible {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(200, 16, 46, 0.3);
+}
+.btn-shop-now svg { flex-shrink: 0; }
+
+.shop-card { max-width: 460px; width: 100%; }
+.shop-sku {
+  margin: 0 0 16px;
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: #64748b;
+}
+.shop-mono {
+  font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  letter-spacing: 0.04em;
+  color: var(--brand-crimson, #C8102E);
+  font-weight: 700;
+}
+
+.shop-stores { display: flex; flex-direction: column; gap: 10px; }
+.shop-store {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 15px 18px;
+  border: 1px solid var(--border-light, #e2e8f0);
+  border-radius: 12px;
+  background: #FFFFFF;
+  text-decoration: none;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+a.shop-store:hover,
+a.shop-store:focus-visible {
+  border-color: var(--brand-crimson, #C8102E);
+  background: #FFF7F8;
+}
+.shop-store-name {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #0F1320;
+}
+.shop-store-go {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--brand-crimson, #C8102E);
+  white-space: nowrap;
+}
+/* A store with no listing is shown, but plainly inert — never a live-looking
+   control that goes nowhere. */
+.shop-store--soon { background: #F8FAFC; border-style: dashed; }
+.shop-store--soon .shop-store-name { color: #94a3b8; }
+.shop-store-soon {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #94a3b8;
+  white-space: nowrap;
+}
+
+.shop-note {
+  margin: 16px 0 0;
+  font-size: 13px;
+  line-height: 1.55;
+  color: #475569;
+}
+.shop-actions { margin-top: 18px; display: flex; }
+.shop-actions > * { width: 100%; justify-content: center; }
+
+/* ─── Catalogue download in the header nav ─── */
+/* Gold, not white: crimson is spoken for by GET A QUOTE and gold is already
+   this header's secondary-action colour (the PARTNER button's border). Kept as
+   a tinted nav item rather than a third solid button, so it reads as an action
+   without competing with the two CTAs beside it. */
+/* Matches .header-nav .nav-link's specificity and its !important flags, which
+   otherwise force white text on a transparent, borderless, square nav item. */
+.header-nav .nav-catalogue-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 16px !important;
+  border-radius: 999px !important;
+  background: rgba(200, 165, 94, 0.12) !important;
+  border: 1px solid rgba(200, 165, 94, 0.45) !important;
+  cursor: pointer;
+  color: #E8C880 !important;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.75);
+  transition: background 0.22s ease, border-color 0.22s ease, color 0.22s ease;
+}
+.header-nav .nav-catalogue-btn:hover,
+.header-nav .nav-catalogue-btn:focus-visible {
+  background: rgba(200, 165, 94, 0.24) !important;
+  border-color: rgba(200, 165, 94, 0.9) !important;
+  color: #F5E2B4 !important;
+  text-shadow: 0 0 12px rgba(232, 200, 128, 0.5), 0 1px 4px rgba(0, 0, 0, 0.8) !important;
+}
+/* The underline sweep the other nav links get would cut across the pill. */
+.header-nav .nav-catalogue-btn::after { display: none !important; }
+.header-nav .nav-catalogue-btn svg { flex-shrink: 0; opacity: 0.9; }
+.header-nav .nav-catalogue-btn.is-busy { opacity: 0.6; pointer-events: none; }
+
+/* In the mobile sheet the links are already large and white, so the gold sits
+   on the index marker and a rule above, not on a pill. */
+/* Literal, not --brand-gold-light: this file redefines that token to a cream
+   (#FFF8E7) further up, which reads as off-white rather than gold. */
+.mobile-nav-catalogue {
+  color: #E8C880 !important;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  width: 100%;
+}
+.mobile-nav-catalogue.is-busy { opacity: 0.6; pointer-events: none; }
+
+@media (max-width: 760px) {
+  .shop-card { max-width: 100%; }
+}

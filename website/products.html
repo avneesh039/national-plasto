@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="css/animations.css" />
   <link rel="stylesheet" href="css/brand-manufacturing.css" />
   <link rel="stylesheet" href="css/luxury-theme.css" />
-  <link rel="stylesheet" href="css/hero-advance.css?v=7" />
+  <link rel="stylesheet" href="css/hero-advance.css?v=11" />
   <link rel="stylesheet" href="css/mobile.css?v=5" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -257,6 +257,20 @@
 </footer>
 
 <!-- MODAL: DISTRIBUTOR ONBOARDING -->
+<!-- SHOP NOW -->
+<div class="mfg-modal-backdrop" id="shopModal" onclick="closeShop(event)" role="dialog" aria-modal="true" aria-labelledby="shopTitle">
+  <div class="mfg-modal-card shop-card" onclick="event.stopPropagation()">
+    <div class="mfg-modal-header">
+      <div>
+        <span class="mfg-badge mfg-badge--crimson">Buy Online</span>
+        <h3 class="t-h4" id="shopTitle" style="margin-top:6px;color:#0F1320">&nbsp;</h3>
+      </div>
+      <button type="button" class="search-close" onclick="closeShop()" style="position:static;color:#0F1320" aria-label="Close">&#10005;</button>
+    </div>
+    <div class="mfg-modal-body" id="shopBody"></div>
+  </div>
+</div>
+
 <!-- PRODUCT FEATURES -->
 <div class="mfg-modal-backdrop" id="featureModal" onclick="closeFeatures(event)" role="dialog" aria-modal="true" aria-labelledby="featTitle">
   <div class="mfg-modal-card feature-card" onclick="event.stopPropagation()">
@@ -297,7 +311,7 @@
 
 <!-- SCRIPTS -->
 <script src="js/catalogue-data.js"></script>
-<script src="js/main.js?v=3"></script>
+<script src="js/main.js?v=4"></script>
 <script>
 function openDistributorModal() {
   document.getElementById('distributorModal')?.classList.add('active');

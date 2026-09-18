@@ -553,6 +553,13 @@ window.switchAboutTab = function(index) {
               <span class="technical-spec-pill">UV Stabilized</span>
             </div>
 
+            <button type="button" class="btn-shop-now" onclick="openShop('${p.sku}')">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/>
+              </svg>
+              <span>Shop Now</span>
+            </button>
+
             <div class="product-actions-bar" style="margin-top:16px;">
               <a href="#enquiry" class="btn-quote-link" onclick="prefillQuote('${p.name} (${p.sku})')">
                 <span>Get A Quote</span> →
@@ -730,6 +737,227 @@ window.switchAboutTab = function(index) {
   document.addEventListener('keydown', e => {
     if (e.key === 'Escape') window.closeFeatures();
   });
+
+
+  /* ── Shop Now ──
+     Marketplace listings are added per SKU as they go live. A product with no
+     entry here still shows the button, but the chooser says the listing is not
+     up yet and offers the enquiry desk instead — never a guessed marketplace
+     URL, which would land the buyer on somebody else's product.
+
+     To wire a product up, add its SKU:
+       'NP-NTL-058': {
+         amazon:   'https://www.amazon.in/dp/XXXXXXXXXX',
+         flipkart: 'https://www.flipkart.com/.../p/XXXXXXXXXX'
+       },
+  */
+  const MARKETPLACE = {};
+
+  const STORES = [
+    { key: 'amazon',   label: 'Amazon' },
+    { key: 'flipkart', label: 'Flipkart' }
+  ];
+
+  window.openShop = function(sku) {
+    const p = getAllProducts().find(x => x.sku === sku);
+    const modal = document.getElementById('shopModal');
+    const body = document.getElementById('shopBody');
+    const title = document.getElementById('shopTitle');
+    if (!p || !modal || !body) return;
+
+    const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, c =>
+      ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+    const links = MARKETPLACE[p.sku] || {};
+    const live = STORES.filter(s => links[s.key]);
+
+    title.textContent = p.name;
+
+    body.innerHTML = `
+      <p class="shop-sku"><span class="shop-mono">${esc(p.sku)}</span> · ${esc(p.collection)}</p>
+
+      <div class="shop-stores">
+        ${STORES.map(s => links[s.key] ? `
+          <a class="shop-store" href="${esc(links[s.key])}" target="_blank" rel="noopener noreferrer">
+            <span class="shop-store-name">${esc(s.label)}</span>
+            <span class="shop-store-go">Buy now &rarr;</span>
+          </a>
+        ` : `
+          <div class="shop-store shop-store--soon">
+            <span class="shop-store-name">${esc(s.label)}</span>
+            <span class="shop-store-soon">Listing not live yet</span>
+          </div>
+        `).join('')}
+      </div>
+
+      ${live.length === 0 ? `
+        <p class="shop-note">This model is not on a marketplace yet. The trade desk sells it directly, usually faster for bulk orders.</p>
+      ` : ''}
+
+      <div class="shop-actions">
+        <a href="#" class="btn-mfg-primary"
+           onclick="prefillQuote(${JSON.stringify(p.name + ' (' + p.sku + ')').replace(/"/g, '&quot;')}); return false;">
+          Enquire directly
+        </a>
+      </div>
+    `;
+
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    const closeBtn = modal.querySelector('.search-close');
+    if (closeBtn) closeBtn.focus();
+  };
+
+  window.closeShop = function(e) {
+    if (e && e.target !== e.currentTarget) return;
+    const modal = document.getElementById('shopModal');
+    if (modal) modal.classList.remove('active');
+    document.body.style.overflow = '';
+  };
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') window.closeShop();
+  });
+
+
+  /* ── Catalogue PDF ──
+     jsPDF is ~350KB, so it is fetched on the first click rather than on every
+     page load. Both scripts are UMD builds pinned to an exact version. */
+  const PDF_LIBS = [
+    'https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js',
+    'https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js'
+  ];
+
+  function loadScript(src) {
+    return new Promise((resolve, reject) => {
+      if (document.querySelector(`script[src="${src}"]`)) return resolve();
+      const s = document.createElement('script');
+      s.src = src;
+      s.onload = resolve;
+      s.onerror = () => reject(new Error('Could not load ' + src));
+      document.head.appendChild(s);
+    });
+  }
+
+  /* Collections in catalogue order, then categories best build first — the
+     same order the product grid uses. */
+  const COLLECTION_ORDER = ['NATIONAL', 'NATIONAL SAPPHIRE', 'NEXT', 'CAPTAIN'];
+
+  function tierRank(category) {
+    const c = (category || '').toLowerCase();
+    if (/heavy/.test(c) && /premium/.test(c)) return 0;
+    if (/premium/.test(c)) return 1;
+    if (/heavy/.test(c)) return 2;
+    if (/deluxe/.test(c)) return 3;
+    if (/regular/.test(c)) return 4;
+    if (/economical/.test(c)) return 6;
+    return 5;
+  }
+
+  function catalogueRows() {
+    const all = getAllProducts().slice();
+    const byCollection = new Map();
+    all.forEach(p => {
+      const c = p.collection || 'OTHER';
+      if (!byCollection.has(c)) byCollection.set(c, []);
+      byCollection.get(c).push(p);
+    });
+
+    const names = [...byCollection.keys()].sort((a, b) => {
+      const ia = COLLECTION_ORDER.indexOf(a), ib = COLLECTION_ORDER.indexOf(b);
+      return (ia === -1 ? 99 : ia) - (ib === -1 ? 99 : ib) || a.localeCompare(b);
+    });
+
+    return names.map(name => {
+      const items = byCollection.get(name).slice().sort((a, b) =>
+        tierRank(a.category) - tierRank(b.category) ||
+        (a.category || '').localeCompare(b.category || '') ||
+        (a.name || '').localeCompare(b.name || ''));
+      return { name: name, items: items };
+    });
+  }
+
+  window.downloadCatalogue = async function(btn) {
+    const label = btn ? btn.innerHTML : null;
+    const groups = catalogueRows();
+    const total = groups.reduce((n, g) => n + g.items.length, 0);
+
+    if (!total) {
+      alert('The product list has not finished loading. Please try again in a moment.');
+      return;
+    }
+
+    if (btn) { btn.classList.add('is-busy'); btn.innerHTML = 'Preparing…'; }
+
+    try {
+      for (const src of PDF_LIBS) await loadScript(src);
+
+      const JsPDF = window.jspdf && window.jspdf.jsPDF;
+      if (!JsPDF) throw new Error('jsPDF did not initialise');
+
+      const doc = new JsPDF({ unit: 'pt', format: 'a4' });
+      const pageW = doc.internal.pageSize.getWidth();
+      const today = new Date().toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' });
+      const categories = new Set(getAllProducts().map(p => p.category)).size;
+
+      // Cover
+      doc.setFillColor(15, 19, 32);
+      doc.rect(0, 0, pageW, 150, 'F');
+      doc.setTextColor(255, 255, 255);
+      doc.setFont('helvetica', 'bold');
+      doc.setFontSize(24);
+      doc.text('NATIONAL PLASTO', 40, 62);
+      doc.setFontSize(13);
+      doc.setFont('helvetica', 'normal');
+      doc.setTextColor(200, 16, 46);
+      doc.text('Product Catalogue', 40, 88);
+      doc.setTextColor(180, 190, 200);
+      doc.setFontSize(9);
+      doc.text(`${total} models · ${categories} categories · ${groups.length} collections`, 40, 110);
+      doc.text(today, 40, 126);
+
+      let cursor = 186;
+
+      groups.forEach(g => {
+        doc.setFont('helvetica', 'bold');
+        doc.setFontSize(13);
+        doc.setTextColor(15, 19, 32);
+        if (cursor > doc.internal.pageSize.getHeight() - 120) { doc.addPage(); cursor = 60; }
+        doc.text(`${g.name}  (${g.items.length})`, 40, cursor);
+
+        doc.autoTable({
+          startY: cursor + 10,
+          head: [['Category', 'Model', 'SKU']],
+          body: g.items.map(p => [p.category || '', p.name || '', p.sku || '']),
+          styles: { font: 'helvetica', fontSize: 9, cellPadding: 5, textColor: [40, 50, 62] },
+          headStyles: { fillColor: [200, 16, 46], textColor: 255, fontStyle: 'bold', fontSize: 8 },
+          alternateRowStyles: { fillColor: [246, 248, 250] },
+          columnStyles: { 0: { cellWidth: 190 }, 2: { cellWidth: 110 } },
+          margin: { left: 40, right: 40, bottom: 50 }
+        });
+
+        cursor = doc.lastAutoTable.finalY + 34;
+      });
+
+      // Footer on every page
+      const pages = doc.internal.getNumberOfPages();
+      for (let i = 1; i <= pages; i++) {
+        doc.setPage(i);
+        doc.setFont('helvetica', 'normal');
+        doc.setFontSize(8);
+        doc.setTextColor(140, 150, 160);
+        doc.text('National Plasto Products Private Limited · info@nationalplasto.com',
+          40, doc.internal.pageSize.getHeight() - 24);
+        doc.text(`${i} / ${pages}`, pageW - 40, doc.internal.pageSize.getHeight() - 24, { align: 'right' });
+      }
+
+      doc.save('national-plasto-catalogue.pdf');
+    } catch (err) {
+      alert('The catalogue could not be generated just now. Please check your connection and try again.');
+      if (window.console) console.error(err);
+    } finally {
+      if (btn) { btn.classList.remove('is-busy'); if (label !== null) btn.innerHTML = label; }
+    }
+  };
 
 
   // Initial load
