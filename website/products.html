@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="css/animations.css" />
   <link rel="stylesheet" href="css/brand-manufacturing.css" />
   <link rel="stylesheet" href="css/luxury-theme.css" />
-  <link rel="stylesheet" href="css/hero-advance.css?v=11" />
+  <link rel="stylesheet" href="css/hero-advance.css?v=13" />
   <link rel="stylesheet" href="css/mobile.css?v=5" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -71,6 +71,18 @@
         <a href="quality.html" class="nav-link">Quality</a>
         <a href="about.html" class="nav-link">About</a>
         <a href="contact.html" class="nav-link">Contact</a>
+        <button type="button" class="nav-link nav-catalogue-btn" onclick="downloadCatalogue(this)" data-cursor="CATALOGUE">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
+          </svg>
+          <span>Catalogue</span>
+        </button>
+        <button type="button" class="nav-link nav-distributor-btn" onclick="openDistributorLocator()" data-cursor="LOCATOR">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+          </svg>
+          <span>Distributor Near You</span>
+        </button>
       </nav>
 
       <div class="header-actions">
@@ -106,6 +118,8 @@
       <a href="quality.html" class="mobile-nav-link">Quality &amp; ISO Lab</a>
       <a href="about.html" class="mobile-nav-link">About National Plasto</a>
       <a href="contact.html" class="mobile-nav-link">Contact &amp; RFQ</a>
+      <button type="button" class="mobile-nav-link mobile-nav-catalogue" onclick="downloadCatalogue(this)">Download Catalogue</button>
+      <button type="button" class="mobile-nav-link mobile-nav-distributor" onclick="openDistributorLocator();document.getElementById('mobileMenu').classList.remove('active')">Distributor Near You</button>
     </nav>
   </div>
 </div>
@@ -230,6 +244,7 @@
             <li><a href="quality.html">Quality &amp; Testing Lab</a></li>
             <li><a href="about.html">About National Plasto</a></li>
             <li><a href="contact.html">Contact &amp; RFQ</a></li>
+            <li><a href="javascript:void(0)" onclick="openDistributorLocator()">Distributor Near You</a></li>
           </ul>
         </div>
         <div class="footer-col">
@@ -311,7 +326,7 @@
 
 <!-- SCRIPTS -->
 <script src="js/catalogue-data.js"></script>
-<script src="js/main.js?v=4"></script>
+<script src="js/main.js?v=5"></script>
 <script>
 function openDistributorModal() {
   document.getElementById('distributorModal')?.classList.add('active');

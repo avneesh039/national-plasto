@@ -45,16 +45,18 @@ body.light-mode .site-header.scrolled {
 }
 
 .header-inner {
-  max-width: 1440px !important;
+  max-width: 1760px !important;
   margin: 0 auto !important;
-  padding: 0 28px !important;
+  padding: 0 clamp(16px, 2.5vw, 44px) !important;
+  gap: clamp(16px, 2vw, 36px) !important;
 }
 
 .header-nav {
   display: flex !important;
   align-items: center !important;
-  gap: clamp(10px, 1.4vw, 20px) !important;
-  margin: 0 auto !important;
+  gap: clamp(4px, 0.75vw, 10px) !important;
+  margin: 0 !important;
+  margin-right: auto !important;
 }
 
 .site-header .nav-link {
@@ -834,3 +836,118 @@ body.light-mode .site-header.scrolled {
     padding-bottom: 30px !important;
   }
 }
+
+/* ─── LIGHT MODE: OUR MANAGEMENT SECTION ─── */
+body.light-mode .management-mfg-section {
+  background: radial-gradient(ellipse 80% 50% at 50% 0%, rgba(200, 16, 46, 0.04) 0%, transparent 70%),
+              #F8FAFC !important;
+  border-top-color: #E2E8F0 !important;
+  border-bottom-color: #E2E8F0 !important;
+}
+
+body.light-mode .management-main-title {
+  color: #0F172A !important;
+}
+
+body.light-mode .management-sub-title {
+  color: #475569 !important;
+}
+
+body.light-mode .management-brand-narrative {
+  background: #FFFFFF !important;
+  border-color: #E2E8F0 !important;
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.06) !important;
+}
+
+body.light-mode .brand-narrative-lead-wrap {
+  border-bottom-color: #F1F5F9 !important;
+}
+
+body.light-mode .narrative-heading {
+  color: #0F172A !important;
+}
+
+body.light-mode .brand-narrative-text-grid p {
+  color: #334155 !important;
+}
+
+body.light-mode .brand-narrative-text-grid p strong {
+  color: #0F172A !important;
+}
+
+body.light-mode .narrative-highlight {
+  color: #B45309 !important;
+  border-left-color: #D97706 !important;
+}
+
+body.light-mode .management-plants-bar {
+  border-top-color: #F1F5F9 !important;
+}
+
+body.light-mode .plant-bar-label {
+  color: #B45309 !important;
+}
+
+body.light-mode .plant-chip {
+  background: #F1F5F9 !important;
+  border-color: #E2E8F0 !important;
+  color: #1E293B !important;
+}
+
+body.light-mode .plant-chip-state {
+  color: #64748B !important;
+}
+
+body.light-mode .member-featured-card {
+  background: #FFFFFF !important;
+  border-color: rgba(200, 16, 46, 0.25) !important;
+  box-shadow: 0 20px 48px rgba(15, 23, 42, 0.08) !important;
+}
+
+body.light-mode .member-name {
+  color: #0F172A !important;
+}
+
+body.light-mode .member-lineage-text {
+  color: #C8102E !important;
+}
+
+body.light-mode .member-bio-text p {
+  color: #334155 !important;
+}
+
+body.light-mode .member-quote-callout {
+  background: #FFFBEB !important;
+  border-left-color: #D97706 !important;
+}
+
+body.light-mode .quote-text {
+  color: #1E293B !important;
+}
+
+body.light-mode .quote-author strong {
+  color: #B45309 !important;
+}
+
+body.light-mode .quote-author span {
+  color: #64748B !important;
+}
+
+body.light-mode .executive-card {
+  background: #FFFFFF !important;
+  border-color: #E2E8F0 !important;
+  box-shadow: 0 12px 32px rgba(15, 23, 42, 0.06) !important;
+}
+
+body.light-mode .executive-content .member-bio-text p {
+  color: #334155 !important;
+}
+
+body.light-mode .executive-card-footer {
+  border-top-color: #F1F5F9 !important;
+}
+
+body.light-mode .card-focus-tag {
+  color: #64748B !important;
+}
+

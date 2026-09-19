@@ -38,29 +38,44 @@
   display: flex !important;
   align-items: center !important;
   justify-content: space-between !important;
-  gap: 20px !important;
+  gap: clamp(16px, 2vw, 36px) !important;
   width: 100% !important;
-  max-width: 1440px !important;
+  max-width: 1760px !important;
   margin: 0 auto !important;
-  padding: 0 28px !important;
+  padding: 0 clamp(16px, 2.5vw, 44px) !important;
+}
+
+.site-header .header-logo {
+  flex-shrink: 0 !important;
+  position: relative !important;
+  z-index: 10 !important;
+  margin-right: clamp(16px, 2.2vw, 36px) !important;
 }
 
 /* Fix navbar item collapse and overlap */
 .header-nav {
   display: flex !important;
   align-items: center !important;
-  gap: 22px !important; /* CRITICAL FIX: 22px gap between nav links */
-  margin: 0 auto !important;
+  gap: clamp(4px, 0.75vw, 10px) !important;
+  margin: 0 !important;
+  margin-right: auto !important;
+  flex-shrink: 0 !important;
+}
+
+/* Move Home button cleanly to the right side of the brand logo */
+.site-header .header-nav > .nav-link:first-child,
+.site-header .header-nav > a.nav-link:first-of-type {
+  margin-left: clamp(10px, 1.4vw, 24px) !important;
 }
 
 .site-header .nav-link {
   color: rgba(255, 255, 255, 0.85) !important;
   font-family: 'Space Grotesk', -apple-system, sans-serif !important;
-  font-size: 12.5px !important;
+  font-size: clamp(11.5px, 0.8vw, 12.5px) !important;
   font-weight: 700 !important;
-  letter-spacing: 0.07em !important;
+  letter-spacing: 0.05em !important;
   text-transform: uppercase !important;
-  padding: 8px 4px !important;
+  padding: 8px clamp(5px, 0.65vw, 10px) !important;
   white-space: nowrap !important;
   position: relative !important;
   transition: all 0.2s ease !important;
@@ -513,11 +528,12 @@
 }
 
 /* Responsive Navbar Adjustments */
-@media (max-width: 1200px) {
+@media (max-width: 1280px) {
   .header-nav {
-    gap: 14px !important;
+    gap: 4px !important;
   }
   .site-header .nav-link {
-    font-size: 11.5px !important;
+    font-size: 11px !important;
+    padding: 6px 5px !important;
   }
 }
