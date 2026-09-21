@@ -138,7 +138,11 @@
   align-items: center !important;
   gap: clamp(4px, 0.75vw, 10px) !important;
   margin: 0 !important;
-  margin-right: auto !important;
+  /* Take the space between the logo and the actions and centre the links in
+     it. margin-right:auto used to shove the whole nav against the logo,
+     which left a wide gap once the header buttons moved to the contact page. */
+  flex: 1 1 auto !important;
+  justify-content: center !important;
   background: transparent !important;
   border: none !important;
   border-radius: 0 !important;
@@ -3882,14 +3886,14 @@ a.shop-store:focus-visible {
 .header-nav .nav-catalogue-btn {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  padding: 6px clamp(8px, 0.75vw, 12px) !important;
+  /* Same box as the Shop pill beside it; they sat 6px apart in height. */
+  gap: 7px;
+  padding: 9px 16px !important;
   border-radius: 999px !important;
   background: rgba(200, 165, 94, 0.12) !important;
   border: 1px solid rgba(200, 165, 94, 0.45) !important;
   cursor: pointer;
   color: #E8C880 !important;
-  font-size: clamp(11px, 0.75vw, 12px) !important;
   white-space: nowrap !important;
   flex-shrink: 0 !important;
   text-shadow: 0 1px 4px rgba(0, 0, 0, 0.75);
@@ -3917,7 +3921,6 @@ a.shop-store:focus-visible {
   border: none;
   cursor: pointer;
   font: inherit;
-  color: inherit;
   text-align: left;
   width: 100%;
 }
@@ -4918,6 +4921,8 @@ a.shop-store:focus-visible {
   gap: 7px;
   padding: 9px 16px !important;
   border-radius: 999px !important;
+  white-space: nowrap !important;
+  flex-shrink: 0 !important;
   background: rgba(126, 200, 227, 0.14) !important;
   border: 1px solid rgba(126, 200, 227, 0.5) !important;
   cursor: pointer;
@@ -5311,4 +5316,633 @@ a.shop-store:focus-visible {
 /* Three routes now, so the grid balances at three across before stacking. */
 @media (min-width: 901px) {
   .contact-options-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); max-width: 1120px; }
+}
+
+/* ─── Management: portrait stand-in and remembrance card ─── */
+/* No photograph on file for this director; initials hold the frame so the
+   card keeps the same shape as the others. */
+.member-portrait-monogram {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(150deg, #1B2330 0%, #0F1520 100%);
+}
+.member-portrait-monogram span {
+  font-family: var(--font-display, 'Space Grotesk', sans-serif);
+  font-size: clamp(34px, 4vw, 52px);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: rgba(232, 200, 128, 0.75);
+}
+
+/* A quieter frame than the serving directors' cards, without setting the
+   card apart so far that it reads as a different kind of content. */
+.executive-card--memoriam .member-portrait-badge {
+  background: rgba(15, 21, 32, 0.9) !important;
+  border-color: rgba(232, 200, 128, 0.4) !important;
+  color: #E8C880 !important;
+}
+.executive-card--memoriam .card-focus-tag .tag-dot { background: #E8C880; }
+
+/* Four directors now, so the row balances at two on wide screens rather than
+   leaving one card stranded on a second line. */
+@media (min-width: 1101px) {
+  .executive-directors-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   PAN INDIA PRESENCE
+   Green marks a manufacturing unit, crimson an office — the same pairing
+   the legend states, so colour alone never carries the meaning.
+   ═══════════════════════════════════════════════════════════════════════ */
+.presence-section { padding: 100px 0; background: #F7F9FB; border-top: 1px solid #e2e8f0; }
+
+.presence-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 0.8fr);
+  gap: 48px;
+  align-items: end;
+  margin-bottom: 30px;
+}
+.presence-title {
+  font-family: var(--font-display, "Space Grotesk", sans-serif);
+  font-size: clamp(28px, 3.4vw, 46px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  color: #0F1320;
+  margin: 12px 0 0;
+}
+.presence-lead { margin: 14px 0 0; font-size: 15px; line-height: 1.7; color: #5A6374; max-width: 62ch; }
+
+.presence-stats { margin: 0; display: flex; gap: 34px; flex-wrap: wrap; }
+.presence-stats > div { display: flex; flex-direction: column; gap: 4px; }
+.presence-stats dt {
+  font-family: var(--font-display, "Space Grotesk", sans-serif);
+  font-size: clamp(26px, 2.4vw, 36px);
+  font-weight: 800;
+  color: var(--brand-crimson, #C8102E);
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+.presence-stats dd {
+  margin: 0;
+  font-family: "Instrument Sans", sans-serif;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #8792A4;
+}
+
+/* ─── Legend ─── */
+.presence-legend { display: flex; gap: 22px; align-items: center; margin-bottom: 26px; flex-wrap: wrap; }
+.legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: "Instrument Sans", sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: #475569;
+}
+.legend-dot { width: 11px; height: 11px; border-radius: 50%; flex-shrink: 0; }
+.legend-dot--unit   { background: #1D7A4D; }
+.legend-dot--office { background: var(--brand-crimson, #C8102E); }
+
+/* ─── Groups ─── */
+.presence-groups {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+  gap: 32px;
+  align-items: start;
+}
+.presence-group {
+  background: #FFFFFF;
+  border: 1px solid var(--border-light, #e2e8f0);
+  border-radius: 16px;
+  padding: 26px 26px 24px;
+}
+.presence-group-head { display: flex; align-items: center; gap: 10px; margin-bottom: 18px; }
+.presence-group-head h3 {
+  margin: 0;
+  font-family: "Instrument Sans", sans-serif;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #0F1320;
+}
+.presence-group-count {
+  margin-left: auto;
+  font-family: "Instrument Sans", sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  color: #94a3b8;
+  font-variant-numeric: tabular-nums;
+}
+
+.presence-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
+.presence-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 2px 16px;
+  padding: 14px 0 14px 18px;
+  border-bottom: 1px solid var(--border-light, #e2e8f0);
+  position: relative;
+  align-items: center;
+}
+.presence-card:last-child { border-bottom: none; }
+/* Dot drawn in CSS so each row needs no extra markup. */
+.presence-card::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 20px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+}
+.presence-card--unit::before   { background: #1D7A4D; }
+.presence-card--office::before { background: var(--brand-crimson, #C8102E); }
+.presence-city {
+  font-family: var(--font-display, "Space Grotesk", sans-serif);
+  font-size: 16.5px;
+  font-weight: 700;
+  color: #0F1320;
+}
+.presence-state { grid-column: 1; font-size: 13px; color: #64748b; line-height: 1.5; }
+.presence-directions {
+  grid-row: 1 / span 2;
+  grid-column: 2;
+  font-family: "Instrument Sans", sans-serif;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--brand-crimson, #C8102E);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.presence-directions:hover, .presence-directions:focus-visible { text-decoration: underline; }
+
+.presence-note { margin: 16px 0 0; font-size: 13px; line-height: 1.6; color: #64748b; }
+.presence-cta {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 18px;
+  padding: 11px 22px;
+  border-radius: 999px;
+  border: 1px solid var(--brand-crimson, #C8102E);
+  color: var(--brand-crimson, #C8102E);
+  font-family: "Instrument Sans", sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background 0.22s ease, color 0.22s ease;
+}
+.presence-cta:hover, .presence-cta:focus-visible { background: var(--brand-crimson, #C8102E); color: #FFFFFF; }
+
+/* ═══ Compact version on the home page ═══ */
+.presence-home-section { padding: 90px 0; background: #FFFFFF; border-top: 1px solid #e2e8f0; }
+.presence-home-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.85fr);
+  gap: 56px;
+  align-items: center;
+}
+.presence-home-title {
+  font-family: var(--font-display, "Space Grotesk", sans-serif);
+  font-size: clamp(30px, 3.6vw, 48px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  color: #0F1320;
+  margin: 0;
+}
+.presence-home-lead { margin: 16px 0 0; font-size: 16px; line-height: 1.7; color: #5A6374; max-width: 52ch; }
+.presence-home-cta {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 26px;
+  padding: 14px 30px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #C8102E 0%, #A80B24 100%);
+  color: #FFFFFF;
+  font-family: "Instrument Sans", sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.presence-home-cta:hover, .presence-home-cta:focus-visible {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px rgba(200, 16, 46, 0.3);
+}
+.presence-home-copy .presence-legend { margin: 24px 0 0; }
+
+.presence-home-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1px;
+  background: var(--border-light, #e2e8f0);
+  border: 1px solid var(--border-light, #e2e8f0);
+  border-radius: 14px;
+  overflow: hidden;
+}
+.presence-home-item {
+  background: #FFFFFF;
+  padding: 16px 18px 16px 34px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.presence-home-item::before {
+  content: "";
+  position: absolute;
+  left: 16px;
+  top: 22px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+}
+.presence-home-item--unit::before   { background: #1D7A4D; }
+.presence-home-item--office::before { background: var(--brand-crimson, #C8102E); }
+.presence-home-city {
+  font-family: var(--font-display, "Space Grotesk", sans-serif);
+  font-size: 16px;
+  font-weight: 700;
+  color: #0F1320;
+}
+.presence-home-state {
+  font-family: "Instrument Sans", sans-serif;
+  font-size: 12.5px;
+  color: #64748b;
+}
+
+@media (max-width: 900px) {
+  .presence-head { grid-template-columns: minmax(0, 1fr); gap: 28px; align-items: start; }
+  .presence-groups { grid-template-columns: minmax(0, 1fr); }
+  .presence-home-grid { grid-template-columns: minmax(0, 1fr); gap: 34px; }
+}
+@media (max-width: 560px) {
+  .presence-section, .presence-home-section { padding: 68px 0; }
+  .presence-card { grid-template-columns: minmax(0, 1fr); }
+  .presence-directions { grid-row: auto; grid-column: 1; margin-top: 6px; }
+  .presence-home-cta, .presence-cta { width: 100%; justify-content: center; }
+}
+
+/* ─── Presence: brand key, map figure ─── */
+.presence-main {
+  display: grid;
+  grid-template-columns: minmax(0, 0.62fr) minmax(0, 1fr);
+  gap: 32px;
+  align-items: start;
+  margin-bottom: 34px;
+}
+
+.presence-key {
+  background: #FFFFFF;
+  border: 1px solid var(--border-light, #e2e8f0);
+  border-radius: 16px;
+  padding: 24px 24px 22px;
+}
+.presence-key-head {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin: 0 0 14px;
+  font-family: "Instrument Sans", sans-serif;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #0F1320;
+}
+.presence-key-head--office { margin-top: 24px; }
+.presence-key-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
+.presence-key-list li {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border-light, #e2e8f0);
+}
+.presence-key-list li:last-child { border-bottom: none; }
+
+/* Brand marks reuse the collection colours already used on the product
+   badges, so the key matches the cards. Squares for brands, a ringed circle
+   for the office — NATIONAL and Offices share crimson, and shape is what
+   separates them. */
+.key-mark { width: 10px; height: 10px; border-radius: 3px; flex-shrink: 0; }
+.key-mark--next     { background: #0284c7; }
+.key-mark--national { background: #c8102e; }
+.key-mark--sapphire { background: #1e40af; }
+.key-mark--captain  { background: #0f172a; }
+.key-mark--office {
+  background: var(--brand-crimson, #C8102E);
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px #FFFFFF, 0 0 0 3.5px rgba(200, 16, 46, 0.45);
+}
+.key-name {
+  flex: 1;
+  min-width: 0;
+  font-family: "Instrument Sans", sans-serif;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #0F1320;
+}
+.key-count {
+  font-family: "Instrument Sans", sans-serif;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #94a3b8;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ─── Map figure ─── */
+.presence-map {
+  margin: 0;
+  background: #FFFFFF;
+  border: 1px solid var(--border-light, #e2e8f0);
+  border-radius: 16px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.presence-map-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 10px;
+}
+/* The panel only shows while the artwork is missing; the img's onerror adds
+   .presence-map--empty, so nothing renders as a broken image. */
+.presence-map-fallback { display: none; }
+.presence-map--empty .presence-map-fallback {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  text-align: center;
+  aspect-ratio: 4 / 3;
+  border: 1px dashed #cbd5e1;
+  border-radius: 10px;
+  background: #F7F9FB;
+  padding: 20px;
+}
+.presence-map-fallback-title {
+  font-family: "Instrument Sans", sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #94a3b8;
+}
+.presence-map-fallback-note { font-size: 12.5px; color: #94a3b8; max-width: 34ch; line-height: 1.5; }
+.presence-map-caption {
+  font-family: "Instrument Sans", sans-serif;
+  font-size: 12px;
+  color: #64748b;
+  text-align: center;
+}
+
+/* ─── Locations block ─── */
+.presence-locations {
+  background: #FFFFFF;
+  border: 1px solid var(--border-light, #e2e8f0);
+  border-radius: 16px;
+  padding: 24px 26px 20px;
+}
+.presence-loc-head {
+  margin: 0 0 12px;
+  font-family: "Instrument Sans", sans-serif;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #0F1320;
+}
+
+/* ─── Brand row on the home page ─── */
+.presence-brand-row {
+  list-style: none;
+  margin: 22px 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 18px;
+}
+.presence-brand-row li {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: "Instrument Sans", sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: #475569;
+}
+
+.presence-map--home { padding: 16px; }
+
+@media (max-width: 900px) {
+  .presence-main { grid-template-columns: minmax(0, 1fr); }
+  /* Map first on a phone: it is the thing this section is about. */
+  .presence-map--home { order: -1; }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   CHAT WITH US — floating WhatsApp button
+   ═══════════════════════════════════════════════════════════════════════ */
+.chat-fab {
+  position: fixed;
+  right: 22px;
+  bottom: calc(22px + env(safe-area-inset-bottom, 0px));
+  /* Above the mobile bottom nav (900), below the modals (2000), so an open
+     dialog is never competing with it. */
+  z-index: 1200;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px 12px 14px;
+  border-radius: 999px;
+  background: #25D366;
+  color: #FFFFFF;
+  text-decoration: none;
+  box-shadow: 0 8px 24px rgba(37, 211, 102, 0.36), 0 2px 8px rgba(0, 0, 0, 0.18);
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+.chat-fab:hover,
+.chat-fab:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(37, 211, 102, 0.46), 0 3px 10px rgba(0, 0, 0, 0.22);
+}
+.chat-fab:focus-visible { outline: 3px solid #FFFFFF; outline-offset: 2px; }
+
+.chat-fab-icon { display: inline-flex; flex-shrink: 0; }
+.chat-fab-icon svg { width: 24px; height: 24px; display: block; }
+.chat-fab-label {
+  font-family: "Instrument Sans", sans-serif;
+  font-size: 13.5px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+/* On a phone it collapses to the icon so it never covers content, and on the
+   one page with a bottom nav it sits clear of it. */
+@media (max-width: 768px) {
+  .chat-fab {
+    right: 16px;
+    bottom: calc(18px + env(safe-area-inset-bottom, 0px));
+    padding: 0;
+    width: 54px;
+    height: 54px;
+    justify-content: center;
+    gap: 0;
+  }
+  .chat-fab-label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+  /* The bottom bar is 102px, but its raised Quote circle reaches ~115px, so
+     the button clears that, not just the bar. */
+  body:has(.mobile-bottom-nav) .chat-fab {
+    bottom: calc(128px + env(safe-area-inset-bottom, 0px));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .chat-fab { transition: none; }
+  .chat-fab:hover, .chat-fab:focus-visible { transform: none; }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   FOUR DIVISIONS
+   Numbered because the divisions are presented as a ranked set, 01 to 04,
+   in the company's own copy — the order carries meaning here.
+   ═══════════════════════════════════════════════════════════════════════ */
+.divisions-section { padding: 100px 0; background: #0F1320; }
+
+.divisions-head { max-width: 860px; margin: 0 auto 52px; text-align: center; }
+.divisions-title {
+  font-family: var(--font-display, "Space Grotesk", sans-serif);
+  font-size: clamp(26px, 3.4vw, 46px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.14;
+  color: #FFFFFF;
+  margin: 14px 0 0;
+  text-wrap: balance;
+}
+.divisions-lead {
+  margin: 18px auto 0;
+  max-width: 68ch;
+  font-size: 15.5px;
+  line-height: 1.75;
+  color: #AFBACB;
+}
+.divisions-lead--sub { color: #8D9AAE; font-size: 14.5px; }
+
+.divisions-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.division-card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 30px 30px 26px;
+  background: #161C2B;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  /* The accent rail is the only place each division's colour appears, so the
+     cards stay a set rather than four different designs. */
+  border-top: 3px solid var(--division-tint, #64748b);
+}
+.division-card--next     { --division-tint: #0284c7; }
+.division-card--national { --division-tint: #c8102e; }
+.division-card--captain  { --division-tint: #0f172a; }
+.division-card--sapphire { --division-tint: #1e40af; }
+.division-card--captain  { --division-tint: #7C8698; }
+
+.division-card-head { display: flex; align-items: flex-start; gap: 16px; }
+.division-num {
+  font-family: var(--font-display, "Space Grotesk", sans-serif);
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--division-tint, #64748b);
+  letter-spacing: 0.04em;
+  padding-top: 4px;
+  font-variant-numeric: tabular-nums;
+}
+.division-name {
+  margin: 0;
+  font-family: var(--font-display, "Space Grotesk", sans-serif);
+  font-size: clamp(22px, 2.2vw, 30px);
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  color: #FFFFFF;
+  line-height: 1.1;
+}
+.division-kicker {
+  margin: 5px 0 0;
+  font-family: "Instrument Sans", sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--division-tint, #94a3b8);
+}
+.division-card--captain .division-kicker,
+.division-card--captain .division-num { color: #9FAABB; }
+
+.division-body { display: flex; flex-direction: column; gap: 12px; }
+.division-body p { margin: 0; font-size: 14.5px; line-height: 1.7; color: #B8C2D2; }
+
+.division-link {
+  margin-top: auto;
+  padding-top: 6px;
+  font-family: "Instrument Sans", sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  text-decoration: none;
+  align-self: flex-start;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.28);
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+.division-link:hover,
+.division-link:focus-visible {
+  color: var(--division-tint, #FFFFFF);
+  border-bottom-color: var(--division-tint, #FFFFFF);
+}
+
+@media (max-width: 900px) {
+  .divisions-grid { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 560px) {
+  .divisions-section { padding: 68px 0; }
+  .division-card { padding: 24px 20px 22px; }
 }

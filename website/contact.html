@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="css/animations.css" />
   <link rel="stylesheet" href="css/brand-manufacturing.css" />
   <link rel="stylesheet" href="css/luxury-theme.css" />
-  <link rel="stylesheet" href="css/hero-advance.css?v=20" />
+  <link rel="stylesheet" href="css/hero-advance.css?v=29" />
   <link rel="stylesheet" href="css/mobile.css?v=8" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -319,7 +319,7 @@
   </div>
 </footer>
 
-<script src="js/main.js?v=9"></script>
+<script src="js/main.js?v=13"></script>
 <script>
 /* ── Contact enquiry form ── */
 const IN_STATES = ['Andaman & Nicobar Islands','Andhra Pradesh','Arunachal Pradesh','Assam','Bihar',
@@ -402,6 +402,81 @@ document.addEventListener('DOMContentLoaded', () => {
     <div class="mfg-modal-body" id="shopBody"></div>
   </div>
 </div>
+
+<!-- CHAT WITH US -->
+<a class="chat-fab"
+   href="https://wa.me/919830012345?text=Hello%20National%20Plasto%2C%20I%20would%20like%20to%20know%20more%20about%20your%20products."
+   target="_blank" rel="noopener noreferrer" aria-label="Chat with us on WhatsApp">
+  <span class="chat-fab-icon" aria-hidden="true">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+  </span>
+  <span class="chat-fab-label">Chat with us</span>
+</a>
+
+<!-- MODAL: DISTRIBUTOR ONBOARDING -->
+<div class="mfg-modal-backdrop" id="distributorModal" onclick="closeDistributorModal(event)">
+  <div class="mfg-modal-card" onclick="event.stopPropagation()">
+    <div class="mfg-modal-header">
+      <div>
+        <span class="mfg-badge mfg-badge--crimson">Partnership Desk</span>
+        <h3 class="t-h4" style="margin-top:6px;color:#0F1320">Become a National Plasto Partner</h3>
+      </div>
+      <button type="button" class="search-close" onclick="closeDistributorModal()" style="position:static;color:#0F1320">✕</button>
+    </div>
+    <div class="mfg-modal-body">
+      <p class="t-caption" style="color:#555B6E;margin-bottom:20px">
+        Direct factory supply, competitive trade margins, territory exclusivity, and dedicated marketing support. Fill in your entity details to begin the evaluation process.
+      </p>
+      <form id="distributorForm" onsubmit="submitDistributorForm(event)">
+        <div class="mfg-form-grid">
+          <div>
+            <label class="mfg-input-label">Contact Person *</label>
+            <input type="text" class="mfg-text-input" id="distName" placeholder="Full Name" required />
+          </div>
+          <div>
+            <label class="mfg-input-label">Phone / WhatsApp *</label>
+            <input type="tel" class="mfg-text-input" id="distPhone" placeholder="+91 98XXXXXXXX" required />
+          </div>
+          <div class="full-width">
+            <label class="mfg-input-label">Firm / Business Entity Name</label>
+            <input type="text" class="mfg-text-input" id="distCompany" placeholder="M/s Example Trading Co." />
+          </div>
+          <div>
+            <label class="mfg-input-label">Email Address *</label>
+            <input type="email" class="mfg-text-input" id="distEmail" placeholder="partner@firm.com" required />
+          </div>
+          <div>
+            <label class="mfg-input-label">Target Territory / City</label>
+            <input type="text" class="mfg-text-input" id="distTerritory" placeholder="City, State" />
+          </div>
+          <div>
+            <label class="mfg-input-label">Annual Turnover Bracket</label>
+            <select class="mfg-select-input" id="distTurnover">
+              <option value="up-to-50L">Up to ₹50 Lakhs</option>
+              <option value="50L-2Cr">₹50 Lakhs – ₹2 Crores</option>
+              <option value="2Cr-5Cr">₹2 Crores – ₹5 Crores</option>
+              <option value="5Cr-plus">₹5 Crores +</option>
+            </select>
+          </div>
+          <div>
+            <label class="mfg-input-label">Warehouse Space (sq ft)</label>
+            <input type="text" class="mfg-text-input" id="distWarehouse" placeholder="e.g. 2,500 sq ft" />
+          </div>
+          <div class="full-width">
+            <label class="mfg-input-label">Existing Lines / Brands Carried</label>
+            <input type="text" class="mfg-text-input" id="distLines" placeholder="e.g. Plastic furniture, hardware, FMCG distribution" />
+          </div>
+          <div class="full-width" style="margin-top:8px">
+            <button type="submit" class="btn-mfg-primary" style="width:100%;justify-content:center">
+              Submit Distributor Application
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
 
 </body>
 </html>

@@ -514,6 +514,27 @@ window.switchAboutTab = function(index) {
     return (s || '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
   }
 
+  /* Material follows the division, not the whole catalogue. Only NEXT is
+     virgin plastic; NATIONAL is semi-virgin and reprocessed; CAPTAIN and
+     SAPPHIRE are reprocessed. Labelling every card "100% Virgin PP" told
+     buyers of 114 of the 160 products something untrue. */
+  const MATERIALS = {
+    next:     { short: 'Virgin PP',            long: '100% virgin polypropylene',
+                note: 'Premium virgin plastic, for finish and colour fastness.' },
+    national: { short: 'Semi-Virgin / Reprocessed', long: 'Semi-virgin and reprocessed polypropylene',
+                note: 'Blended to hold strength across a wide range of price points.' },
+    captain:  { short: 'Reprocessed PP',       long: 'Reprocessed polypropylene',
+                note: 'Economical build for high-volume everyday use.' },
+    sapphire: { short: 'Reprocessed PP',       long: 'Reprocessed polypropylene',
+                note: 'Economical build for price-conscious markets.' }
+  };
+
+  function materialFor(p) {
+    const slug = (p.collectionSlug || '').toLowerCase();
+    if (slug.indexOf('sapphire') !== -1) return MATERIALS.sapphire;
+    return MATERIALS[slug] || MATERIALS.national;
+  }
+
   function getAllProducts() {
     if (window.NPPL_DATA && Array.isArray(window.NPPL_DATA.allWithImages) && window.NPPL_DATA.allWithImages.length > 0) {
       return window.NPPL_DATA.allWithImages;
@@ -682,10 +703,10 @@ window.switchAboutTab = function(index) {
               <span class="technical-spec-pill">Tested: 200 kg</span>
             </div>
             <h3 class="product-card-title">${p.name}</h3>
-            <p class="product-card-cat">${p.category} · 100% Virgin Polymer</p>
+            <p class="product-card-cat">${p.category} · ${materialFor(p).long}</p>
             
             <div style="margin-top:10px;display:flex;gap:6px;flex-wrap:wrap">
-              <span class="technical-spec-pill">100% Virgin PP</span>
+              <span class="technical-spec-pill">${materialFor(p).short}</span>
               <span class="technical-spec-pill">Stackable</span>
               <span class="technical-spec-pill">UV Stabilized</span>
             </div>
@@ -793,7 +814,6 @@ window.switchAboutTab = function(index) {
      warranty, so the build features below are the ones true of the whole
      moulded range, and the measured figures are asked for, not invented. */
   const RANGE_FEATURES = [
-    ['100% prime virgin polypropylene', 'No reprocessed filler in the mix.'],
     ['UV inhibitors and impact modifiers', 'Holds colour and resists cracking outdoors.'],
     ['Stackable', 'Stores and ships in column.'],
     ['Injection moulded', 'Single-shot body, no welded joints.']
@@ -843,7 +863,7 @@ window.switchAboutTab = function(index) {
           <section class="feat-block">
             <h4 class="feat-block-title">Our features</h4>
             <ul class="feat-list">
-              ${RANGE_FEATURES.map(f => `
+              ${[[materialFor(p).long, materialFor(p).note]].concat(RANGE_FEATURES).map(f => `
                 <li>
                   <span class="feat-list-name">${esc(f[0])}</span>
                   <span class="feat-list-note">${esc(f[1])}</span>
@@ -856,7 +876,7 @@ window.switchAboutTab = function(index) {
                 </li>
               ` : ''}
             </ul>
-            <p class="feat-footnote">Build features of the moulded furniture range — not a per-model measurement.</p>
+            <p class="feat-footnote">Material follows the ${esc(p.collection)} division; the other build features apply across the moulded range. Neither is a per-model measurement.</p>
           </section>
 
           ${coll ? `
@@ -1097,6 +1117,23 @@ window.switchAboutTab = function(index) {
     if (e && e.target !== e.currentTarget) return;
     document.getElementById('distributorModal')?.classList.remove('active');
     document.body.style.overflow = '';
+  };
+
+  /* The modal's form calls this. Only index and products defined it inline, so
+     on the other five pages submitting threw. Firm and territory are optional,
+     so the sentence is built from whatever was filled in. */
+  window.submitDistributorForm = function(e) {
+    e.preventDefault();
+    const val = id => { const el = document.getElementById(id); return el ? el.value.trim() : ''; };
+    const name = val('distName');
+    const company = val('distCompany');
+    const territory = val('distTerritory');
+    let subject = 'Your distributor application';
+    if (company) subject += ' for ' + company;
+    if (territory) subject += ' in ' + territory;
+    alert('Thank you, ' + name + '! ' + subject +
+          ' has been received. Our trade desk will contact you within 24 hours.');
+    window.closeDistributorModal();
   };
 
   /* ── Distributor Near You Locator ── */
