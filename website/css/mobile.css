@@ -120,7 +120,17 @@
   /* Header */
   .site-header { height: 68px !important; }
   .site-header.scrolled { height: 62px !important; }
-  .header-inner { padding: 0 16px !important; }
+  /* .site-header scoped to match vibrant-theme.css, which sets this padding
+     at the same weight but higher specificity. */
+  .site-header .header-inner { padding: 0 20px !important; }
+  /* The nav is hidden on a phone, leaving .header-right-cluster with one
+     child; its space-between then parks the buttons mid-header instead of at
+     the edge. Pin the cluster right and let it shrink to its content. */
+  .header-right-cluster {
+    justify-content: flex-end !important;
+    flex: 0 0 auto !important;
+  }
+  .header-actions { gap: 12px !important; }
   .header-logo-primary { height: 48px !important; max-width: 200px !important; }
   .site-header.scrolled .header-logo-primary { height: 40px !important; }
   .header-nav, .header-btn-partner, .header-btn-touch { display: none !important; }
@@ -474,7 +484,7 @@
 @media (max-width: 480px) {
   .container { padding: 0 16px; }
   .header-logo-primary { height: 42px !important; max-width: 170px !important; }
-  .header-inner { padding: 0 14px !important; }
+  .site-header .header-inner { padding: 0 18px !important; }
   .hero-heading-main { font-size: clamp(36px, 14vw, 60px) !important; }
   .hero-reveal-brand-name { font-size: clamp(18px, 8vw, 32px) !important; letter-spacing: 0.08em !important; }
   .hero-reveal-script { font-size: clamp(26px, 10vw, 38px) !important; }
@@ -516,7 +526,7 @@
    ═══════════════════════════════════════════════════════════════════════ */
 @media (max-width: 360px) {
   .container { padding: 0 12px; }
-  .header-inner { padding: 0 12px !important; }
+  .site-header .header-inner { padding: 0 16px !important; }
   .hero-heading-main { font-size: clamp(32px, 13vw, 52px) !important; }
   .hero-reveal-brand-name { font-size: clamp(16px, 8.5vw, 28px) !important; }
   .hero-reveal-script { font-size: clamp(22px, 10vw, 34px) !important; }

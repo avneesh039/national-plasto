@@ -14,8 +14,8 @@
   <link rel="stylesheet" href="css/animations.css" />
   <link rel="stylesheet" href="css/brand-manufacturing.css" />
   <link rel="stylesheet" href="css/luxury-theme.css" />
-  <link rel="stylesheet" href="css/hero-advance.css?v=13" />
-  <link rel="stylesheet" href="css/mobile.css?v=5" />
+  <link rel="stylesheet" href="css/hero-advance.css?v=20" />
+  <link rel="stylesheet" href="css/mobile.css?v=8" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -54,38 +54,59 @@
     <div class="header-right-cluster">
       <nav class="header-nav" id="headerNav" aria-label="Main navigation">
         <a href="index.html" class="nav-link">Home</a>
+        <a href="about.html" class="nav-link">About</a>
         <a href="products.html" class="nav-link">Products</a>
         <a href="solutions.html" class="nav-link active-nav">Solutions</a>
         <a href="manufacturing.html" class="nav-link">Manufacturing</a>
         <a href="quality.html" class="nav-link">Quality</a>
-        <a href="about.html" class="nav-link">About</a>
         <a href="contact.html" class="nav-link">Contact</a>
+        <button type="button" class="nav-link nav-shop-btn" onclick="openShopNav()" data-cursor="SHOP">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/>
+          </svg>
+          <span>Shop</span>
+        </button>
         <button type="button" class="nav-link nav-catalogue-btn" onclick="downloadCatalogue(this)" data-cursor="CATALOGUE">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
           </svg>
           <span>Catalogue</span>
         </button>
-        <button type="button" class="nav-link nav-distributor-btn" onclick="openDistributorLocator()" data-cursor="LOCATOR">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
-          </svg>
-          <span>Distributor Near You</span>
-        </button>
       </nav>
 
       <div class="header-actions">
-        <button type="button" class="header-btn-partner" onclick="openDistributorModal()" data-cursor="PARTNER">
-          <span>PARTNER WITH US</span>
+        <button class="hamburger" id="menuToggle" aria-label="Menu" aria-expanded="false">
+          <span></span><span></span><span></span>
         </button>
-        <a href="contact.html" class="header-btn-touch" data-cursor="QUOTE">
-          <span>GET A QUOTE</span>
-        </a>
       </div>
     </div>
   </div>
 </header>
 
+
+<!-- Mobile Menu Overlay -->
+<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <div class="mobile-menu-inner">
+    <nav class="mobile-nav">
+      <a href="index.html" class="mobile-nav-link" data-index="01">Home</a>
+      <a href="about.html" class="mobile-nav-link" data-index="02">About National Plasto</a>
+      <a href="products.html" class="mobile-nav-link" data-index="03">Product Collections</a>
+      <a href="solutions.html" class="mobile-nav-link" data-index="04">Custom Moulding Solutions</a>
+      <a href="manufacturing.html" class="mobile-nav-link" data-index="05">Manufacturing &amp; Technology</a>
+      <a href="quality.html" class="mobile-nav-link" data-index="06">Quality &amp; ISO Certification</a>
+      <a href="contact.html" class="mobile-nav-link" data-index="07">Contact &amp; RFQ</a>
+      <button type="button" class="mobile-nav-link mobile-nav-shop" data-index="08" onclick="openShopNav();document.getElementById('mobileMenu').classList.remove('active')">Shop</button>
+      <button type="button" class="mobile-nav-link mobile-nav-catalogue" data-index="09" onclick="downloadCatalogue(this)">Download Catalogue</button>
+    </nav>
+    <div class="mobile-menu-footer">
+      <p class="t-label text-dim">National Plasto Products Private Limited</p>
+      <p class="t-label text-dim">Excellence in Plastic Moulded Products &middot; Touch of Elegance</p>
+      <div style="margin-top:16px;display:flex;gap:12px">
+        <button type="button" class="btn-primary" style="flex:1;justify-content:center" onclick="openDistributorModal();document.getElementById('mobileMenu').classList.remove('active')">Become a Partner</button>
+      </div>
+    </div>
+  </div>
+</div>
 <!-- PAGE HERO BANNER -->
 <section class="page-hero-banner">
   <div class="container">
@@ -141,26 +162,6 @@
       </div>
     </div>
 
-    <!-- 6-STEP WORKFLOW LIFECYCLE -->
-    <div class="mfg-workflow-wrap">
-      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px">
-        <div>
-          <span class="mfg-badge mfg-badge--gold">Turnkey Production Lifecycle</span>
-          <h3 class="t-h3" style="color:#FFFFFF;margin-top:8px;font-weight:700">From Requirement to Dispatch</h3>
-        </div>
-        <a href="contact.html" class="btn-mfg-primary">Discuss Your Requirement</a>
-      </div>
-
-      <div class="workflow-steps-grid">
-        <div class="workflow-step-card"><span class="workflow-step-num">01</span><h4 class="workflow-step-title">Requirement</h4><p class="workflow-step-desc">Application analysis, resin selection, load criteria, and cost targets.</p></div>
-        <div class="workflow-step-card"><span class="workflow-step-num">02</span><h4 class="workflow-step-title">Development</h4><p class="workflow-step-desc">CAD modelling, mold-flow simulation, and stress FEA analysis.</p></div>
-        <div class="workflow-step-card"><span class="workflow-step-num">03</span><h4 class="workflow-step-title">Tooling</h4><p class="workflow-step-desc">Hardened P20/H13 steel tooling fabricated with precision CNC EDM.</p></div>
-        <div class="workflow-step-card"><span class="workflow-step-num">04</span><h4 class="workflow-step-title">Moulding</h4><p class="workflow-step-desc">Microprocessor high-tonnage injection with closed-loop controls.</p></div>
-        <div class="workflow-step-card"><span class="workflow-step-num">05</span><h4 class="workflow-step-title">Quality Audit</h4><p class="workflow-step-desc">Dimensional verification, drop impact testing, and surface finish sign-off.</p></div>
-        <div class="workflow-step-card"><span class="workflow-step-num">06</span><h4 class="workflow-step-title">Delivery</h4><p class="workflow-step-desc">Palletised protective shrink wrapping with direct pan-India shipping.</p></div>
-      </div>
-    </div>
-
   </div>
 </section>
 
@@ -186,17 +187,7 @@
         </div>
       </div>
 
-      <div class="proof-case-card">
-        <div class="case-image-wrapper"><img src="images/brand/case-study-logistics.jpg" alt="Cold Storage Crates" loading="lazy" /></div>
-        <div class="case-body-content">
-          <span class="case-sector">Logistics &amp; Cold Storage</span>
-          <h3 class="case-headline">Cold-Resistant Distribution Crates for Produce Chain</h3>
-          <p style="font-size: 13.5px; color: #64748b; margin-top: 10px;">Sub-zero impact copolymer eliminating crack failure in -15°C cold storage.</p>
-          <div class="case-result-badge" style="margin-top: 24px;"><span>Result:</span> 35% Breakage Reduction</div>
-        </div>
-      </div>
-
-      <div class="proof-case-card">
+            <div class="proof-case-card">
         <div class="case-image-wrapper"><img src="images/brand/case-study-hospitality.jpg" alt="Resort Dining" loading="lazy" /></div>
         <div class="case-body-content">
           <span class="case-sector">Commercial Hospitality</span>
@@ -231,7 +222,7 @@
             <li><a href="quality.html">Quality &amp; Testing Lab</a></li>
             <li><a href="about.html">About National Plasto</a></li>
             <li><a href="contact.html">Contact &amp; RFQ</a></li>
-            <li><a href="javascript:void(0)" onclick="openDistributorLocator()">Distributor Near You</a></li>
+            <li><a href="contact.html#contact-options">Distributor Near You</a></li>
           </ul>
         </div>
         <div class="footer-col">
@@ -274,7 +265,7 @@
   </div>
 </div>
 
-<script src="js/main.js?v=5"></script>
+<script src="js/main.js?v=9"></script>
 <script>
 function openRfqModal(title) {
   if (title) document.getElementById('rfqModalTitle').textContent = title + ' — RFQ';
@@ -293,6 +284,20 @@ function submitRfqForm(e) {
   document.body.style.overflow = '';
 }
 </script>
+
+<!-- SHOP -->
+<div class="mfg-modal-backdrop" id="shopModal" onclick="closeShop(event)" role="dialog" aria-modal="true" aria-labelledby="shopTitle">
+  <div class="mfg-modal-card shop-card" onclick="event.stopPropagation()">
+    <div class="mfg-modal-header">
+      <div>
+        <span class="mfg-badge mfg-badge--crimson">Buy Online</span>
+        <h3 class="t-h4" id="shopTitle" style="margin-top:6px;color:#0F1320">&nbsp;</h3>
+      </div>
+      <button type="button" class="search-close" onclick="closeShop()" style="position:static;color:#0F1320" aria-label="Close">&#10005;</button>
+    </div>
+    <div class="mfg-modal-body" id="shopBody"></div>
+  </div>
+</div>
 
 </body>
 </html>

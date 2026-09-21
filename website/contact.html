@@ -14,8 +14,8 @@
   <link rel="stylesheet" href="css/animations.css" />
   <link rel="stylesheet" href="css/brand-manufacturing.css" />
   <link rel="stylesheet" href="css/luxury-theme.css" />
-  <link rel="stylesheet" href="css/hero-advance.css?v=13" />
-  <link rel="stylesheet" href="css/mobile.css?v=5" />
+  <link rel="stylesheet" href="css/hero-advance.css?v=20" />
+  <link rel="stylesheet" href="css/mobile.css?v=8" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -54,27 +54,30 @@
     <div class="header-right-cluster">
       <nav class="header-nav" id="headerNav" aria-label="Main navigation">
         <a href="index.html" class="nav-link">Home</a>
+        <a href="about.html" class="nav-link">About</a>
         <a href="products.html" class="nav-link">Products</a>
         <a href="solutions.html" class="nav-link">Solutions</a>
         <a href="manufacturing.html" class="nav-link">Manufacturing</a>
         <a href="quality.html" class="nav-link">Quality</a>
-        <a href="about.html" class="nav-link">About</a>
         <a href="contact.html" class="nav-link active-nav">Contact</a>
+        <button type="button" class="nav-link nav-shop-btn" onclick="openShopNav()" data-cursor="SHOP">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/>
+          </svg>
+          <span>Shop</span>
+        </button>
         <button type="button" class="nav-link nav-catalogue-btn" onclick="downloadCatalogue(this)" data-cursor="CATALOGUE">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
           </svg>
           <span>Catalogue</span>
         </button>
-        <button type="button" class="nav-link nav-distributor-btn" onclick="openDistributorLocator()" data-cursor="LOCATOR">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
-          </svg>
-          <span>Distributor Near You</span>
-        </button>
       </nav>
 
       <div class="header-actions">
+        <button class="hamburger" id="menuToggle" aria-label="Menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
         <a href="tel:+919830012345" class="header-btn-partner">
           <span>CALL SALES DESK</span>
         </a>
@@ -83,6 +86,30 @@
   </div>
 </header>
 
+
+<!-- Mobile Menu Overlay -->
+<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <div class="mobile-menu-inner">
+    <nav class="mobile-nav">
+      <a href="index.html" class="mobile-nav-link" data-index="01">Home</a>
+      <a href="about.html" class="mobile-nav-link" data-index="02">About National Plasto</a>
+      <a href="products.html" class="mobile-nav-link" data-index="03">Product Collections</a>
+      <a href="solutions.html" class="mobile-nav-link" data-index="04">Custom Moulding Solutions</a>
+      <a href="manufacturing.html" class="mobile-nav-link" data-index="05">Manufacturing &amp; Technology</a>
+      <a href="quality.html" class="mobile-nav-link" data-index="06">Quality &amp; ISO Certification</a>
+      <a href="contact.html" class="mobile-nav-link" data-index="07">Contact &amp; RFQ</a>
+      <button type="button" class="mobile-nav-link mobile-nav-shop" data-index="08" onclick="openShopNav();document.getElementById('mobileMenu').classList.remove('active')">Shop</button>
+      <button type="button" class="mobile-nav-link mobile-nav-catalogue" data-index="09" onclick="downloadCatalogue(this)">Download Catalogue</button>
+    </nav>
+    <div class="mobile-menu-footer">
+      <p class="t-label text-dim">National Plasto Products Private Limited</p>
+      <p class="t-label text-dim">Excellence in Plastic Moulded Products &middot; Touch of Elegance</p>
+      <div style="margin-top:16px;display:flex;gap:12px">
+        <button type="button" class="btn-primary" style="flex:1;justify-content:center" onclick="openDistributorModal();document.getElementById('mobileMenu').classList.remove('active')">Become a Partner</button>
+      </div>
+    </div>
+  </div>
+</div>
 <!-- PAGE HERO BANNER -->
 <section class="page-hero-banner">
   <div class="container">
@@ -96,131 +123,162 @@
   </div>
 </section>
 
-<!-- ENQUIRY SECTION -->
-<section class="section theme-graphite enquiry-section grain" id="enquiry" style="padding: 90px 0 120px;">
+<!-- CONTACT OPTIONS: PARTNER WITH US · GET A QUOTE -->
+<section class="contact-options-section" id="contact-options">
   <div class="container">
-    <div class="enquiry-inner">
+    <div class="mfg-section-header text-center" style="max-width:720px;margin:0 auto 44px">
+      <span class="mfg-badge mfg-badge--crimson">How can we help?</span>
+      <h2 class="mfg-section-title" style="color:#0F1320">START A CONVERSATION</h2>
+      <p class="mfg-section-desc" style="color:#64748b;margin:14px auto 0">
+        Pick the route that matches your requirement, or send the enquiry form below and we will route it for you.
+      </p>
+    </div>
 
-      <div class="enquiry-intro">
+    <div class="contact-options-grid">
+      <button type="button" class="contact-option-card contact-option-card--partner" onclick="openDistributorModal()">
+        <span class="contact-option-icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+          </svg>
+        </span>
+        <span class="contact-option-body">
+          <span class="contact-option-title">Partner With Us</span>
+          <span class="contact-option-desc">Distributor and dealership applications. Direct factory supply, trade margins and territory support.</span>
+          <span class="contact-option-cta">Apply for dealership &rarr;</span>
+        </span>
+      </button>
+
+      <a href="#enquiry" class="contact-option-card contact-option-card--quote">
+        <span class="contact-option-icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/>
+          </svg>
+        </span>
+        <span class="contact-option-body">
+          <span class="contact-option-title">Get a Quote</span>
+          <span class="contact-option-desc">Bulk, institutional and custom moulding pricing. Share quantities and delivery city for a costed proposal.</span>
+          <span class="contact-option-cta">Send an enquiry &rarr;</span>
+        </span>
+      </a>
+
+      <button type="button" class="contact-option-card contact-option-card--locator" onclick="openDistributorLocator()">
+        <span class="contact-option-icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+          </svg>
+        </span>
+        <span class="contact-option-body">
+          <span class="contact-option-title">Distributor Near You</span>
+          <span class="contact-option-desc">Find the authorised stockist or regional depot covering your city, with direct phone and WhatsApp.</span>
+          <span class="contact-option-cta">Find my depot &rarr;</span>
+        </span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ENQUIRY SECTION -->
+<section class="contact-enquiry-section" id="enquiry">
+  <div class="container">
+    <div class="contact-enquiry-grid">
+
+      <!-- Left: reach us -->
+      <aside class="contact-reach">
         <span class="t-overline text-crimson">Direct Plant Access</span>
-        <h2 class="t-h1" style="margin-top:16px;color:var(--text-primary-dark)">
-          Connect With Our<br>Production &amp;<br><span class="text-crimson">Sales Desk.</span>
-        </h2>
+        <h2 class="contact-reach-title">Connect With Our<br>Production &amp; <span class="text-crimson">Sales Desk.</span></h2>
 
-        <div class="enquiry-contact-info" style="margin-top:40px">
-          <div class="contact-info-item">
-            <svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 3h12v10H2z"/><path d="M2 3l6 5 6-5"/></svg>
-            <a href="mailto:info@nationalplasto.com" class="t-body" style="color:var(--text-secondary-dark)">info@nationalplasto.com</a>
+        <dl class="contact-reach-list">
+          <div>
+            <dt>Email</dt>
+            <dd><a href="mailto:info@nationalplasto.com">info@nationalplasto.com</a></dd>
           </div>
-          <div class="contact-info-item" style="margin-top:16px">
-            <svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 2h3l1.5 4-2 1a9 9 0 0 0 3.5 3.5l1-2 4 1.5v3C8 14 2 8 2 2h1z"/></svg>
-            <a href="tel:+919830012345" class="t-body" style="color:var(--text-secondary-dark)">+91 98300 12345 (Sales Desk)</a>
+          <div>
+            <dt>Sales desk</dt>
+            <dd><a href="tel:+919830012345">+91 98300 12345</a></dd>
           </div>
-          <div class="contact-info-item" style="margin-top:16px">
-            <svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 9a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/><path d="M8 1a6 6 0 0 1 6 6c0 5-6 8-6 8S2 12 2 7a6 6 0 0 1 6-6z"/></svg>
-            <span class="t-body" style="color:var(--text-secondary-dark)">19 Sukeas Lane, Kolkata 700001, West Bengal, India</span>
+          <div>
+            <dt>Works &amp; head office</dt>
+            <dd>19 Sukeas Lane, Kolkata 700001<br>West Bengal, India</dd>
           </div>
-        </div>
-
-        <div style="margin-top:36px">
-          <a href="https://wa.me/919830012345?text=Hello%2C%20I%20would%20like%20to%20inquire%20about%20National%20Plasto%20products." class="btn-whatsapp" target="_blank" rel="noopener">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
-            <span>Direct WhatsApp Desk</span>
-          </a>
-        </div>
-      </div>
-
-      <!-- Multi-Step Enquiry Form -->
-      <div class="enquiry-form-wrap">
-        <div class="enquiry-form-card">
-
-          <div class="form-steps" id="formSteps">
-            <div class="form-step-dot active" data-step="1"></div>
-            <div class="form-step-line"></div>
-            <div class="form-step-dot" data-step="2"></div>
-            <div class="form-step-line"></div>
-            <div class="form-step-dot" data-step="3"></div>
-            <div class="form-step-line"></div>
-            <div class="form-step-dot" data-step="4"></div>
+          <div>
+            <dt>Hours</dt>
+            <dd>Monday to Saturday, 10:00 &ndash; 19:00 IST</dd>
           </div>
+        </dl>
 
-          <!-- Step 1: Intent Selection -->
-          <div class="form-step-panel active" id="step1">
-            <h3 class="t-h5" style="margin-bottom:8px;color:#FFFFFF">What is your requirement?</h3>
-            <p class="t-caption" style="color:#cbd5e1;margin-bottom:24px">Select your primary objective to route to the correct team.</p>
-            <div class="intent-grid">
-              <button class="intent-btn" data-value="bulk" onclick="selectIntent(this)">Bulk / Institutional Order</button>
-              <button class="intent-btn" data-value="distributor" onclick="selectIntent(this)">Become a Distributor</button>
-              <button class="intent-btn" data-value="distributor-near-you" onclick="selectIntent(this)">Distributor Near You</button>
-              <button class="intent-btn" data-value="custom" onclick="selectIntent(this)">Custom Moulding / OEM</button>
-              <button class="intent-btn" data-value="product" onclick="selectIntent(this)">Product Pricing &amp; Catalogue</button>
-              <button class="intent-btn" data-value="industrial" onclick="selectIntent(this)">Industrial Storage &amp; Crates</button>
-              <button class="intent-btn" data-value="general" onclick="selectIntent(this)">General Business Enquiry</button>
+        <a href="https://wa.me/919830012345?text=Hello%2C%20I%20would%20like%20to%20inquire%20about%20National%20Plasto%20products." class="btn-whatsapp" target="_blank" rel="noopener">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+          <span>Direct WhatsApp Desk</span>
+        </a>
+      </aside>
+
+      <!-- Right: enquiry form -->
+      <div class="contact-form-card">
+        <h3 class="contact-form-title">Send an enquiry</h3>
+        <p class="contact-form-sub">Fields marked <span class="req">*</span> are required. We reply within one working day.</p>
+
+        <form id="contactEnquiryForm" onsubmit="submitContactEnquiry(event)" novalidate>
+          <div class="cf-grid">
+            <div class="cf-field">
+              <label for="cfName">Name <span class="req">*</span></label>
+              <input type="text" id="cfName" name="name" autocomplete="name" required />
+            </div>
+            <div class="cf-field">
+              <label for="cfCompany">Company Name</label>
+              <input type="text" id="cfCompany" name="company" autocomplete="organization" />
+            </div>
+
+            <div class="cf-field">
+              <label for="cfPhone">Contact No <span class="req">*</span></label>
+              <input type="tel" id="cfPhone" name="phone" autocomplete="tel" inputmode="tel" required />
+            </div>
+            <div class="cf-field">
+              <label for="cfEmail">Email <span class="req">*</span></label>
+              <input type="email" id="cfEmail" name="email" autocomplete="email" required />
+            </div>
+
+            <div class="cf-field">
+              <label for="cfCountry">Country</label>
+              <select id="cfCountry" name="country">
+                <option value="India" selected>India</option>
+                <option value="Bangladesh">Bangladesh</option>
+                <option value="Nepal">Nepal</option>
+                <option value="Sri Lanka">Sri Lanka</option>
+                <option value="Bhutan">Bhutan</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+            <div class="cf-field">
+              <label for="cfState">State</label>
+              <select id="cfState" name="state">
+                <option value="" selected>Select State</option>
+              </select>
+            </div>
+
+            <div class="cf-field">
+              <label for="cfCity">City / Town / District <span class="req">*</span></label>
+              <input type="text" id="cfCity" name="city" autocomplete="address-level2" required />
+            </div>
+            <div class="cf-field">
+              <label for="cfPincode">Pincode <span class="req">*</span></label>
+              <input type="text" id="cfPincode" name="pincode" autocomplete="postal-code" inputmode="numeric" required />
+            </div>
+
+            <div class="cf-field cf-field--full">
+              <label for="cfMessage">Message <span class="req">*</span></label>
+              <textarea id="cfMessage" name="message" rows="4" required placeholder="Quantities, delivery city, target date, or any technical detail."></textarea>
             </div>
           </div>
 
-          <!-- Step 2: Category -->
-          <div class="form-step-panel" id="step2">
-            <h3 class="t-h5" style="margin-bottom:8px;color:#FFFFFF">Which product line or area?</h3>
-            <p class="t-caption" style="color:#cbd5e1;margin-bottom:24px">Select the relevant category.</p>
-            <div class="category-select-grid">
-              <button class="cat-select-btn" data-value="chairs" onclick="selectCategory(this)">Chairs (129)</button>
-              <button class="cat-select-btn" data-value="tables" onclick="selectCategory(this)">Tables (46)</button>
-              <button class="cat-select-btn" data-value="stools" onclick="selectCategory(this)">Stools &amp; Patla (25)</button>
-              <button class="cat-select-btn" data-value="kids" onclick="selectCategory(this)">Baby &amp; Kids (21)</button>
-              <button class="cat-select-btn" data-value="storage" onclick="selectCategory(this)">Industrial Crates (9)</button>
-              <button class="cat-select-btn" data-value="all" onclick="selectCategory(this)">Complete Range / Custom</button>
-            </div>
-            <button class="form-back-btn" onclick="goToStep(1)">← Back</button>
-          </div>
+          <p class="cf-error" id="cfError" hidden></p>
 
-          <!-- Step 3: Details -->
-          <div class="form-step-panel" id="step3">
-            <h3 class="t-h5" style="margin-bottom:8px;color:#FFFFFF">Provide Details &amp; Quantities</h3>
-            <p class="t-caption" style="color:#cbd5e1;margin-bottom:20px">Mention volume, delivery city, or any specific specifications.</p>
-            <textarea class="form-textarea" id="enquiryMessage" placeholder="Specify estimated quantities, target delivery date, target location, and any technical or drawing details..." rows="4"></textarea>
-            <div class="form-nav">
-              <button class="form-back-btn" onclick="goToStep(2)">← Back</button>
-              <button class="btn-secondary" onclick="goToStep(4)">Continue to Contact Info →</button>
-            </div>
-          </div>
-
-          <!-- Step 4: Contact -->
-          <div class="form-step-panel" id="step4">
-            <h3 class="t-h5" style="margin-bottom:8px;color:#FFFFFF">Where should we send the proposal?</h3>
-            <p class="t-caption" style="color:#cbd5e1;margin-bottom:20px">Your commercial contact details are kept strictly confidential.</p>
-            <div class="form-fields">
-              <input type="text" class="form-input" id="enquiryName" placeholder="Full Name *" required />
-              <input type="email" class="form-input" id="enquiryEmail" placeholder="Corporate Email Address *" required />
-              <input type="tel" class="form-input" id="enquiryPhone" placeholder="Phone / WhatsApp Number *" required />
-              <input type="text" class="form-input" id="enquiryCompany" placeholder="Company / Institutional Name" />
-            </div>
-            <div class="form-nav" style="margin-top:24px">
-              <button class="form-back-btn" onclick="goToStep(3)">← Back</button>
-              <button class="btn-primary" onclick="submitEnquiry()" style="flex:1">
-                <span>Submit Request</span>
-              </button>
-            </div>
-          </div>
-
-          <!-- Success State -->
-          <div class="form-step-panel" id="stepSuccess">
-            <div style="text-align:center;padding:36px 0">
-              <h3 class="t-h4" style="color:#FFFFFF;margin-bottom:10px">Request Dispatched</h3>
-              <p class="t-body" style="color:#94a3b8;font-size:14px">Our industrial sales and technical desk will review your requirements and respond within one business day.</p>
-              <a href="https://wa.me/919830012345" class="btn-whatsapp" style="display:inline-flex;margin-top:28px" target="_blank" rel="noopener">
-                <span>Direct WhatsApp Follow-up</span>
-              </a>
-            </div>
-          </div>
-
-        </div>
+          <button type="submit" class="cf-submit">SUBMIT</button>
+        </form>
       </div>
 
     </div>
   </div>
 </section>
-
 <!-- FOOTER -->
 <footer class="site-footer theme-dark">
   <div class="container">
@@ -243,7 +301,7 @@
             <li><a href="quality.html">Quality &amp; Testing Lab</a></li>
             <li><a href="about.html">About National Plasto</a></li>
             <li><a href="contact.html">Contact &amp; RFQ</a></li>
-            <li><a href="javascript:void(0)" onclick="openDistributorLocator()">Distributor Near You</a></li>
+            <li><a href="contact.html#contact-options">Distributor Near You</a></li>
           </ul>
         </div>
         <div class="footer-col">
@@ -261,55 +319,89 @@
   </div>
 </footer>
 
-<script src="js/main.js?v=5"></script>
+<script src="js/main.js?v=9"></script>
 <script>
-let inquiryData = {};
-function selectIntent(btn) {
-  document.querySelectorAll('.intent-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  inquiryData.intent = btn.dataset.value;
-  setTimeout(() => goToStep(2), 250);
-}
-function selectCategory(btn) {
-  document.querySelectorAll('.cat-select-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  inquiryData.category = btn.dataset.value;
-  setTimeout(() => goToStep(3), 250);
-}
-function goToStep(n) {
-  document.querySelectorAll('.form-step-panel').forEach(p => p.classList.remove('active'));
-  document.getElementById('step' + n)?.classList.add('active');
-  document.querySelectorAll('.form-step-dot').forEach((d, i) => {
-    d.classList.toggle('active', i < n);
-    d.classList.toggle('completed', i < n - 1);
-  });
-}
-function submitEnquiry() {
-  const name = document.getElementById('enquiryName').value;
-  const email = document.getElementById('enquiryEmail').value;
-  const phone = document.getElementById('enquiryPhone').value;
-  if (!name || !email || !phone) {
-    alert('Please fill in your name, email, and phone number.');
-    return;
-  }
-  document.querySelectorAll('.form-step-panel').forEach(p => p.classList.remove('active'));
-  document.getElementById('stepSuccess')?.classList.add('active');
-  document.querySelectorAll('.form-step-dot').forEach(d => d.classList.add('completed'));
+/* ── Contact enquiry form ── */
+const IN_STATES = ['Andaman & Nicobar Islands','Andhra Pradesh','Arunachal Pradesh','Assam','Bihar',
+  'Chandigarh','Chhattisgarh','Dadra & Nagar Haveli and Daman & Diu','Delhi','Goa','Gujarat','Haryana',
+  'Himachal Pradesh','Jammu & Kashmir','Jharkhand','Karnataka','Kerala','Ladakh','Lakshadweep',
+  'Madhya Pradesh','Maharashtra','Manipur','Meghalaya','Mizoram','Nagaland','Odisha','Puducherry',
+  'Punjab','Rajasthan','Sikkim','Tamil Nadu','Telangana','Tripura','Uttar Pradesh','Uttarakhand',
+  'West Bengal'];
+
+function fillStates() {
+  const sel = document.getElementById('cfState');
+  const country = document.getElementById('cfCountry');
+  if (!sel || !country) return;
+  const india = country.value === 'India';
+  sel.innerHTML = '<option value="">Select State</option>' +
+    (india ? IN_STATES.map(s => '<option value="' + s + '">' + s + '</option>').join('') : '');
+  /* Outside India the state list does not apply, so the field steps aside
+     rather than offering Indian states to an overseas buyer. */
+  sel.disabled = !india;
+  sel.closest('.cf-field').style.opacity = india ? '' : '0.5';
 }
 
-// Check query param for prefilled product
+function submitContactEnquiry(e) {
+  e.preventDefault();
+  const f = e.target;
+  const err = document.getElementById('cfError');
+  const get = id => (document.getElementById(id).value || '').trim();
+
+  const required = [['cfName','Name'],['cfPhone','Contact No'],['cfEmail','Email'],
+                    ['cfCity','City / Town / District'],['cfPincode','Pincode'],['cfMessage','Message']];
+  const missing = required.filter(r => !get(r[0]));
+  if (missing.length) {
+    err.textContent = 'Please fill in: ' + missing.map(r => r[1]).join(', ') + '.';
+    err.hidden = false;
+    document.getElementById(missing[0][0]).focus();
+    return;
+  }
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(get('cfEmail'))) {
+    err.textContent = 'That email address does not look right. Please check it.';
+    err.hidden = false;
+    document.getElementById('cfEmail').focus();
+    return;
+  }
+  err.hidden = true;
+
+  f.innerHTML = '<div class="cf-success">' +
+    '<h4>Thank you, ' + get('cfName').replace(/[<>&]/g, '') + '.</h4>' +
+    '<p>Your enquiry has reached our sales desk. We reply within one working day, ' +
+    'usually to ' + get('cfEmail').replace(/[<>&]/g, '') + '.</p>' +
+    '<p class="cf-success-alt">In a hurry? Call <a href="tel:+919830012345">+91 98300 12345</a> ' +
+    'or use the WhatsApp desk.</p></div>';
+}
+
 document.addEventListener('DOMContentLoaded', () => {
-  const params = new URLSearchParams(window.location.search);
-  const prod = params.get('product');
+  fillStates();
+  document.getElementById('cfCountry')?.addEventListener('change', fillStates);
+
+  /* A product carried over from a Get A Quote link on the catalogue. */
+  const prod = new URLSearchParams(window.location.search).get('product');
   if (prod) {
-    const msgEl = document.getElementById('enquiryMessage');
-    if (msgEl) {
-      msgEl.value = `Hello, I would like to request commercial volume pricing, MOQ, and technical datasheets for ${prod}.`;
+    const msg = document.getElementById('cfMessage');
+    if (msg) {
+      msg.value = 'Hello, I would like commercial volume pricing, MOQ and technical details for ' + prod + '.';
     }
-    goToStep(4);
+    document.getElementById('enquiry')?.scrollIntoView({ behavior: 'smooth' });
   }
 });
 </script>
+
+<!-- SHOP -->
+<div class="mfg-modal-backdrop" id="shopModal" onclick="closeShop(event)" role="dialog" aria-modal="true" aria-labelledby="shopTitle">
+  <div class="mfg-modal-card shop-card" onclick="event.stopPropagation()">
+    <div class="mfg-modal-header">
+      <div>
+        <span class="mfg-badge mfg-badge--crimson">Buy Online</span>
+        <h3 class="t-h4" id="shopTitle" style="margin-top:6px;color:#0F1320">&nbsp;</h3>
+      </div>
+      <button type="button" class="search-close" onclick="closeShop()" style="position:static;color:#0F1320" aria-label="Close">&#10005;</button>
+    </div>
+    <div class="mfg-modal-body" id="shopBody"></div>
+  </div>
+</div>
 
 </body>
 </html>

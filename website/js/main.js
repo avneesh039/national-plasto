@@ -438,6 +438,82 @@ window.switchAboutTab = function(index) {
   let searchQuery = '';
   let visibleLimit = 16;
 
+  /* ── Category taxonomy ──
+     The listing is grouped two levels deep: a family, then the tier category
+     inside it. Grouping needs one home per product, so baby and storage items
+     are claimed before the chair/table keyword can take them — a "Baby Chair"
+     belongs under Baby & Kids, not in two places. The filter chips above stay
+     deliberately overlapping; they answer a different question. */
+  const FAMILIES = [
+    { slug: 'chairs',  label: 'Chairs' },
+    { slug: 'tables',  label: 'Tables' },
+    { slug: 'stools',  label: 'Stools & Patla' },
+    { slug: 'kids',    label: 'Baby & Kids' },
+    { slug: 'storage', label: 'Storage & Utility' },
+    { slug: 'other',   label: 'Other Products' }
+  ];
+
+  function familyOf(category) {
+    const c = (category || '').toLowerCase();
+    if (/baby|kid/.test(c)) return 'kids';
+    if (/wardrobe|trolley|storage/.test(c)) return 'storage';
+    if (/stool/.test(c)) return 'stools';
+    if (/chair/.test(c)) return 'chairs';
+    if (/table/.test(c)) return 'tables';
+    return 'other';
+  }
+
+  /* Best build first, economical last — the order a dealer shops a catalogue. */
+  function tierRank(category) {
+    const c = (category || '').toLowerCase();
+    if (/heavy/.test(c) && /premium/.test(c)) return 0;
+    if (/premium/.test(c)) return 1;
+    if (/heavy/.test(c)) return 2;
+    if (/deluxe/.test(c)) return 3;
+    if (/regular/.test(c)) return 4;
+    if (/economical/.test(c)) return 6;
+    return 5;
+  }
+
+  function groupByCategory(products) {
+    const families = new Map();
+    products.forEach(p => {
+      const fam = familyOf(p.category);
+      if (!families.has(fam)) families.set(fam, new Map());
+      const tiers = families.get(fam);
+      const cat = p.category || 'Uncategorised';
+      if (!tiers.has(cat)) tiers.set(cat, []);
+      tiers.get(cat).push(p);
+    });
+
+    return FAMILIES
+      .filter(f => families.has(f.slug))
+      .map(f => {
+        const tiers = [...families.get(f.slug).entries()]
+          .map(([label, items]) => ({ label: label, items: items }))
+          .sort((a, b) =>
+            tierRank(a.label) - tierRank(b.label) ||
+            b.items.length - a.items.length ||
+            a.label.localeCompare(b.label));
+        return {
+          slug: f.slug,
+          label: f.label,
+          tiers: tiers,
+          count: tiers.reduce((n, t) => n + t.items.length, 0)
+        };
+      });
+  }
+
+  /* Every category opens with a preview row. Rendering all 160 cards at once
+     made the page 119 phone screens tall; four fills one desktop row and keeps
+     the whole listing scannable. */
+  const TIER_PREVIEW = 4;
+  const expandedTiers = new Set();
+
+  function slugify(s) {
+    return (s || '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+  }
+
   function getAllProducts() {
     if (window.NPPL_DATA && Array.isArray(window.NPPL_DATA.allWithImages) && window.NPPL_DATA.allWithImages.length > 0) {
       return window.NPPL_DATA.allWithImages;
@@ -467,7 +543,7 @@ window.switchAboutTab = function(index) {
         if (activeCategory === 'tables') return c.includes('table');
         if (activeCategory === 'stools') return c.includes('stool');
         if (activeCategory === 'kids') return c.includes('baby') || c.includes('kid');
-        if (activeCategory === 'storage') return c.includes('storage') || c.includes('wardrobe') || c.includes('trolley') || c.includes('crate');
+        if (activeCategory === 'storage') return c.includes('storage') || c.includes('wardrobe') || c.includes('trolley');
         return true;
       });
     }
@@ -492,7 +568,12 @@ window.switchAboutTab = function(index) {
     if (!container) return;
 
     const filtered = getFilteredProducts();
-    const slice = filtered.slice(0, visibleLimit);
+    const groups = groupByCategory(filtered);
+
+    /* The container is a grid on these pages, which would lay the family
+       sections out in columns. Grouping needs it to stack. */
+    container.classList.add('products-grouped-wrap');
+    container.classList.remove('products-visual-grid');
 
     // Update status counter
     const statusEl = document.getElementById('productDbCountStatus');
@@ -501,19 +582,19 @@ window.switchAboutTab = function(index) {
       if (filtered.length === 0) {
         statusEl.textContent = `No products found matching "${searchQuery}" under ${brandLabel}`;
       } else {
-        statusEl.textContent = `Showing ${Math.min(filtered.length, visibleLimit)} of ${filtered.length} products under ${brandLabel}`;
+        const tierCount = groups.reduce((n, g) => n + g.tiers.length, 0);
+        statusEl.textContent = `${filtered.length} products in ${tierCount} categories under ${brandLabel}`;
       }
     }
 
-    // Update load more button
+    /* Every match is rendered, so paging through a flat list no longer
+       applies — the category index is how you skip ahead now. */
     const loadMoreWrap = document.getElementById('dbLoadMoreWrap');
-    if (loadMoreWrap) {
-      loadMoreWrap.style.display = filtered.length > visibleLimit ? 'block' : 'none';
-    }
+    if (loadMoreWrap) loadMoreWrap.style.display = 'none';
 
     if (filtered.length === 0) {
       container.innerHTML = `
-        <div style="grid-column: 1 / -1; text-align: center; padding: 64px 20px; background: white; border-radius: 20px; border: 1px dashed #cbd5e1;">
+        <div style="text-align: center; padding: 64px 20px; background: white; border-radius: 20px; border: 1px dashed #cbd5e1;">
           <p style="font-family: var(--font-display); font-size: 18px; font-weight: 700; color: #0f172a; margin-bottom: 8px;">No products match your criteria</p>
           <p style="color: #64748b; font-size: 14px; margin-bottom: 20px;">Try adjusting your search query or selecting "All Brands".</p>
           <button type="button" class="btn-mfg-primary" onclick="clearDatabaseSearch(); selectDatabaseBrand('all', document.querySelector('.prod-brand-tab-btn[data-brand=all]'));" style="margin:0 auto;">Reset Filters</button>
@@ -522,7 +603,63 @@ window.switchAboutTab = function(index) {
       return;
     }
 
-    container.innerHTML = slice.map((p, idx) => {
+    container.innerHTML =
+      categoryIndexHTML(groups) +
+      groups.map(familySectionHTML).join('');
+  }
+
+  function categoryIndexHTML(groups) {
+    if (groups.length < 2) return '';
+    return `
+      <nav class="prod-cat-index" aria-label="Jump to category">
+        ${groups.map(g => `
+          <a class="prod-cat-index-link" href="#fam-${g.slug}">
+            ${g.label}<span class="prod-cat-index-num">${g.count}</span>
+          </a>
+        `).join('')}
+      </nav>
+    `;
+  }
+
+  function familySectionHTML(g) {
+    return `
+      <section class="prod-family" id="fam-${g.slug}">
+        <header class="prod-family-head">
+          <h3 class="prod-family-title">${g.label}</h3>
+          <span class="prod-family-count">${g.count} ${g.count === 1 ? 'model' : 'models'} · ${g.tiers.length} ${g.tiers.length === 1 ? 'category' : 'categories'}</span>
+        </header>
+        ${g.tiers.map(t => tierHTML(g, t)).join('')}
+      </section>
+    `;
+  }
+
+  function tierHTML(g, t) {
+    const key = g.slug + '--' + slugify(t.label);
+    const open = expandedTiers.has(key);
+    const shown = open ? t.items : t.items.slice(0, TIER_PREVIEW);
+    const hidden = t.items.length - shown.length;
+
+    return `
+      <div class="prod-tier" id="cat-${slugify(t.label)}">
+        <div class="prod-tier-head">
+          <h4 class="prod-tier-title">${t.label}</h4>
+          <span class="prod-tier-count">${t.items.length}</span>
+        </div>
+        <div class="prod-tier-grid">
+          ${shown.map(productCard).join('')}
+        </div>
+        ${t.items.length > TIER_PREVIEW ? `
+          <button type="button" class="prod-tier-toggle" onclick="toggleProductTier('${key}')"
+                  aria-expanded="${open ? 'true' : 'false'}">
+            ${open ? 'Show fewer' : `Show all ${t.items.length}`}
+            ${hidden > 0 ? `<span class="prod-tier-toggle-num">+${hidden}</span>` : ''}
+          </button>
+        ` : ''}
+      </div>
+    `;
+  }
+
+  function productCard(p) {
       const raw1 = (p.images && p.images[0]) ? p.images[0].url : 'images/products/np-ntl-058-89dcdcfa74.jpg';
       const png1 = raw1.replace(/\.jpg$/i, '.png');
       const raw2 = (p.images && p.images[1]) ? p.images[1].url : raw1;
@@ -577,13 +714,32 @@ window.switchAboutTab = function(index) {
           </div>
         </div>
       `;
-    }).join('');
   }
+
+  window.toggleProductTier = function(key) {
+    if (expandedTiers.has(key)) expandedTiers.delete(key);
+    else expandedTiers.add(key);
+
+    /* Re-rendering moves the ground under the button, so pin the tier and put
+       the page back where the reader was. */
+    const btn = document.querySelector(`[onclick="toggleProductTier('${key}')"]`);
+    const tier = btn ? btn.closest('.prod-tier') : null;
+    const before = tier ? tier.getBoundingClientRect().top : null;
+    const id = tier ? tier.id : null;
+
+    renderDatabaseGrid();
+
+    if (id && before !== null) {
+      const after = document.getElementById(id);
+      if (after) window.scrollBy(0, after.getBoundingClientRect().top - before);
+    }
+  };
 
   // Global Handlers
   window.selectDatabaseBrand = function(brandSlug, btn) {
     activeBrand = brandSlug;
     visibleLimit = 16;
+    expandedTiers.clear();
     document.querySelectorAll('.prod-brand-tab-btn').forEach(b => {
       b.classList.remove('active');
       b.setAttribute('aria-selected', 'false');
@@ -598,6 +754,7 @@ window.switchAboutTab = function(index) {
   window.selectDatabaseCategory = function(catSlug, btn) {
     activeCategory = catSlug;
     visibleLimit = 16;
+    expandedTiers.clear();
     document.querySelectorAll('.db-cat-chip').forEach(b => b.classList.remove('active'));
     if (btn) btn.classList.add('active');
     renderDatabaseGrid();
@@ -607,6 +764,7 @@ window.switchAboutTab = function(index) {
   window.onDatabaseSearchInput = function(val) {
     searchQuery = val;
     visibleLimit = 16;
+    expandedTiers.clear();
     const clearBtn = document.getElementById('dbSearchClearBtn');
     if (clearBtn) {
       clearBtn.style.display = val.trim() ? 'flex' : 'none';
@@ -759,10 +917,93 @@ window.switchAboutTab = function(index) {
   */
   const MARKETPLACE = {};
 
+  /* Each store gets its own mark and brand tint so the two are told apart at a
+     glance. These are generic glyphs in each brand's colour, not the Amazon or
+     Flipkart logos — drop official logo files in and swap `icon` for an <img>
+     if you get them from their seller brand kits. */
   const STORES = [
-    { key: 'amazon',   label: 'Amazon' },
-    { key: 'flipkart', label: 'Flipkart' }
+    {
+      key: 'amazon',
+      label: 'Amazon',
+      tint: '#FF9900',
+      icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
+            '<circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>' +
+            '<path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>'
+    },
+    {
+      key: 'flipkart',
+      label: 'Flipkart',
+      tint: '#2874F0',
+      icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
+            '<path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>' +
+            '<path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>'
+    }
   ];
+
+  /* Brand storefronts for the Shop button in the nav. Fill these in when the
+     stores go live; until then the panel says so rather than sending anyone to
+     a marketplace search, which lists competitors' chairs next to ours. */
+  const STOREFRONTS = {
+    amazon: {
+      url: '',
+      blurb: 'Full retail range with Prime delivery, ratings and easy returns.'
+    },
+    flipkart: {
+      url: '',
+      blurb: 'Retail packs and single units, with Flipkart delivery across India.'
+    }
+  };
+
+  window.openShopNav = function() {
+    const modal = document.getElementById('shopModal');
+    const body = document.getElementById('shopBody');
+    const title = document.getElementById('shopTitle');
+    if (!modal || !body) return;
+
+    title.textContent = 'Shop National Plasto';
+
+    body.innerHTML = `
+      <p class="shop-sku">Buy direct from our official marketplace stores.</p>
+
+      <div class="shop-stores shop-stores--nav">
+        ${STORES.map(s => {
+          const sf = STOREFRONTS[s.key] || {};
+          return sf.url ? `
+            <a class="shop-store shop-store--nav" href="${sf.url}" target="_blank" rel="noopener noreferrer">
+              <span class="shop-store-head">
+                <span class="shop-store-mark" style="--tint:${s.tint}">${s.icon}</span>
+                <span class="shop-store-name">${s.label}</span>
+                <span class="shop-store-go">Visit store &rarr;</span>
+              </span>
+              <span class="shop-store-blurb">${sf.blurb}</span>
+            </a>
+          ` : `
+            <div class="shop-store shop-store--nav shop-store--soon">
+              <span class="shop-store-head">
+                <span class="shop-store-mark" style="--tint:${s.tint}">${s.icon}</span>
+                <span class="shop-store-name">${s.label}</span>
+                <span class="shop-store-soon">Store not live yet</span>
+              </span>
+              <span class="shop-store-blurb">${sf.blurb}</span>
+            </div>
+          `;
+        }).join('')}
+      </div>
+
+      ${STORES.every(s => !(STOREFRONTS[s.key] || {}).url) ? `
+        <p class="shop-note">Our marketplace stores are being set up. For bulk or institutional orders the trade desk is usually faster anyway.</p>
+      ` : ''}
+
+      <div class="shop-actions">
+        <a href="contact.html" class="btn-mfg-primary">Enquire directly</a>
+      </div>
+    `;
+
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    const closeBtn = modal.querySelector('.search-close');
+    if (closeBtn) closeBtn.focus();
+  };
 
   window.openShop = function(sku) {
     const p = getAllProducts().find(x => x.sku === sku);
@@ -784,11 +1025,13 @@ window.switchAboutTab = function(index) {
       <div class="shop-stores">
         ${STORES.map(s => links[s.key] ? `
           <a class="shop-store" href="${esc(links[s.key])}" target="_blank" rel="noopener noreferrer">
+            <span class="shop-store-mark" style="--tint:${s.tint}">${s.icon}</span>
             <span class="shop-store-name">${esc(s.label)}</span>
             <span class="shop-store-go">Buy now &rarr;</span>
           </a>
         ` : `
           <div class="shop-store shop-store--soon">
+            <span class="shop-store-mark" style="--tint:${s.tint}">${s.icon}</span>
             <span class="shop-store-name">${esc(s.label)}</span>
             <span class="shop-store-soon">Listing not live yet</span>
           </div>
